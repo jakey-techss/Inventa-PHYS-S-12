@@ -1,6 +1,6 @@
 #WeeklyLogs {
     display: flex;
-    gap: 8px 20px;
+    gap: 10px 6px;
     flex-wrap: wrap;
 }
 .NotificationContainer{

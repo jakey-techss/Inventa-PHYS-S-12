@@ -1,0 +1,70 @@
+hero > img{
+    height: 400px;
+}
+
+hero h3{
+    font-family: "Space Grotesk";
+    margin-top: 12px;
+    margin-bottom: 0px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#intro{
+    color: #CBD5E1;
+    font-size: 20px;
+}
+
+.des{
+    font-family: "Inter";
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    max-width: 70%;
+    line-height: 28px;
+}
+#Projects {
+    display: flex;
+    gap: 16px 6px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+#Skills {
+    display: none;
+    gap: 16px 6px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+#Hobbies {
+    display: none;
+    gap: 16px 6px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+.majorButton{
+    background-image: linear-gradient(-135deg, #22D3EE, #5B5FFB);
+    display: flex;
+    border-radius: 8px;
+    color:white;
+    font-style:normal;
+    font-weight:400;
+    width: 180px;
+    font-family: "Inter";
+    font-size:14px;
+    padding: 4px 8px 4px 4px;
+    border: none;
+    align-items: center;
+    gap:4px;
+    transition: all 300ms;
+    margin-top: 0px;
+
+}
+.majorButton > img{
+    width: 36px;
+    height: 36px;
+}
+
+button:hover{
+    transform: translate3d(4px, -4px, 4px);
+}

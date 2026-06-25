@@ -1,0 +1,206 @@
+h3{
+    font-family: "Space Grotesk";
+    margin-top: 12px;
+    margin-bottom: 0px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+}
+#tableOfContent{
+    width: 40%;
+}
+
+#inventa{
+    margin-top:120px;
+}
+hero{
+    margin-top:24px;
+
+}
+.des{
+    font-family: "Inter";
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    max-width: 75%;
+    line-height: 28px;
+}
+#tableOfContent > ul > li{
+    font-family: "Space Grotesk";
+    font-size: 20px;
+    font-style: normal;
+    margin-top: 12px;
+    font-weight: 600;
+}
+#tableOfContent > ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.innerList{
+    padding-left: 20px;
+    font-family: "Inter";
+    font-style:normal;
+    font-size: 14px;
+    font-weight:400;
+    line-height: 24px;
+}
+#ideasIntro{
+    margin-top: 60px;
+    display: flex;
+}
+#CardHolder{
+    margin-top: 20px;
+    display: flex;
+    padding: 4px 12px 4px 12px;
+    align-items: center;
+    gap:40px;
+}
+
+.Inventa_SpecialTopHeader{
+    background-image: linear-gradient(-135deg, #FF8A3D,#FACC15);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ShotBot_SpecialTopHeader{
+    background-image: linear-gradient(137deg, #22D3EE,#5B5FFB);
+    
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.RGF_SpecialTopHeader{
+    background-image: linear-gradient(137deg, #34D399,#22D3EE);
+    
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+table, tr, td,th{
+    border: solid 1px #475569;
+    border-collapse: collapse;
+
+    color:white;
+}
+#shotbot{
+    margin-top:60px;
+}
+#RFG{
+    margin-top:60px;
+}
+.Sketches > img:not(.special){
+    height: 288px;
+}
+.majorButton{
+    background-image: linear-gradient(-135deg, #22D3EE, #5B5FFB);
+    display: flex;
+    border-radius: 8px;
+    color:white;
+    font-style:normal;
+    font-weight:400;
+    margin-top:12px;
+    font-family: "Inter";
+    font-size:14px;
+    padding: 4px 8px 4px 4px;
+    border: solid 1px #475569;
+    align-items: center;
+    width: 90%;
+    gap:2px;
+
+}
+.majorButton > img{
+    width: 40px;
+    height: 40px;
+}
+.special{
+    height:180px;
+}
+.sub_subGroup hr{
+    margin-top: 32px;
+    margin-bottom: 48px;
+}
+.Sketches{
+    margin-top:16px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:20px 40px;
+}
+
+th{
+    padding:16px;
+    font-family: "Space Grotesk";
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+}
+h4{
+
+    font-family: "Space Grotesk";
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+}
+.sub_subGroup{
+    padding-left:16px;
+}
+ul{
+    list-style-type: none;
+}
+.subGroup li{
+    font-family: "Inter";
+    font-style:normal;
+    font-size: 14px;
+    font-weight:400;
+    line-height: 24px;
+    width:70%;
+}
+td > img{
+    height: 50px;
+    
+}
+td{
+    vertical-align:middle;
+}
+tr > td:first-child{
+   vertical-align:middle;
+   width:15%;
+   padding:16px 24px;
+    text-align:center;
+}
+
+.SpecialtopHeader > .success{
+    font-style: normal;
+    font-weight: 500;
+    font-family: "Space Grotesk";
+    font-size: 26px;
+    width: 220px;
+    margin-top: 0px;
+    margin-bottom: 4px;
+    text-align: start;
+}
+.subGroup{
+    margin-top:52px;
+}
+
+.subGroup h2{
+    font-family: "Space Grotesk";
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+}
+.subGroup .ConceptImg{
+    width:90%;
+    
+}
+.ConceptImgHolder{
+    margin-top:12px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}

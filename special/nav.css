@@ -6,6 +6,28 @@ body{
     overflow-x: hidden;
     color: white;
 }
+.NotificationContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    top:0;
+    padding-top: 96px;
+}
+.notification{
+    background-color: #FF4D4D;
+    height: min-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 100px 16px;
+    padding: 4px 20px;
+    border-radius: 8px;
+    transform: translateX(300px);
+    transition: all 3s;
+    font-family: "Inter";
+    font-size: 14px;
+}
 hero{
     display: flex;
     gap:24px;
@@ -86,6 +108,35 @@ a{
     box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.25);
     transition: all 300ms;
 }
+hr{
+    border: solid 1px #475569;
+    margin-top:60px;
+}
+.BigSpecials{
+    background-color: #1E293B;
+    border-radius: 16px;
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 14px;
+    height: 280px;
+    gap:8px;
+    border: solid 1px #475569;
+    box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.25);
+    transition: all 300ms;
+}
+
+.BigSpecials:hover{
+    transform: translateY(8px);
+    cursor: pointer;
+}
+.BigSpecials img{
+    width: 120px;
+    height: 120px;
+    
+}
 .BasicCard:hover{
     transform: translateY(8px);
     cursor: pointer;
@@ -105,6 +156,14 @@ a{
     
 }
 
+
+.BigSpecials > p{
+    font-family: "JetBrains Mono";
+    font-weight: 500;
+    font-size: 23px;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
 .topHeader{
     display: flex;
     justify-content: space-between;

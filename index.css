@@ -1,0 +1,139 @@
+#WeeklyLogs {
+    display: flex;
+    gap: 8px 20px;
+    flex-wrap: wrap;
+}
+.NotificationContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    top:0;
+    padding-top: 96px;
+}
+.notification{
+    background-color: #FF4D4D;
+    height: min-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 100px 16px;
+    padding: 4px 20px;
+    border-radius: 8px;
+    transform: translateX(300px);
+    transition: all 3s;
+    font-family: "Inter";
+    font-size: 14px;
+}
+.demoVid {
+    background-color: #1E293B;
+    border: solid 1px #475569;
+    border-radius: 12px;
+    width: 1200px;
+    height: 320px;
+    user-select: none;
+}
+#ProjectFiles, #Updates, #DemosandTutorials{
+    display: none;
+    gap: 8px 20px;
+    flex-wrap: wrap;
+}
+.blankMessage{
+    font-family: "Inter";
+    text-align: center;
+    margin-top: 24px;
+}
+.VideoThumbnail{
+    background-image: url("week1/asset/Thumbnail.png");
+    background-size: 50%;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+}
+.playVid {
+    width: 64px;
+    border: solid 1px #475569;
+    height: 64px;
+    background-color: rgba(217, 217, 217, 0.9);
+    border-radius: 64px;
+    transition: all 300ms;
+}
+.playVid:hover{
+    background-color: rgba(217, 217, 217, 1);
+    transform: scale(1.1);
+}
+.playVid>img {
+    width: 52px;
+    height: 52px;
+}
+.DemoandDes h3{
+    font-family: "Space Grotesk";
+    margin-top: 12px;
+    margin-bottom: 0px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+}
+.des{
+    font-family: "Inter";
+    margin: 0;
+    font-size: 16px;
+    max-width: 70%;
+    line-height: 28px;
+}
+.HeroButtons{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-top:18px;
+    gap:6px;
+}
+.HeroButtons > .majorButton{
+    background-image: linear-gradient(-135deg, #22D3EE, #5B5FFB);
+    display: flex;
+    border-radius: 8px;
+    color:white;
+    font-style:normal;
+    font-weight:400;
+    font-family: "Inter";
+    font-size:14px;
+    padding: 4px 8px 4px 4px;
+    border: solid 1px #475569;
+    align-items: center;
+    width: 100%;
+    gap:2px;
+
+}
+.HeroButtons button{
+    transition: all 300ms;
+}
+.HeroButtons button:hover{
+    transform: translate3d(4px, -4px, 4px);
+}
+.HeroButtons .minorButton{
+    background-image: linear-gradient(-135deg, #34D399, #22D3EE);
+    display: flex;
+    border-radius: 8px;
+    width:100%;
+    color:white;
+    font-style:normal;
+    font-weight:400;
+    font-family: "Inter";
+    font-size:14px;
+    padding: 4px 8px 4px 4px;
+    border: solid 1px #475569;
+    align-items: center;
+    gap:2px;
+
+}
+.majorButton > img{
+    width: 40px;
+    height: 40px;
+}
+.minorButton > img{
+    width: 40px;
+    height: 40px;
+}

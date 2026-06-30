@@ -1,0 +1,323 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0F172A;
+    color: white;
+    font-family: "Inter";
+    overflow-x: hidden;
+}
+
+.content {
+    padding: 0 32px;
+}
+
+
+#intro {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.heroContent {
+    width: 60%;
+}
+
+.heroContent h1 {
+    font-family: "Space Grotesk";
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.heroDescription {
+    font-size: 16px;
+    line-height: 28px;
+    color: #CBD5E1;
+    max-width: 90%;
+}
+
+
+
+#tableOfContent {
+    width: 35%;
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 16px;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+#tableOfContent h3 {
+    font-family: "Space Grotesk";
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+#tableOfContent ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#tableOfContent li {
+    font-family: "Inter";
+    font-size: 14px;
+    margin: 8px 0;
+    color: #CBD5E1;
+}
+
+#tableOfContent a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.innerList {
+    padding-left: 16px;
+}
+
+
+
+.heroCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.heroCard {
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 12px;
+    transition: 0.3s;
+}
+
+.heroCard:hover {
+    transform: translateY(-5px);
+}
+
+.heroCard h2 {
+    font-size: 14px;
+    font-family: "Inter";
+    color: #94A3B8;
+}
+
+.heroCard p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+
+section {
+    margin-top: 80px;
+}
+
+.sectionHeader h2 {
+    font-family: "Space Grotesk";
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.sectionHeader p {
+    color: #CBD5E1;
+    line-height: 26px;
+    max-width: 900px;
+}
+
+
+.assignmentGrid,
+.featureGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.assignmentCard,
+.featureCard {
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 16px;
+    transition: 0.3s;
+}
+
+.assignmentCard:hover,
+.featureCard:hover {
+    transform: translateY(-6px);
+}
+
+.assignmentCard h3,
+.featureCard h3 {
+    font-size: 16px;
+    font-family: "Space Grotesk";
+}
+
+.assignmentCard p,
+.featureCard p {
+    font-size: 14px;
+    color: #CBD5E1;
+    line-height: 22px;
+}
+
+.assignmentCard ul {
+    padding-left: 16px;
+    color: #CBD5E1;
+}
+
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.galleryCard {
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.galleryCard2 {
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.galleryCard:hover {
+    transform: scale(1.03);
+}
+.galleryCard2:hover {
+    transform: scale(1.03);
+}
+
+.galleryCard img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.galleryCard2 img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.galleryCard p {
+    padding: 10px;
+    font-size: 13px;
+    color: #CBD5E1;
+}
+
+.galleryCard2 p {
+    padding: 10px;
+    font-size: 13px;
+    color: #CBD5E1;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #1E293B;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #334155;
+    padding: 12px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+th {
+    font-family: "Space Grotesk";
+    background-color: #0F172A;
+}
+
+td img {
+    width: 60px;
+}
+
+
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.timelineCard {
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+}
+
+.timelineCard span {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #5B5FFB;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+
+.reflectionCard {
+    background-color: #1E293B;
+    border: 1px solid #475569;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.reflectionCard ul {
+    line-height: 26px;
+    color: #CBD5E1;
+}
+
+
+footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #334155;
+    color: #94A3B8;
+}
+
+
+@media (max-width: 900px) {
+
+    #intro {
+        flex-direction: column;
+    }
+
+    .heroContent {
+        width: 100%;
+    }
+
+    #tableOfContent {
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+
+    .gallery,
+    .assignmentGrid,
+    .featureGrid {
+        grid-template-columns: 1fr;
+    }
+}

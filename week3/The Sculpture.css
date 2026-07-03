@@ -1,0 +1,402 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #0b0b0f;
+    --panel: #12131a;
+    --panel-2: #171923;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #f5f7fb;
+    --muted: #b5bfd3;
+    --soft: #8f99ad;
+    --blue: #5fa8ff;
+    --orange: #ff9f43;
+    --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+    --max-width: 1320px;
+}
+nav{
+    height: 88px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, rgba(95, 168, 255, 0.10), transparent 26%),
+        radial-gradient(circle at top right, rgba(255, 159, 67, 0.08), transparent 20%),
+        linear-gradient(180deg, #090a0e 0%, #0d1018 100%);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.content {
+    width: min(100%, var(--max-width));
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+}
+
+#intro {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+#tableOfContent {
+    position: sticky;
+    top: 28px;
+    background: rgba(18, 19, 26, 0.9);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+}
+
+#tableOfContent h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--text);
+}
+
+#tableOfContent ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#tableOfContent li a {
+    color: var(--muted);
+    font-size: 0.96rem;
+    line-height: 1.4;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#tableOfContent li a:hover {
+    color: var(--text);
+    transform: translateX(4px);
+}
+
+.heroContent {
+    background: linear-gradient(180deg, rgba(18, 19, 26, 0.95) 0%, rgba(14, 16, 23, 0.95) 100%);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 34px;
+    box-shadow: var(--shadow);
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+    margin-bottom: 16px;
+}
+
+.heroContent h1 {
+    font-size: clamp(2.3rem, 4vw, 4.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 18px;
+}
+
+.heroText {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 900px;
+    margin-bottom: 28px;
+}
+
+.heroImage {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.heroImage img {
+    aspect-ratio: 16 / 9;
+}
+
+.caption {
+    color: var(--soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    padding: 14px 18px 18px;
+}
+
+.sectionBlock {
+    margin-bottom: 34px;
+    background: linear-gradient(180deg, rgba(18, 19, 26, 0.94) 0%, rgba(14, 16, 23, 0.94) 100%);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 34px;
+    box-shadow: var(--shadow);
+}
+
+.sectionHeading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.sectionNumber {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(95, 168, 255, 0.18), rgba(255, 159, 67, 0.18));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.sectionLabel {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.sectionHeading h2 {
+    font-size: clamp(1.6rem, 2vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.sectionBlock p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 1rem;
+}
+
+.sectionBlock strong {
+    color: var(--text);
+}
+
+.infoList,
+.reflectionBox ul {
+    margin-top: 14px;
+    padding-left: 22px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.infoList li,
+.reflectionBox li {
+    margin-bottom: 8px;
+}
+
+.splitLayout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 26px;
+    align-items: start;
+}
+
+.textPanel,
+.imagePanel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.textPanel p + p {
+    margin-top: 16px;
+}
+
+.imagePanel img {
+    border-radius: 16px;
+    aspect-ratio: 4 / 3;
+}
+
+
+.attemptIntro {
+    margin-bottom: 24px;
+}
+
+.processGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.processCard {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.processCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(95, 168, 255, 0.22);
+}
+
+.processStep {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.processCard h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.processCard p {
+    margin-bottom: 18px;
+}
+
+.processCard img {
+    border-radius: 16px;
+    aspect-ratio: 16 / 10;
+    margin-top: 6px;
+}
+
+/* ---------- FAILURES ---------- */
+.failureIntro {
+    margin-bottom: 24px;
+}
+
+.failureGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 24px;
+}
+
+.failureCard {
+    background: linear-gradient(180deg, rgba(23, 25, 35, 0.95) 0%, rgba(16, 18, 26, 0.95) 100%);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.failureCard h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.failureFeature {
+    display: grid;
+    grid-template-columns: 1fr 0.95fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.failureFeatureText,
+.failureFeatureImage {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.failureFeatureText h3 {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+}
+
+.failureFeatureImage img {
+    border-radius: 16px;
+    aspect-ratio: 16 / 10;
+}
+
+
+.reflectionLayout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.reflectionMain {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.reflectionMain p + p {
+    margin-top: 18px;
+}
+
+.reflectionAside {
+    position: sticky;
+    top: 24px;
+}
+
+.reflectionBox {
+    background: linear-gradient(180deg, rgba(95, 168, 255, 0.08) 0%, rgba(255, 159, 67, 0.06) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.reflectionBox h3 {
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+}
+
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.galleryItem {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.galleryItem img {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+}
+

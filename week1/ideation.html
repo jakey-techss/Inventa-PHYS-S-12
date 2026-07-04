@@ -1,410 +1,440 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventa | Brainstorming</title>
-    <link rel="stylesheet" href="/special/nav.css">
-    <link rel="stylesheet" href="ideation.css">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <link rel="stylesheet" href="ideation.css">
 </head>
 
 <body>
-    <nav>
-        <a href="/index.html">
-            <div class="left">
-                <img src="asset/Logo.png">
-                <h2><span class="blue">I</span>nvent<span class="orange">a</span></h2>
-            </div>
-        </a>
+    <div class="pageGlow glowOne"></div>
+    <div class="pageGlow glowTwo"></div>
 
-        <a href="https://github.com/jakey-techss">
-            <div class="right">
-                <p class="gray">Joshua Fineboy-Mark</p>
-                <a><img src="asset/Github.png"></a>
-            </div>
-        </a>
-    </nav>
-    <div class="content">
-        <section id="ideasIntro">
-            <div id="tableOfContent">
+    <header class="siteHeader">
+        <nav class="navbar">
+            <a href="/index.html" class="brand">
+                <img src="asset/Logo.png" alt="Inventa Logo">
+                <h2><span class="blue">I</span>nvent<span class="orange">a</span></h2>
+            </a>
+
+            <a href="https://github.com/jakey-techss" target="_blank" class="profileCard">
+                <div class="profileMeta">
+                    <span class="profileLabel">Creator</span>
+                    <p>Joshua Fineboy-Mark</p>
+                </div>
+                <img src="asset/Github.png" alt="GitHub">
+            </a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section id="ideasIntro" class="introGrid">
+            <aside id="tableOfContent" class="tocCard">
+                <div class="sectionTag">Navigation</div>
                 <h3>On this page</h3>
-                <ul>
-                    <li>Project Ideas</li>
-                    <li>Inventa Kit & Studio</li>
-                    <div class="innerList">
-                        <li>Description</li>
-                        <li>Concept & Components of Inventa</li>
-                        <li>Sketches, Mockups and UI Ideas</li>
-                        <li>Why Inventa?</li></a>
-                    </div>
-                    <li>ShotBot</li>
-                    <div class="innerList">
-                        <li>Description</li>
-                        <li>Concept & Components of ShotBot</li>
-                        <li>Sketches, Mockups and UI Ideas</li>
-                        <li>Why ShotBot?</li>
-                    </div>
-                    <li>R.G.F</li>
-                    <div class="innerList">
-                        <li>Description</li>
-                        <li>Concept & Components of R.G.F</li>
-                        <li>Sketches, Mockups and UI Ideas</li>
-                        <li>Why R.G.F?</li>
-                    </div>
+
+                <ul class="tocList">
+                    <li><a href="#projectIdeas">Project Ideas</a></li>
+
+                    <li>
+                        <a href="#inventa">Inventa Kit & Studio</a>
+                        <ul class="innerList">
+                            <li><a href="#inventa-description">Description</a></li>
+                            <li><a href="#inventa-concept">Concept & Components</a></li>
+                            <li><a href="#inventa-sketches">Sketches, Mockups & UI Ideas</a></li>
+                            <li><a href="#inventa-why">Why Inventa?</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#shotbot">ShotBot</a>
+                        <ul class="innerList">
+                            <li><a href="#shotbot-description">Description</a></li>
+                            <li><a href="#shotbot-concept">Concept & Components</a></li>
+                            <li><a href="#shotbot-sketches">Sketches, Mockups & UI Ideas</a></li>
+                            <li><a href="#shotbot-why">Why ShotBot?</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#RFG">R.G.F</a>
+                        <ul class="innerList">
+                            <li><a href="#rfg-description">Description</a></li>
+                            <li><a href="#rfg-concept">Concept & Components</a></li>
+                            <li><a href="#rfg-sketches">Sketches, Mockups & UI Ideas</a></li>
+                            <li><a href="#rfg-why">Why R.G.F?</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </div>
-            <div>
-                <h3>Project Ideas</h3>
-                <div id="CardHolder">
-                    <a href="#inventa">
-                        <div class="BigSpecials">
-                            <div class="Inventa_SpecialtopHeader SpecialtopHeader">
+            </aside>
+
+            <div class="introMain">
+                <div id="projectIdeas" class="introHeader">
+                    <div class="sectionTag">Week 1 • Ideation</div>
+                    <h3>Project Ideas</h3>
+                    <p class="des introDes">
+                        Three candidate project directions explored for Inventa: a modular AI robotics kit, a physics-powered
+                        basketball robot, and a personality-driven robotic face assistant.
+                    </p>
+                </div>
+
+                <div id="CardHolder" class="projectIdeaCards">
+                    <a href="#inventa" class="ideaCardLink">
+                        <article class="BigSpecials inventaTheme">
+                            <div class="SpecialtopHeader">
                                 <p class="success">91/100</p>
                             </div>
-                            <img src="asset/Logo.png">
+                            <img src="asset/Logo.png" alt="Inventa">
                             <p>Inventa</p>
-                        </div>
+                        </article>
                     </a>
-                    <a href="#shotbot">
-                        <div class="BigSpecials">
-                            <div class="ShotBot_SpecialtopHeader SpecialtopHeader">
+
+                    <a href="#shotbot" class="ideaCardLink">
+                        <article class="BigSpecials shotbotTheme">
+                            <div class="SpecialtopHeader">
                                 <p class="success">86/100</p>
                             </div>
-                            <img src="asset/ShotBot.png">
+                            <img src="asset/ShotBot.png" alt="ShotBot">
                             <p>ShotBot</p>
-                        </div>
+                        </article>
                     </a>
-                    <a href="#RFG">
-                        <div class="BigSpecials">
-                            <div class="RGF_SpecialtopHeader SpecialtopHeader">
+
+                    <a href="#RFG" class="ideaCardLink">
+                        <article class="BigSpecials rgfTheme">
+                            <div class="SpecialtopHeader">
                                 <p class="success">86/100</p>
                             </div>
-                            <img src="asset/Goat.png">
+                            <img src="asset/Goat.png" alt="R.G.F">
                             <p>R.G.F</p>
-                        </div>
+                        </article>
                     </a>
                 </div>
             </div>
         </section>
-        <hr>
+
         <section id="inventa" class="projectSection">
-            <h3>Inventa Kit & Studio</h3>
-            <hero>
-                <div class="BigSpecials">
-                    <div class="Inventa_SpecialtopHeader SpecialtopHeader">
+            <div class="projectHeader">
+                <div class="sectionTag">Project 01</div>
+                <h3>Inventa Kit & Studio</h3>
+            </div>
+
+            <section class="projectHero" id="inventa-description">
+                <div class="projectBadgeCard inventaTheme">
+                    <div class="SpecialtopHeader">
                         <p class="success">91/100</p>
                     </div>
-                    <img src="asset/Logo.png">
+                    <img src="asset/Logo.png" alt="Inventa">
                     <p>Inventa</p>
                 </div>
-                <div id="inventaDes">
+
+                <div class="projectDescriptionCard">
                     <h3>Description</h3>
-                    <p class="des">Inventa Kit & Studio is a combination set of software and hardware to help kids
-                        understand better how AI works and educate them beyonds just use of AI into curiosity concerning
-                        the systems behind AI. Using a simple drag and drop programming system and modules (which avoid
-                        depicting electrical concepts, keeping it simple) kids are able to use an Inventa kit to build
-                        robots that collect initial data, then use Inventa Studio (the web app) to train their robot and
-                        give it more functionality based off the data input.</p>
+                    <p class="des">
+                        Inventa Kit & Studio is a combination set of software and hardware to help kids understand better how AI works and educate them beyond just use of AI into curiosity concerning the systems behind AI. Using a simple drag-and-drop programming system and modules (which avoid depicting electrical concepts, keeping it simple), kids are able to use an Inventa kit to build robots that collect initial data, then use Inventa Studio (the web app) to train their robot and give it more functionality based off the data input.
+                    </p>
                 </div>
-            </hero>
-            <div class="subGroup">
+            </section>
+
+            <div class="subGroup" id="inventa-concept">
                 <h2>The Concept</h2>
                 <div class="ConceptImgHolder">
-                    <img src="asset/InventaConcept.png" class="ConceptImg">
+                    <img src="asset/InventaConcept.png" class="ConceptImg" alt="Inventa concept">
                 </div>
             </div>
+
             <div class="subGroup">
                 <h2>Components Of Inventa</h2>
-                <table>
-                    <tr>
-                        <th class="Key">Components</th>
-                        <th>Relationship To Inventa</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/LEGO_logo.svg.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Inventa makes use of Lego's assemble type construction</li>
-                                <li>Inventa can be broken down and built up into other things ike legos</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/Scratch.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Makes use of Scratch's Drag-and-Drop Block System for the programming of robots</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/Robots.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>The whole goal of Inventa is for kids to feel comfortable building robots</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/AI.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>This creates Inventa. Inventa is more than just robots but rather building smart
-                                    bots that are able to capture and analyze data and respond based of the program
-                                    written by the programmer</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="subGroup">
-                <h2>Sketches, Mockups and UI Ideas</h2>
-                <div class="sub_subGroup">
-                    <h4>The Box</h4>
-                    <div class="Sketches">
-                        <img src="asset/BoxTop.png">
-                        <img src="asset/BoxFace.png">
-                        <img src="asset/BoxBottom.png">
-                    </div>
-                    <hr>
-                    <h4>The Central Hub & Modules</h4>
-                    <div class="Sketches">
-                        <img src="asset/TopCenter.png">
-                        <img src="asset/SideCenter.png" class='special'>
-                        <img src="asset/SamplePhysicalPart.png" class='special'>
-                        <img src="asset/SampleElectronicPart.png" class="special">
-                    </div>
-                    <hr>
-                    <h4>Sotware</h4>
-                    <a href="asset/Inventa Design File.png" download="Inventa UI Design.png"><button
-                            class="majorButton"><img src="asset/FigmaLog.png"> Download Inventa UI Design
-                            File</button></a>
+                <div class="tableWrap">
+                    <table>
+                        <tr>
+                            <th class="Key">Components</th>
+                            <th>Relationship To Inventa</th>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/LEGO_logo.svg.png" alt="Lego"></td>
+                            <td>
+                                <ul>
+                                    <li>Inventa makes use of Lego's assemble type construction.</li>
+                                    <li>Inventa can be broken down and built up into other things like Legos.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/Scratch.png" alt="Scratch"></td>
+                            <td>
+                                <ul>
+                                    <li>Makes use of Scratch's drag-and-drop block system for programming robots.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/Robots.png" alt="Robots"></td>
+                            <td>
+                                <ul>
+                                    <li>The whole goal of Inventa is for kids to feel comfortable building robots.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/AI.png" alt="AI"></td>
+                            <td>
+                                <ul>
+                                    <li>This creates Inventa. Inventa is more than just robots, but rather building smart bots that are able to capture and analyze data and respond based on the program written by the programmer.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-            <div class="subgroup">
-                <h2>Why Inventa?</h2>
-                <p class="des">Inventa Kit & Studio connects with me a lot primarily because my love for computer
-                    science
-                    and coding came from Scratch and Legos. I want to be able to distribute that interest considering
-                    the
-                    current state of the technology world which is currently run by AI. Instead of kids and teens using
-                    AI
-                    Inventa hopes to foster a curiosity concerning AI creation hence inspiring the next generation of
-                    programmers, AI enthusiasts and robot builders.</p>
+
+            <div class="subGroup" id="inventa-sketches">
+                <h2>Sketches, Mockups and UI Ideas</h2>
+                <div class="sub_subGroup">
+                    <div class="contentBlock">
+                        <h4>The Box</h4>
+                        <div class="Sketches">
+                            <img src="asset/BoxTop.png" alt="Box top">
+                            <img src="asset/BoxFace.png" alt="Box face">
+                            <img src="asset/BoxBottom.png" alt="Box bottom">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="contentBlock">
+                        <h4>The Central Hub & Modules</h4>
+                        <div class="Sketches">
+                            <img src="asset/TopCenter.png" alt="Top center">
+                            <img src="asset/SideCenter.png" class="special" alt="Side center">
+                            <img src="asset/SamplePhysicalPart.png" class="special" alt="Physical part">
+                            <img src="asset/SampleElectronicPart.png" class="special" alt="Electronic part">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="contentBlock">
+                        <h4>Software</h4>
+                        <a href="asset/Inventa Design File.png" download="Inventa UI Design.png" class="majorButton">
+                            <img src="asset/FigmaLog.png" alt="">
+                            <span>Download Inventa UI Design File</span>
+                        </a>
+                    </div>
+                </div>
             </div>
 
+            <div class="subGroup" id="inventa-why">
+                <h2>Why Inventa?</h2>
+                <p class="des">
+                    Inventa Kit & Studio connects with me a lot primarily because my love for computer science and coding came from Scratch and Legos. I want to be able to distribute that interest considering the current state of the technology world which is currently run by AI. Instead of kids and teens using AI, Inventa hopes to foster a curiosity concerning AI creation, inspiring the next generation of programmers, AI enthusiasts and robot builders.
+                </p>
+            </div>
         </section>
+
         <section id="shotbot" class="projectSection">
-            <h3>ShotBot</h3>
-            <hero>
-                <div class="BigSpecials">
-                    <div class="ShotBot_SpecialtopHeader SpecialtopHeader">
+            <div class="projectHeader">
+                <div class="sectionTag">Project 02</div>
+                <h3>ShotBot</h3>
+            </div>
+
+            <section class="projectHero" id="shotbot-description">
+                <div class="projectBadgeCard shotbotTheme">
+                    <div class="SpecialtopHeader">
                         <p class="success">86/100</p>
                     </div>
-                    <img src="asset/ShotBot.png">
+                    <img src="asset/ShotBot.png" alt="ShotBot">
                     <p>ShotBot</p>
                 </div>
-                <div id="inventaDes">
+
+                <div class="projectDescriptionCard">
                     <h3>Description</h3>
-                    <p class="des">ShotBot is a funny, cool project that combines physics principles and robotics to
-                        make a robot that theoretically can never miss anywhere within its range of shooting. It is a
-                        fun toy that exemplifies the concepts of projectile motion and can be manually controlled with a
-                        web app. It could also be applicable when teaching projectile motion. The ShotBot will also be
-                        able to enter free-play mode whereby the user will be able to control the angle of inclination
-                        and force and make their own calculations.</p>
+                    <p class="des">
+                        ShotBot is a funny, cool project that combines physics principles and robotics to make a robot that theoretically can never miss anywhere within its range of shooting. It is a fun toy that exemplifies the concepts of projectile motion and can be manually controlled with a web app. It could also be applicable when teaching projectile motion. The ShotBot will also be able to enter free-play mode whereby the user will be able to control the angle of inclination and force and make their own calculations.
+                    </p>
                 </div>
-            </hero>
-            <div class="subGroup">
+            </section>
+
+            <div class="subGroup" id="shotbot-concept">
                 <h2>The Concept</h2>
                 <div class="ConceptImgHolder">
-                    <img src="asset/ShotBotConcept.png" class="ConceptImg">
+                    <img src="asset/ShotBotConcept.png" class="ConceptImg" alt="ShotBot concept">
                 </div>
             </div>
+
             <div class="subGroup">
                 <h2>Components Of ShotBot</h2>
-                <table>
-                    <tr>
-                        <th class="Key">Components</th>
-                        <th>Relationship To ShotBot</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/Robots.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>ShotBot would be a robot capable of shooting, making noises and celebrating</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/image 9.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>No one shoots better than Steph Curry except ShotBot, the whole idea is to make a
-                                    shooter that can launch a small ball into a destination given absolutely no
-                                    measurements</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/image-removebg-preview (1).png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>It is impossible to talk about physics without talking about Isaac Newton himself,
-                                    the concept of gravity drives the mechanism of ShotBot</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                </table>
+                <div class="tableWrap">
+                    <table>
+                        <tr>
+                            <th class="Key">Components</th>
+                            <th>Relationship To ShotBot</th>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/Robots.png" alt="Robots"></td>
+                            <td>
+                                <ul>
+                                    <li>ShotBot would be a robot capable of shooting, making noises and celebrating.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/image 9.png" alt="Stephen Curry"></td>
+                            <td>
+                                <ul>
+                                    <li>No one shoots better than Steph Curry except ShotBot. The whole idea is to make a shooter that can launch a small ball into a destination given absolutely no measurements.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/image-removebg-preview (1).png" alt="Isaac Newton"></td>
+                            <td>
+                                <ul>
+                                    <li>It is impossible to talk about physics without talking about Isaac Newton himself. The concept of gravity drives the mechanism of ShotBot.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="subGroup">
+
+            <div class="subGroup" id="shotbot-sketches">
                 <h2>Sketches, Mockups and UI Ideas</h2>
                 <div class="sub_subGroup">
-                    <h4>The Box</h4>
-                    <div class="Sketches">
-                        <img src="asset/Group 48.png">
-                        <img src="asset/Group 51.png">
-                        <img src="asset/Group 52.png">
+                    <div class="contentBlock">
+                        <h4>The Box</h4>
+                        <div class="Sketches">
+                            <img src="asset/Group 48.png" alt="ShotBot box 1">
+                            <img src="asset/Group 51.png" alt="ShotBot box 2">
+                            <img src="asset/Group 52.png" alt="ShotBot box 3">
+                        </div>
                     </div>
 
                     <hr>
-                    <h4>Sotware</h4>
-                    <a href="asset/ShotBot Design File.png" download="ShotBot UI Design.png"><button
-                            class="majorButton"><img src="asset/FigmaLog.png"> Download ShotBot UI Design
-                            File</button></a>
+
+                    <div class="contentBlock">
+                        <h4>Software</h4>
+                        <a href="asset/ShotBot Design File.png" download="ShotBot UI Design.png" class="majorButton">
+                            <img src="asset/FigmaLog.png" alt="">
+                            <span>Download ShotBot UI Design File</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="subgroup">
+
+            <div class="subGroup" id="shotbot-why">
                 <h2>Why ShotBot?</h2>
-                <p class="des">Apart from the fact that it is an all-round cool project and it's a combination of many
-                    of my favorite things (Stephen Curry, Robots and Physics) it can also be a great tool to explain and
-                    experiment with Newton's Laws particularly pertaining to projectile motion and an object undergoing
-                    acceleration strictly due to gravity hence improving understanding of a core concept in physics and
-                    in the real world seen in every ball sport and even in the classic apple falling narrative.</p>
+                <p class="des">
+                    Apart from the fact that it is an all-round cool project and it's a combination of many of my favorite things (Stephen Curry, robots and physics), it can also be a great tool to explain and experiment with Newton's Laws, particularly pertaining to projectile motion and an object undergoing acceleration strictly due to gravity, improving understanding of a core concept in physics and the real world seen in every ball sport.
+                </p>
+            </div>
+        </section>
+
+        <section id="RFG" class="projectSection">
+            <div class="projectHeader">
+                <div class="sectionTag">Project 03</div>
+                <h3>R.G.F</h3>
             </div>
 
-        </section>
-        <section id="RFG" class="projectSection">
-            <h3>R.G.F</h3>
-            <hero>
-                <div class="BigSpecials">
-                    <div class="RGF_SpecialtopHeader SpecialtopHeader">
+            <section class="projectHero" id="rfg-description">
+                <div class="projectBadgeCard rgfTheme">
+                    <div class="SpecialtopHeader">
                         <p class="success">86/100</p>
                     </div>
-                    <img src="asset/Goat.png">
+                    <img src="asset/Goat.png" alt="R.G.F">
                     <p>R.G.F</p>
                 </div>
-                <div id="inventaDes">
+
+                <div class="projectDescriptionCard">
                     <h3>Description</h3>
-                    <p class="des">R.G.F (Resting GOAT Face) is the funniest of the list (mainly because of the name).
-                        It's essentially a robotic face that looks realistic in terms of its mouth moving when it is
-                        talking and it's life like voice. Adding facial expression would be great but highly unlikely in
-                        7-weeks. The project essentially creates a face of one of the GOAT's of sports - Lionel Messi
-                        (Soccer), Stephen Curry (Basketball) or Max Verstappen (F1)</p>
+                    <p class="des">
+                        R.G.F (Resting GOAT Face) is the funniest of the list (mainly because of the name). It's essentially a robotic face that looks realistic in terms of its mouth moving when it is talking and its life-like voice. Adding facial expression would be great but highly unlikely in 7 weeks. The project essentially creates a face of one of the GOATs of sports — Lionel Messi (soccer), Stephen Curry (basketball) or Max Verstappen (F1).
+                    </p>
                 </div>
-            </hero>
-            <div class="subGroup">
+            </section>
+
+            <div class="subGroup" id="rfg-concept">
                 <h2>The Concept</h2>
                 <div class="ConceptImgHolder">
-                    <img src="asset/RFGConcept.png" class="ConceptImg">
+                    <img src="asset/RFGConcept.png" class="ConceptImg" alt="R.G.F concept">
                 </div>
             </div>
+
             <div class="subGroup">
                 <h2>Components Of R.G.F</h2>
-                <table>
-                    <tr>
-                        <th class="Key">Components</th>
-                        <th>Relationship To R.G.F</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/Robots.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>R.G.F's center piece rests at the construction of a robot with all the necessary
-                                    parts to have a moving moth and possibly facial expressions</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/4000.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>R.G.F is not complete without a GOAT's face and voice at the center of it. It may
-                                    even be possible for it to speak different languages based on what is selected on
-                                    the app</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="asset/image 16.png">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>The Optimal solution for realistic voices for R.G.F which is very vital for it's
-                                    ability for its connection to people beyond it's robotic nature.</li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                </table>
+                <div class="tableWrap">
+                    <table>
+                        <tr>
+                            <th class="Key">Components</th>
+                            <th>Relationship To R.G.F</th>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/Robots.png" alt="Robots"></td>
+                            <td>
+                                <ul>
+                                    <li>R.G.F's centerpiece rests at the construction of a robot with all the necessary parts to have a moving mouth and possibly facial expressions.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/4000.png" alt="GOAT face"></td>
+                            <td>
+                                <ul>
+                                    <li>R.G.F is not complete without a GOAT's face and voice at the center of it. It may even be possible for it to speak different languages based on what is selected on the app.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="asset/image 16.png" alt="Voice system"></td>
+                            <td>
+                                <ul>
+                                    <li>The optimal solution for realistic voices for R.G.F, which is very vital for its ability to connect with people beyond its robotic nature.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="subGroup">
+
+            <div class="subGroup" id="rfg-sketches">
                 <h2>Sketches, Mockups and UI Ideas</h2>
                 <div class="sub_subGroup">
-                    <h4>The Box</h4>
-                    <div class="Sketches">
-                        <img src="asset/Group 55.png">
-                        <img src="asset/Group 56.png">
-                        <img src="asset/Group 57.png">
+                    <div class="contentBlock">
+                        <h4>The Box</h4>
+                        <div class="Sketches">
+                            <img src="asset/Group 55.png" alt="R.G.F box 1">
+                            <img src="asset/Group 56.png" alt="R.G.F box 2">
+                            <img src="asset/Group 57.png" alt="R.G.F box 3">
+                        </div>
                     </div>
 
                     <hr>
-                    <h4>Sotware</h4>
-                    <a href="asset/RGF Design File.png" download="R.G.F UI Design.png"><button
-                            class="majorButton"><img src="asset/FigmaLog.png"> Download R.G.F UI Design
-                            File</button></a>
+
+                    <div class="contentBlock">
+                        <h4>Software</h4>
+                        <a href="asset/RGF Design File.png" download="R.G.F UI Design.png" class="majorButton">
+                            <img src="asset/FigmaLog.png" alt="">
+                            <span>Download R.G.F UI Design File</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="subgroup">
+
+            <div class="subGroup" id="rfg-why">
                 <h2>Why R.G.F?</h2>
-                <p class="des">This would be a really fun project not just to build but also to use because of the large
-                    range it has. It could easily be converted to a physical personal assistant. It is really cool
-                    overall and could be really fun to build out fully with the ability to have expressions hence
-                    providing personal assistants like Siri a more personal interaction with people fostering a
-                    connection between these faces and their users and reducing loneliness.</p>
+                <p class="des">
+                    This would be a really fun project not just to build but also to use because of the large range it has. It could easily be converted to a physical personal assistant. It is really cool overall and could be really fun to build out fully with the ability to have expressions, providing personal assistants like Siri a more personal interaction with people and reducing loneliness.
+                </p>
             </div>
-
         </section>
-
-
-    </div>
-
-    <div class="notification" id="errorBox">
-        <p id="message">Relax, Greatness Take Time</p>
-    </div>
-
-    <script src="index.js"></script>
+    </main>
 </body>
 
 </html>

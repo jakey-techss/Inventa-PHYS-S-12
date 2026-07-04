@@ -1,398 +1,432 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventa | About Me</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
+
     <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="special/nav.css">
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">
-            <div class="left">
-                <img src="week1/asset/Logo.png">
+    <div class="pageGlow glowOne"></div>
+    <div class="pageGlow glowTwo"></div>
+
+    <header class="siteHeader">
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="week1/asset/Logo.png" alt="Inventa Logo">
                 <h2><span class="blue">I</span>nvent<span class="orange">a</span></h2>
-            </div>
-        </a>
+            </a>
 
-        <a href="https://github.com/jakey-techss">
-            <div class="right">
-                <p class="gray">Joshua Fineboy-Mark</p>
-                <a><img src="week1/asset/Github.png"></a>
+            <a href="https://github.com/jakey-techss" target="_blank" class="profileCard">
+                <div class="profileMeta">
+                    <span class="profileLabel">Creator</span>
+                    <p>Joshua Fineboy-Mark</p>
+                </div>
+                <img src="week1/asset/Github.png" alt="GitHub">
+            </a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="hero aboutHero">
+            <div class="heroImageCard">
+                <img src="week1/asset/PFP.png" alt="Joshua Fineboy-Mark">
             </div>
-    </nav>
-    <div class="content">
-        <hero>
-            <img src="week1/asset/PFP.png">
+
             <div class="PersonInfo">
-                <h3><span id="intro">Hi, My name is</span> <br>Joshua C. Fineboy-Mark</h3>
-                <p class="des">I'm a developer focused on web development, AI and software development focused towards
-                    education. I am a
-                    rising high school senior in NJ and I hope to study computer engineering or a mix of computer
-                    science
-                    and electrical engineering.</p>
-                <a href="index.html"><button class="majorButton"><img src="week1/asset/Home.png"> Go To
-                        Home</button></a>
-            </div>
-        </hero>
-        <div class="TabHolder">
-            <div class="tabBar">
-                <div class="tab selected">
-                    <p>Projects</p>
-                </div>
-                <div class="tab">
-                    <p>Skills</p>
-                </div>
-                <div class="tab">
-                    <p>Hobbies</p>
-                </div>
-            </div>
-        </div>
-        <div id="Projects">
+                <div class="eyebrow">Developer • AI • Education • Robotics</div>
+                <p id="intro">Hi, my name is</p>
+                <h1>Joshua C. Fineboy-Mark</h1>
+                <p class="des">
+                    I'm a developer focused on web development, AI and software development focused towards education.
+                    I am a rising high school senior in NJ and I hope to study computer engineering or a mix of
+                    computer science and electrical engineering.
+                </p>
 
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Web Game</p>
-                </div>
-                <img src="week1/asset/game-svgrepo-com.png">
-                <p>Z-Arena</p>
+                <a href="index.html" class="majorButton">
+                    <img src="week1/asset/Home.png" alt="">
+                    <span>Go To Home</span>
+                </a>
             </div>
-            <a href="https://stellar-ed.vercel.app/">
+        </section>
+
+        <section class="tabsSection">
+            <div class="TabHolder">
+                <div class="tabBar">
+                    <button class="tab selected" type="button" data-target="Projects">
+                        <span>Projects</span>
+                    </button>
+                    <button class="tab" type="button" data-target="Skills">
+                        <span>Skills</span>
+                    </button>
+                    <button class="tab" type="button" data-target="Hobbies">
+                        <span>Hobbies</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="tabPanel activePanel" id="Projects">
+
                 <div class="BasicCard">
                     <div class="topHeader">
-                        <p class="success">Web App</p>
+                        <p class="success">Web Game</p>
                     </div>
-                    <img src="week1/asset/web-search-svgrepo-com.png">
-                    <p>Stellar Ed</p>
+                    <img src="week1/asset/game-svgrepo-com.png" alt="Z-Arena">
+                    <p>Z-Arena</p>
                 </div>
-            </a>
-            <a href="https://www.youtube.com/shorts/nOVElGq8c-w">
+
+                <a href="https://stellar-ed.vercel.app/" class="cardLink" target="_blank">
+                    <div class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">Web App</p>
+                        </div>
+                        <img src="week1/asset/web-search-svgrepo-com.png" alt="Stellar Ed">
+                        <p>Stellar Ed</p>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/shorts/nOVElGq8c-w" class="cardLink" target="_blank">
+                    <div class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">Android App</p>
+                        </div>
+                        <img src="week1/asset/mobile-phone-svgrepo-com.png" alt="Astryx">
+                        <p>Astryx</p>
+                    </div>
+                </a>
+
+                <a href="https://gravity-x-one.vercel.app/" class="cardLink" target="_blank">
+                    <div class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">Web App</p>
+                        </div>
+                        <img src="week1/asset/web-search-svgrepo-com.png" alt="Gravity X">
+                        <p>Gravity X</p>
+                    </div>
+                </a>
+
+                <a href="https://youtu.be/fpJXYGyuF50?si=HpXgh1xLLdNkJWBt" class="cardLink" target="_blank">
+                    <div class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">Mobile App</p>
+                        </div>
+                        <img src="week1/asset/mobile-phone-svgrepo-com.png" alt="BFit">
+                        <p>BFit</p>
+                    </div>
+                </a>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Console Projects</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Java Tic Tac Toe">
+                    <p>Java Tic Tac Toe</p>
+                </div>
+
+                <a href="https://hoopztogreatness.com" class="cardLink" target="_blank">
+                    <div class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">NGO Website</p>
+                        </div>
+                        <img src="week1/asset/web-search-svgrepo-com.png" alt="Hoopz To Greatness">
+                        <p>H.T.G</p>
+                    </div>
+                </a>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Demo Website</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="La Famiglia KJB">
+                    <p>La Famiglia KJB</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Demo Website</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Vireli">
+                    <p>Vireli</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Python for DS & ML</p>
+                    </div>
+                    <img src="week1/asset/nodebots-svgrepo-com.png" alt="Rec System">
+                    <p>Rec System</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Console Game</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="CHO-HAN">
+                    <p>CHO-HAN</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">IOS App</p>
+                    </div>
+                    <img src="week1/asset/mobile-phone-svgrepo-com.png" alt="GCode Academy">
+                    <p>GCode Academy</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Python for DS & ML</p>
+                    </div>
+                    <img src="week1/asset/nodebots-svgrepo-com.png" alt="Customer Profile">
+                    <p>Customer Profile</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Python for DS & ML</p>
+                    </div>
+                    <img src="week1/asset/nodebots-svgrepo-com.png" alt="Optimal Business">
+                    <p>Optimal Business</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Console Project</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Base 10 to 2">
+                    <p>Base 10 to 2</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Console Project</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Base 10 to 8">
+                    <p>Base 10 to 8</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Console Project</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Text To Binary">
+                    <p>Text To Binary</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Console Project</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Fibonacci">
+                    <p>Fibonacci</p>
+                </div>
+
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">Console Project</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Leap Year">
+                    <p>Leap Year?</p>
+                </div>
+
                 <div class="BasicCard">
                     <div class="topHeader">
                         <p class="success">Android App</p>
                     </div>
-                    <img src="week1/asset/mobile-phone-svgrepo-com.png">
-                    <p>Astryx</p>
+                    <img src="week1/asset/mobile-phone-svgrepo-com.png" alt="Foxtrot Scanner">
+                    <p>Foxtrot Scanner</p>
                 </div>
-            </a>
 
-            <a href="https://gravity-x-one.vercel.app/">
                 <div class="BasicCard">
                     <div class="topHeader">
-                        <p class="success">Web App</p>
+                        <p class="success">Android App</p>
                     </div>
-                    <img src="week1/asset/web-search-svgrepo-com.png">
-                    <p>Gravity X</p>
+                    <img src="week1/asset/mobile-phone-svgrepo-com.png" alt="Dreamers">
+                    <p>Dreamers</p>
                 </div>
-            </a>
 
-            <a href="https://youtu.be/fpJXYGyuF50?si=HpXgh1xLLdNkJWBt">
                 <div class="BasicCard">
                     <div class="topHeader">
-                        <p class="success">Mobile App</p>
+                        <p class="success">Scratch App</p>
                     </div>
-                    <img src="week1/asset/mobile-phone-svgrepo-com.png">
-                    <p>BFit</p>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Interbase">
+                    <p>Interbase</p>
                 </div>
-            </a>
 
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Console Projects</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Java Tic Tac Toe</p>
-            </div>
-            <a href="https://hoopztogreatness.com">
                 <div class="BasicCard">
                     <div class="topHeader">
-                        <p class="success">NGO Website</p>
+                        <p class="success">Snap Game</p>
                     </div>
-                    <img src="week1/asset/web-search-svgrepo-com.png">
-                    <p>H.T.G</p>
+                    <img src="week1/asset/game-svgrepo-com.png" alt="Es Tu Brute">
+                    <p>Es Tu Brute</p>
                 </div>
-            </a>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Demo Website</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>La Famiglia KJB</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Demo Website</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Vireli</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Python for DS & ML</p>
-                </div>
-                <img src="week1/asset/nodebots-svgrepo-com.png">
-                <p>Rec System</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Console Game</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>CHO-HAN</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">IOS App</p>
-                </div>
-                <img src="week1/asset/mobile-phone-svgrepo-com.png">
-                <p>GCode Academy</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Python for DS & ML</p>
-                </div>
-                <img src="week1/asset/nodebots-svgrepo-com.png">
-                <p>Customer Profile</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Python for DS & ML</p>
-                </div>
-                <img src="week1/asset/nodebots-svgrepo-com.png">
-                <p>Optimal Business</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Console Project</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Base 10 to 2</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Console Project</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Base 10 to 8</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Console Project</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Text To Binary</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Console Project</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Fibonacci</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Console Project</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Leap Year?</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Android App</p>
-                </div>
-                <img src="week1/asset/mobile-phone-svgrepo-com.png">
-                <p>Foxtrot Scanner</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Android App</p>
-                </div>
-                <img src="week1/asset/mobile-phone-svgrepo-com.png">
-                <p>Dreamers</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Scratch App</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Interbase</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">Snap Game</p>
-                </div>
-                <img src="week1/asset/game-svgrepo-com.png">
-                <p>Es Tu Brute</p>
-            </div>
-        </div>
-
-        <div id="Skills">
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">6 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>HTML</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">6 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>CSS</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">3 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>JS</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">2 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Firebase</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">1 Year Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>React</p>
             </div>
 
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">1 Year Exp</p>
+            <div class="tabPanel" id="Skills">
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">6 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="HTML">
+                    <p>HTML</p>
                 </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>API's</p>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">6 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">3 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="JavaScript">
+                    <p>JS</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">2 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Firebase">
+                    <p>Firebase</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">1 Year Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="React">
+                    <p>React</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">1 Year Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="APIs">
+                    <p>API's</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">5 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Wix">
+                    <p>Wix</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">1 Year Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="SpringBoot">
+                    <p>SpringBoot</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">1 Year Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Redis DB">
+                    <p>Redis DB</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">2 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="SQL">
+                    <p>SQL</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">2 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="GitHub">
+                    <p>Github</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">2 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Figma">
+                    <p>Figma</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">4 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Canva">
+                    <p>Canva</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">2 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/web-search-svgrepo-com.png" alt="Git">
+                    <p>Git</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">1 Year Exp</p>
+                    </div>
+                    <img src="week1/asset/mobile-phone-svgrepo-com.png" alt="Kotlin">
+                    <p>Kotlin</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">1 Year Exp</p>
+                    </div>
+                    <img src="week1/asset/mobile-phone-svgrepo-com.png" alt="Swift UI">
+                    <p>Swift UI</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">3 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/nodebots-svgrepo-com.png" alt="Python DS & ML">
+                    <p>Python DS & ML</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">1 Year Exp</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Java">
+                    <p>Java</p>
+                </div>
+                <div class="BasicCard">
+                    <div class="topHeader">
+                        <p class="success">4 Years Exp</p>
+                    </div>
+                    <img src="week1/asset/console-api-svgrepo-com.png" alt="Python">
+                    <p>Python</p>
+                </div>
             </div>
 
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">5 Years Exp</p>
+            <div class="tabPanel hobbiesPanel" id="Hobbies">
+                <div class="SmallCard">
+                    <img src="week1/asset/coding-html-svgrepo-com.png" alt="Coding">
+                    <p>Coding</p>
                 </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Wix</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">1 Year Exp</p>
+                <div class="SmallCard">
+                    <img src="week1/asset/world-cup-svgrepo-com.png" alt="Soccer">
+                    <p>Soccer</p>
                 </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>SpringBoot</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">1 Year Exp</p>
+                <div class="SmallCard">
+                    <img src="week1/asset/table-tennis-racket-and-ball-svgrepo-com copy.png" alt="Table Tennis">
+                    <p>Table Tennis</p>
                 </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Redis DB</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">2 Years Exp</p>
+                <div class="SmallCard">
+                    <img src="week1/asset/racing-car-svgrepo-com.png" alt="F1">
+                    <p>F1</p>
                 </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>SQL</p>
             </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">2 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Github</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">2 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Figma</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">4 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Canva</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">2 Years Exp</p>
-                </div>
-                <img src="week1/asset/web-search-svgrepo-com.png">
-                <p>Git</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">1 Year Exp</p>
-                </div>
-                <img src="week1/asset/mobile-phone-svgrepo-com.png">
-                <p>Kotlin</p>
-            </div>
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">1 Year Exp</p>
-                </div>
-                <img src="week1/asset/mobile-phone-svgrepo-com.png">
-                <p>Swift UI</p>
-            </div>
+        </section>
+    </main>
 
-
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">3 Years Exp</p>
-                </div>
-                <img src="week1/asset/nodebots-svgrepo-com.png">
-                <p>Python DS & ML</p>
-            </div>
-
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">1 Year Exp</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Java</p>
-            </div>
-
-            <div class="BasicCard">
-                <div class="topHeader">
-                    <p class="success">4 Years Exp</p>
-                </div>
-                <img src="week1/asset/console-api-svgrepo-com.png">
-                <p>Python</p>
-            </div>
-
-
-        </div>
-
-        <div id="Hobbies">
-            <div class="Smallcard">
-                <img src="week1/asset/coding-html-svgrepo-com.png">
-                <p>Coding</p>
-            </div>
-            <div class="Smallcard">
-                <img src="week1/asset/world-cup-svgrepo-com.png">
-                <p>Soccer</p>
-            </div>
-            <div class="Smallcard">
-                <img src="week1/asset/table-tennis-racket-and-ball-svgrepo-com copy.png">
-                <p>Table Tennis</p>
-            </div>
-            <div class="Smallcard">
-                <img src="week1/asset/racing-car-svgrepo-com.png">
-                <p>F1</p>
-            </div>
-        </div>
-    </div>
     <script src="about.js"></script>
 </body>
 

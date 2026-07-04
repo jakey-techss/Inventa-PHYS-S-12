@@ -1,122 +1,151 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventa | Home</title>
+
     <link rel="stylesheet" href="index.css">
+
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
-    <link rel="stylesheet" href="special/nav.css">
 </head>
 
 <body>
-    <nav>
-        <a>
-            <div class="left">
-                <img src="week1/asset/Logo.png">
-                <h2><span class="blue">I</span>nvent<span class="orange">a</span></h2>
-            </div>
-        </a>
+    <div class="pageGlow glowOne"></div>
+    <div class="pageGlow glowTwo"></div>
 
-        <a href="https://github.com/jakey-techss">
-            <div class="right">
-                <p class="gray">Joshua Fineboy-Mark</p>
-                <a><img src="week1/asset/Github.png"></a>
-            </div>
-        </a>
-    </nav>
-    <div class="content">
-        <hero>
+    <header class="siteHeader">
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <img src="week1/asset/Logo.png" alt="Inventa Logo">
+                <h2><span class="blue">I</span>nvent<span class="orange">a</span></h2>
+            </a>
+
+            <a href="https://github.com/jakey-techss" target="_blank" class="profileCard">
+                <div class="profileMeta">
+                    <span class="profileLabel">Creator</span>
+                    <p>Joshua Fineboy-Mark</p>
+                </div>
+                <img src="week1/asset/Github.png" alt="GitHub">
+            </a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="hero">
             <div class="demoVid">
+                <div class="videoOverlay"></div>
                 <div class="VideoThumbnail">
-                    <button class="playVid" id="play"><img src="week1/asset/Play.png"></button>
+                    <button class="playVid" id="play" aria-label="Play demo video">
+                        <img src="week1/asset/Play.png" alt="Play">
+                    </button>
                 </div>
             </div>
 
             <div class="DemoAndDes">
-                <h3>The Demo</h3>
-                <p class="des">Inventa combines robotics, artificial intelligence and creative problem-solving into one
-                    platform.
+                <div class="eyebrow">Robotics • AI • Invention Studio</div>
+                <h1>Build inventions. Understand intelligence. Create what’s next.</h1>
+                <p class="des">
+                    Inventa combines robotics, artificial intelligence and creative problem-solving into one platform.
                     Assemble real-world inventions, program them in Inventa Studio, and expand your understanding of AI
-                    and
-                    how exactly AI and Machine Learning Systems work in the real world.</p>
-                <div class="HeroButtons">
-                    <button class="majorButton"><img src="week1/asset/Dashboard.png"> Go To Studio</button>
-                    <a href="about.html"><button class="minorButton"><img src="week1/asset/About.png"> About
-                            Me</button></a>
-                </div>
-            </div>
-        </hero>
-        <div class="TabHolder">
-            <div class="tabBar">
-                <div class="tab selected">
-                    <p>Weekly Logs</p>
-                </div>
-                <div class="tab">
-                    <p>Project Files</p>
-                </div>
-                <div class="tab">
-                    <p>Updates</p>
-                </div>
-                <div class="tab">
-                    <p>Demos & Tutorials</p>
-                </div>
-            </div>
-        </div>
-        <div id="WeeklyLogs">
+                    and how exactly AI and Machine Learning Systems work in the real world.
+                </p>
 
-            <a href="week1/ideation.html">
-                <div class="BasicCard">
-                    <div class="topHeader">
-                        <p class="success">Up To Date</p>
-                        <p class="week">Week #1</p>
-                    </div>
-                    <img src="week1/asset/Brainstorm.png">
-                    <p>Brainstorming</p>
+                <div class="HeroButtons">
+                    <button class="majorButton">
+                        <img src="week1/asset/Dashboard.png" alt="">
+                        <span>Go To Studio</span>
+                    </button>
+
+                    <a href="about.html" class="minorButton">
+                        <img src="week1/asset/About.png" alt="">
+                        <span>About Me</span>
+                    </a>
                 </div>
-            </a>
-            <a href="week2/box.html">
-                <div class="BasicCard">
-                    <div class="topHeader">
-                        <p class="success">Up To Date</p>
-                        <p class="week">Week #2</p>
-                    </div>
-                    <img src="week2/asset/box-svgrepo-com.png">
-                    <p>The Box</p>
+            </div>
+        </section>
+
+        <section class="tabsSection">
+            <div class="TabHolder">
+                <div class="tabBar">
+                    <button class="tab selected" type="button" data-target="WeeklyLogs">
+                        <span>Weekly Logs</span>
+                    </button>
+                    <button class="tab" type="button" data-target="ProjectFiles">
+                        <span>Project Files</span>
+                    </button>
+                    <button class="tab" type="button" data-target="Updates">
+                        <span>Updates</span>
+                    </button>
+                    <button class="tab" type="button" data-target="DemosandTutorials">
+                        <span>Demos & Tutorials</span>
+                    </button>
                 </div>
-            </a>
-            <a href="week3/TheSculpture.html">
-                <div class="BasicCard">
-                    <div class="topHeader">
-                        <p class="success">Up To Date</p>
-                        <p class="week">Week #3</p>
-                    </div>
-                    <img src="week3/assets/art-svgrepo-com.png">
-                    <p>The Sculpture</p>
-                </div>
-            </a>
-        </div>
-        <div id="ProjectFiles">
-            <a href="/week2/asset/Component One.obj" download class="download-btn">
-                <span class="icon">⬇</span>
-                Download CAD Competition Fusion File
-            </a>
-            <a href="/week2/asset/Holder (Assembly).obj" download class="download-btn">
-                <span class="icon">⬇</span>
-                Download CAD Assembly Fusion File
-            </a>
-        </div>
-        <div id="Updates">
-            <p class="blankMessage">Nothing Here Yet. Greatness Takes Time</p>
-        </div>
-        <div id="DemosandTutorials">
-            <p class="blankMessage">Nothing Here Yet. Greatness Takes Time</p>
-        </div>
-    </div>
+            </div>
+
+            <div class="tabPanel activePanel" id="WeeklyLogs">
+                <a href="week1/ideation.html" class="cardLink">
+                    <article class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">Up To Date</p>
+                            <p class="week">Week #1</p>
+                        </div>
+                        <img src="week1/asset/Brainstorm.png" alt="Brainstorming">
+                        <p>Brainstorming</p>
+                    </article>
+                </a>
+
+                <a href="week2/box.html" class="cardLink">
+                    <article class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">Up To Date</p>
+                            <p class="week">Week #2</p>
+                        </div>
+                        <img src="week2/asset/box-svgrepo-com.png" alt="The Box">
+                        <p>The Box</p>
+                    </article>
+                </a>
+
+                <a href="week3/TheSculpture.html" class="cardLink">
+                    <article class="BasicCard">
+                        <div class="topHeader">
+                            <p class="success">Up To Date</p>
+                            <p class="week">Week #3</p>
+                        </div>
+                        <img src="week3/assets/art-svgrepo-com.png" alt="The Sculpture">
+                        <p>The Sculpture</p>
+                    </article>
+                </a>
+            </div>
+
+            <div class="tabPanel" id="ProjectFiles">
+                <a href="/week2/asset/Component One.obj" download class="download-btn">
+                    <span class="icon">⬇</span>
+                    Download CAD Competition Fusion File
+                </a>
+
+                <a href="/week2/asset/Holder (Assembly).obj" download class="download-btn">
+                    <span class="icon">⬇</span>
+                    Download CAD Assembly Fusion File
+                </a>
+            </div>
+
+            <div class="tabPanel centeredPanel" id="Updates">
+                <p class="blankMessage">Nothing Here Yet. Greatness Takes Time</p>
+            </div>
+
+            <div class="tabPanel centeredPanel" id="DemosandTutorials">
+                <p class="blankMessage">Nothing Here Yet. Greatness Takes Time</p>
+            </div>
+        </section>
+    </main>
 
     <div class="notification" id="errorBox">
-        <p id="message">Relax, Greatness Take Time</p>
+        <p id="message">Relax, Greatness Takes Time</p>
     </div>
 
     <script src="index.js"></script>

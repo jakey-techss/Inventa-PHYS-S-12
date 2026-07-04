@@ -1,25 +1,21 @@
-let currentBox = "Projects"
-document.addEventListener("DOMContentLoaded",()=>{
-    document.querySelectorAll(".tab").forEach((Element, id)=>{
-    
-        Element.addEventListener("click",()=>{
-            if(!Element.classList.contains("selected")){
-                document.querySelector(".selected").classList.remove("selected")
-                Element.classList.add("selected")
-                document.getElementById(currentBox).style.display = "none"
-                if(id == 0){
-                    currentBox = "Projects"
-                }
-                if(id == 1){
-                    currentBox = "Skills"
-                }
-                if(id == 2){
-                    currentBox = "Hobbies"
-                }
+let currentBox = "Projects";
 
-                document.getElementById(currentBox).style.display = "flex"
-                
-            }
-        })
-    })
-})
+document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".tabPanel");
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target = tab.dataset.target;
+            if (!target || tab.classList.contains("selected")) return;
+
+            document.querySelector(".tab.selected")?.classList.remove("selected");
+            tab.classList.add("selected");
+
+            panels.forEach((panel) => panel.classList.remove("activePanel"));
+
+            currentBox = target;
+            document.getElementById(currentBox)?.classList.add("activePanel");
+        });
+    });
+});

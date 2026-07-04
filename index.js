@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     })
 
     document.querySelector(".majorButton").addEventListener("click",()=>{
-        throwMessage("Studio is under development, Great things take time")
+        window.location.assign("studio/setup.html")
     })
 })
 

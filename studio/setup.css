@@ -1,0 +1,137 @@
+body{
+    margin:0;
+    font-family:"Inter";
+    color:white;
+    background:#0B1220;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(59,130,246,0.20), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(34,211,238,0.12), transparent 50%);
+    z-index:-1;
+}
+
+/* NAV */
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+
+    background:rgba(11,18,32,0.7);
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#3B82F6;
+    box-shadow:0 0 12px #3B82F6;
+}
+
+.exit{
+    color:#94A3B8;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* CONTAINER */
+.container{
+    padding:70px 40px;
+}
+
+/* HERO */
+.hero h1{
+    font-family:"Space Grotesk";
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    max-width:600px;
+    color:#94A3B8;
+    line-height:1.6;
+}
+
+/* GRID */
+.grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+/* CARD */
+.card{
+    padding:20px;
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.06);
+
+    transition:0.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(59,130,246,0.4);
+}
+
+.card h2{
+    font-family:"Space Grotesk";
+    margin-bottom:12px;
+}
+
+.card ol{
+    color:#CBD5E1;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.note{
+    margin-top:12px;
+    font-size:13px;
+    color:#94A3B8;
+    padding:10px;
+    border-left:2px solid #3B82F6;
+    background:rgba(59,130,246,0.08);
+    border-radius:8px;
+}
+
+/* CTA */
+.footerCTA{
+    margin-top:50px;
+    display:flex;
+    gap:12px;
+}
+
+.primary, .secondary{
+    padding:10px 16px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.primary{
+    background:#3B82F6;
+    color:white;
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,0.12);
+    color:white;
+}

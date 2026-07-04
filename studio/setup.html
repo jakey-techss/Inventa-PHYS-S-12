@@ -2,115 +2,150 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventa | Kit Guide</title>
 
-<title>Inventa | Kit Guide</title>
-<link rel="stylesheet" href="/special/nav.css">
-<link rel="stylesheet" href="setup.css">
+    <link rel="stylesheet" href="/special/nav.css">
+    <link rel="stylesheet" href="setup.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/favicon_io/site.webmanifest">
 </head>
 
 <body>
+    <div class="bg"></div>
+    <div class="gridOverlay"></div>
 
-<div class="bg"></div>
-
-<!-- NAV -->
-<nav>
-
-        <a href="/index.html">
+    <!-- NAV -->
+    <nav>
+        <a href="/index.html" class="brandLink">
             <div class="left">
-                <img src="/week1/asset/Logo.png">
+                <img src="/week1/asset/Logo.png" alt="Inventa Logo">
                 <h2><span class="blue">I</span>nvent<span class="orange">a</span></h2>
             </div>
         </a>
 
-        <a href="https://github.com/jakey-techss">
+        <a href="https://github.com/jakey-techss" class="profileLink">
             <div class="right">
-                <p class="gray">Joshua Fineboy-Mark</p>
-                <img src="/week1/asset/Github.png">
+                <p>Joshua Fineboy-Mark</p>
+                <img src="/week1/asset/Github.png" alt="GitHub">
             </div>
         </a>
-
     </nav>
 
-<!-- MAIN -->
-<section class="container">
-
-    <div class="hero">
-
-        <h1>Kit Setup Instructions</h1>
-
-        <p>
-            Follow one of the two setup flows below depending on whether you're configuring a new system
-            or reconnecting an existing Inventa kit.
-        </p>
-
-    </div>
-
-    <!-- GRID -->
-    <div class="grid">
-
-        <!-- NEW KIT -->
-        <div class="card">
-
-            <h2>🆕 New Kit Setup</h2>
-
-            <ol>
-                <li>Power on the Inventa Hub device</li>
-                <li>Wait for WiFi network: <b>Inventa-Setup</b></li>
-                <li>Connect using phone or laptop</li>
-                <li>Open browser → <b>192.168.4.1</b></li>
-                <li>Enter your WiFi SSID + Password</li>
-                <li>Click Save → device will reboot</li>
-                <li>Open Studio → system will auto-connect</li>
-            </ol>
-
-            <div class="note">
-                ⚡ Tip: If setup fails, restart the hub and reconnect to the setup network.
+    <!-- MAIN -->
+    <main class="container">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="heroBadge">
+                <span class="statusDot"></span>
+                <p>Kit Setup Guide</p>
             </div>
 
-        </div>
+            <h1>Set Up Your Inventa Hub in Minutes</h1>
 
-        <!-- EXISTING KIT -->
-        <div class="card">
+            <p class="heroText">
+                Follow one of the setup flows below depending on whether you're configuring a brand-new
+                Inventa Hub or reconnecting an existing kit to Studio.
+            </p>
 
-            <h2>⚙️ Existing Kit Setup</h2>
-
-            <ol>
-                <li>Power on your Inventa Hub</li>
-                <li>Ensure it is already connected to WiFi</li>
-                <li>Open Studio dashboard</li>
-                <li>Wait for device scan</li>
-                <li>Select your hub from available devices</li>
-                <li>Click Connect</li>
-                <li>Begin interaction / control mode</li>
-            </ol>
-
-            <div class="note">
-                🔗 Tip: If device is not found, ensure same network or restart hub.
+            <div class="heroStats">
+                <div class="statCard">
+                    <span class="statLabel">Estimated Setup</span>
+                    <h3>2–5 min</h3>
+                </div>
+                <div class="statCard">
+                    <span class="statLabel">Modes</span>
+                    <h3>2 Setup Paths</h3>
+                </div>
+                <div class="statCard">
+                    <span class="statLabel">Studio Ready</span>
+                    <h3>Auto Discovery</h3>
+                </div>
             </div>
+        </section>
 
-        </div>
+        <!-- GRID -->
+        <section class="grid">
+            <!-- NEW KIT -->
+            <article class="card">
+                <div class="cardTop">
+                    <div class="cardIcon">🆕</div>
+                    <div>
+                        <p class="eyebrow">First-Time Configuration</p>
+                        <h2>New Kit Setup</h2>
+                    </div>
+                </div>
 
-    </div>
+                <ol class="steps">
+                    <li><span>1</span>Power on the Inventa Hub device</li>
+                    <li><span>2</span>Wait for WiFi network: <b>Inventa-Setup</b></li>
+                    <li><span>3</span>Connect using phone or laptop</li>
+                    <li><span>4</span>Open browser → <b>192.168.4.1</b></li>
+                    <li><span>5</span>Enter your WiFi SSID + Password</li>
+                    <li><span>6</span>Click Save → device will reboot</li>
+                    <li><span>7</span>Open Studio → system will auto-connect</li>
+                </ol>
 
-    <!-- BOTTOM CTA -->
-    <div class="footerCTA">
+                <div class="note">
+                    <strong>Tip:</strong> If setup fails, restart the hub and reconnect to the setup network.
+                </div>
+            </article>
 
-        <a href="/studio.html" class="primary">Open Studio</a>
+            <!-- EXISTING KIT -->
+            <article class="card">
+                <div class="cardTop">
+                    <div class="cardIcon">⚙️</div>
+                    <div>
+                        <p class="eyebrow">Reconnect Existing Hardware</p>
+                        <h2>Existing Kit Setup</h2>
+                    </div>
+                </div>
 
-    </div>
+                <ol class="steps">
+                    <li><span>1</span>Power on your Inventa Hub</li>
+                    <li><span>2</span>Ensure it is already connected to WiFi</li>
+                    <li><span>3</span>Open Studio dashboard</li>
+                    <li><span>4</span>Wait for device scan</li>
+                    <li><span>5</span>Select your hub from available devices</li>
+                    <li><span>6</span>Click Connect</li>
+                    <li><span>7</span>Begin interaction / control mode</li>
+                </ol>
 
-</section>
+                <div class="note">
+                    <strong>Tip:</strong> If device is not found, make sure your computer and hub are on the same network or restart the hub.
+                </div>
+            </article>
+        </section>
 
+        <!-- CTA -->
+        <section class="footerCTA">
+            <div class="ctaPanel">
+                <div>
+                    <p class="ctaEyebrow">Ready to continue?</p>
+                    <h2>Launch Inventa Studio</h2>
+                    <p class="ctaText">
+                        Once your hub is connected, head into Studio to start building, controlling,
+                        and experimenting with your invention system.
+                    </p>
+                </div>
+
+                <div class="ctaActions">
+                    <a href="/studio.html" class="primary">Open Studio</a>
+                    <a href="/index.html" class="secondary">Back Home</a>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

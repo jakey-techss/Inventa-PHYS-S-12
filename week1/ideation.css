@@ -470,7 +470,18 @@ h4 {
     margin-top: 24px;
     padding: 24px;
 }
+/* Universal text selection */
+::selection {
+    background: rgba(91, 95, 251, 0.32);   /* soft indigo glow */
+    color: #F8FAFC;                         /* keep text readable */
+    text-shadow: 0 0 8px rgba(34, 211, 238, 0.35);
+}
 
+::-moz-selection {
+    background: rgba(91, 95, 251, 0.32);
+    color: #F8FAFC;
+    text-shadow: 0 0 8px rgba(34, 211, 238, 0.35);
+}
 .sub_subGroup {
     padding-top: 4px;
 }

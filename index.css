@@ -234,7 +234,18 @@ body {
         radial-gradient(circle at 78% 26%, rgba(91, 95, 251, 0.16), transparent 28%);
     z-index: 0;
 }
+/* Universal text selection */
+body::selection {
+    background: rgba(91, 95, 251, 0.32);   /* soft indigo glow */
+    color: #F8FAFC;                         /* keep text readable */
+    text-shadow: 0 0 8px rgba(34, 211, 238, 0.35);
+}
 
+body::-moz-selection {
+    background: rgba(91, 95, 251, 0.32);
+    color: #F8FAFC;
+    text-shadow: 0 0 8px rgba(34, 211, 238, 0.35);
+}
 .videoOverlay {
     position: absolute;
     inset: 0;

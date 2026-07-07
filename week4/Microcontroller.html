@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventa | Hub Internet Connection System</title>
+
+
+    <link rel="stylesheet" href="/special/nav.css">
+    <link rel="stylesheet" href="Microcontroller.css">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+
+
+</head>
+
+
+<body>
+
+
+
+    <nav>
+
+        <a href="/index.html">
+
+            <div class="left">
+
+                <img src="/week1/asset/Logo.png" alt="Inventa Logo">
+
+                <h2>
+                    <span class="blue">I</span>nvent<span class="orange">a</span>
+                </h2>
+
+            </div>
+
+        </a>
+
+
+
+        <a href="https://github.com/jakey-techss" target="_blank">
+
+            <div class="right">
+
+                <p class="gray">
+                    Joshua Fineboy-Mark
+                </p>
+
+
+                <img src="/week1/asset/Github.png" alt="Github">
+
+
+            </div>
+
+        </a>
+
+
+    </nav>
+
+
+
+
+
+
+
+    <div class="content">
+
+
+
+
+
+        <section class="hero">
+
+
+            <p class="eyebrow">
+                Engineering Documentation • Hardware Communication
+            </p>
+
+
+            <h1>
+                Inventa Hub Internet Connection System
+            </h1>
+
+
+            <p class="heroText">
+
+                Creating the first communication bridge between the
+                Inventa Hub, wireless networks, and the Studio web application.
+                This project establishes the foundation for future modular
+                hardware control and node-based programming.
+
+            </p>
+
+
+
+
+
+            <div class="demoBox">
+
+
+                <h3>
+                    PROJECT DEMONSTRATION
+                </h3>
+
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5vjEIC0YjZk?si=4LycDhJCZblfyMjq"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen muted></iframe>
+
+
+                <p class="caption">
+
+                    Demonstration of the hub startup sequence, captive portal,
+                    LED feedback system, and successful Studio connection.
+
+                </p>
+
+
+            </div>
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <section class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    01
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        The Goal
+                    </p>
+
+
+                    <h2>
+                        Assignment Description
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="textPanel">
+
+
+                <p>
+
+                    The goal of this assignment was to program an
+                    Arduino-compatible microcontroller into a connected
+                    hardware device capable of communicating over a network.
+
+                </p>
+
+
+                <p>
+
+                    The completed system allows the Inventa Hub to create a
+                    connection between physical hardware and the Studio web
+                    application. The hub can connect to WiFi networks,
+                    open a captive configuration portal, communicate its status,
+                    and provide visual feedback through an LED system.
+
+                </p>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    02
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        System Design
+                    </p>
+
+
+                    <h2>
+                        How The Hub Works
+                    </h2>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="systemGrid">
+
+
+                <div class="systemCard">
+
+                    <h3>
+                        01
+                    </h3>
+
+                    <h4>
+                        Hub Startup
+                    </h4>
+
+                    <p>
+                        The microcontroller initializes hardware and checks
+                        previous network information.
+                    </p>
+
+                </div>
+
+
+
+
+                <div class="systemCard">
+
+                    <h3>
+                        02
+                    </h3>
+
+                    <h4>
+                        Network Connection
+                    </h4>
+
+                    <p>
+                        The hub attempts to connect to an available WiFi network.
+                    </p>
+
+                </div>
+
+
+
+
+
+                <div class="systemCard">
+
+                    <h3>
+                        03
+                    </h3>
+
+                    <h4>
+                        Captive Portal
+                    </h4>
+
+                    <p>
+                        If no network exists, the hub creates a setup portal.
+                    </p>
+
+                </div>
+
+
+
+
+
+
+                <div class="systemCard">
+
+                    <h3>
+                        04
+                    </h3>
+
+                    <h4>
+                        Studio Detection
+                    </h4>
+
+                    <p>
+                        The web application detects the connected hub.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    03
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Hardware Feedback
+                    </p>
+
+
+                    <h2>
+                        LED Communication System
+                    </h2>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="ledGrid">
+                <div class="ledCard">
+                    <div class="led red"></div>
+                    <h3>
+                        Red
+                    </h3>
+                    <p>
+                        The hub is starting or searching for a network.
+                    </p>
+                </div>
+                <div class="ledCard">
+                    <div class="led white"></div>
+                    <h3>
+                        White
+                    </h3>
+                    <p>
+                        The hub requires setup or cannot locate a saved network.
+                    </p>
+                </div>
+                <div class="ledCard">
+                    <div class="led green"></div>
+                    <h3>
+                        Green
+                    </h3>
+                    <p>
+                        The hub is connected and ready for communication.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="sectionBlock">
+            <div class="sectionHeading">
+                <span class="sectionNumber">
+                    04
+                </span>
+                <div>
+                    <p class="sectionLabel">
+                        Firmware
+                    </p>
+                    <h2>
+                        Hub Microcontroller Code
+                    </h2>
+                </div>
+            </div>
+            <p>
+                The hub firmware controls WiFi communication,
+                network setup, captive portal behavior, and status
+                communication with the Studio application.
+            </p>
+
+            <div class="codeWindow">
+
+
+                <div class="codeHeader">
+                    ESP32 HUB CODE
+                </div>
+                <pre><code>
+#include &lt;WiFi.h&gt;
+#include &lt;ESPmDNS.h&gt;
+#include &lt;Preferences.h&gt;
+#include &lt;AsyncTCP.h&gt;
+#include &lt;ESPAsyncWebServer.h&gt;
+#include &lt;DNSServer.h&gt;
+
+
+Preferences prefs;
+AsyncWebServer server(80);
+AsyncWebSocket ws("/ws");
+
+//Variables
+int red = D0;
+int blue = D2;
+int green = D1;
+int passedTime = 0;
+bool wasLogged;
+String SSID;
+String PASSWORD;
+bool connectRequested = false;
+DNSServer dns;
+const byte DNS_PORT = 53;
+
+// Runs when the hub successfully connects
+// to an existing WiFi network
+void normalHubStart() {
+    if (WiFi.status() == WL_CONNECTED) {
+        wasLogged = true;
+
+        // Start mDNS so the hub can be discovered
+        MDNS.begin("inventa-hub");
+
+        // Green status LED
+        analogWrite(red, 255);
+        analogWrite(green, 0);
+        analogWrite(blue, 255);
+    }
+
+    // Enable WebSocket communication
+    server.addHandler(&amp;ws);
+    server.begin();
+
+}
+
+// WebSocket event handler
+void onWsEvent(
+    AsyncWebSocket *server,
+    AsyncWebSocketClient *client,
+    AwsEventType type,
+    void *arg,
+    uint8_t *data,
+    size_t len
+) {
+}
+
+// Starts the Inventa WiFi configuration mode
+void startSetupMode() {
+
+    // Disconnect previous connections
+    WiFi.disconnect(true);
+
+    // Enable access point mode
+    WiFi.mode(WIFI_AP);
+    WiFi.mode(WIFI_AP_STA);
+
+    // Configure hotspot IP address
+    WiFi.softAPConfig(
+        IPAddress(192,168,4,1),
+        IPAddress(192,168,4,1),
+        IPAddress(255,255,255,0)
+    );
+
+    // Create Inventa setup network
+    WiFi.softAP(
+        "Inventa-Setup",
+        "Building_Intelligence"
+    );
+    delay(200);
+
+    // Redirect all DNS requests
+    // back to the hub captive portal
+    dns.start(DNS_PORT, "*", IPAddress(192,168,4,1));
+
+    // LED indicates setup mode
+    analogWrite(red,120);
+    analogWrite(green,200);
+    analogWrite(blue,50);
+
+    // Main captive portal page
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(200, "text/html", R"rawliteral(
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8"&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                    &lt;title&gt;
+                        Inventa WiFi Setup
+                    &lt;/title&gt;
+                    &lt;style&gt;
+                        :root {
+                            --bg-main:#070b14;
+                            --panel:rgba(16,24,42,0.78);
+                            --accent:#6aa9ff;
+                            --accent-2:#8b5cf6;
+                            --text-main:#f5f7ff;
+                            --text-muted:#9aa6c5;
+                        }
+
+                        * {
+                            box-sizing:border-box;
+                            margin:0;
+                            padding:0;
+                        }
+
+                        body {
+                            min-height:100vh;
+                            font-family:
+                            Inter,
+                            SF Pro Display,
+                            system-ui,
+                            sans-serif;
+                            background: radial-gradient(circle at top left, rgba(106,169,255,.18), transparent 28%), linear-gradient(160deg, #050912, #0a1020);
+                            color:var(--text-main);
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            padding:32px;
+                        }
+
+                        .setup-card {
+                            width:100%;
+                            max-width:520px;
+                            background: var(--panel);
+                            border: 1px solid rgba(255,255,255,.08);
+                            border-radius:24px;
+                            padding:34px;
+                            backdrop-filter: blur(18px);
+                        }
+                    &lt;/style&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;section class="setup-card"&gt;
+                        &lt;h1&gt;
+                            Connect Your Inventa Hub
+                        &lt;/h1&gt;
+                        &lt;p&gt;
+                            Enter your WiFi information to connect
+                            your hub to the network.
+                        &lt;/p&gt;
+                        &lt;form action="/save" method="POST"&gt;
+                            &lt;input type="text" name="ssid" placeholder="WiFi Network Name" required&gt;
+                            &lt;br&gt;&lt;br&gt;
+                            &lt;input type="password" name="password" placeholder="WiFi Password"&gt;
+                            &lt;br&gt;&lt;br&gt;
+                            &lt;button type="submit"&gt;
+                                Save WiFi Settings
+                            &lt;/button&gt;
+                        &lt;/form&gt;
+                    &lt;/section&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
+        )rawliteral");
+    });
+
+    // Save WiFi credentials from captive portal
+    server.on("/save", HTTP_POST, [](AsyncWebServerRequest *request) {
+        if(request->hasParam("ssid", true)) {
+            SSID = request->getParam("ssid",true) -> value();
+        }
+        if(request->hasParam("password", true)) {
+            PASSWORD = request->getParam("password", true) -> value();
+        }
+
+        // Store network credentials
+        // using ESP32 Preferences memory
+        prefs.begin("wifi_info", false);
+        prefs.putString("ssid", SSID);
+        prefs.putString("pass", PASSWORD);
+        prefs.end();
+
+        // Move to connection status page
+        if(SSID != "") {
+            request->redirect("/connecting");
+        }
+
+    });
+
+        // Connecting status page
+        server.on("/connecting", HTTP_GET, [](AsyncWebServerRequest *request) {
+            prefs.begin("wifi_info", true);
+            String ssid = prefs.getString("ssid", "");
+            String pass = prefs.getString("pass", "");
+            prefs.end();
+
+            // Attempt network connection
+            WiFi.begin(ssid, pass);
+            request->send(200, "text/html", R"rawliteral(
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                    &lt;head&gt;
+                        &lt;title&gt;
+                            Inventa - Information Sent
+                        &lt;/title&gt;
+                        &lt;style&gt;
+                            body {
+                                background: #070b14;
+                                color:white;
+                                font-family: Inter, system-ui, sans-serif;
+                                display:flex;
+                                height:100vh;
+                                justify-content:center;
+                                align-items:center;
+                            }
+
+                            .card {
+                                background: rgba(16,24,42,.8);
+                                border: 1px solid rgba(255,255,255,.1);
+                                border-radius:24px;
+                                padding:40px;
+                                max-width:520px;
+                                text-align:center;
+                                backdrop-filter: blur(18px);
+                            }
+
+                            .success {
+                                color:#34d399;
+                                font-size:60px;
+                            }
+
+                            button {
+                                margin-top:20px;
+                                padding:14px 24px;
+                                border:none;
+                                border-radius:14px;
+                                background: linear-gradient(135deg, #6aa9ff, #8b5cf6);
+                                color:white;
+                                font-weight:bold;
+                            }
+                        &lt;/style&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                        &lt;div class="card"&gt;
+                        &lt;div class="success"&gt;✓&lt;/div&gt;
+                            &lt;h1&gt;
+                                Information Sent
+                            &lt;/h1&gt;
+                            &lt;p&gt;
+                                Your WiFi information has been sent to the Inventa Hub.
+                                The device is now attempting to connect.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                                WiFi LED Status:
+                                &lt;br&gt;
+                                    RED — Connecting
+                                &lt;br&gt;
+                                    GREEN — Connected
+                                &lt;br&gt;
+                                    WHITE — Setup Required
+                            &lt;/p&gt;
+                            &lt;a href="/result"&gt;
+                                &lt;button&gt;
+                                    Complete Setup
+                                &lt;/button&gt;
+                            &lt;/a&gt;
+                        &lt;/div&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
+            )rawliteral");
+        });
+
+        // Complete setup route
+        server.on("/result", HTTP_GET, [](AsyncWebServerRequest *request) {
+            request->redirect("/completed");
+        });
+
+        // Restart hub after setup
+        server.on("/completed", HTTP_GET, [](AsyncWebServerRequest *request) {
+            ESP.restart();
+        });
+
+        // Redirect unknown requests
+        // back to captive portal
+        server.onNotFound([](AsyncWebServerRequest *request){
+            request->redirect("http://192.168.4.1/");
+        });
+
+        // Start asynchronous server
+        server.begin();
+}
+// Main setup function
+
+void setup() {
+
+    // Initialize RGB LED pins
+    pinMode(red, OUTPUT);
+    pinMode(blue, OUTPUT);
+    pinMode(green, OUTPUT);
+
+
+    // Default startup LED state
+    analogWrite(red, 0);
+    analogWrite(green, 255);
+    analogWrite(blue, 255);
+
+    // Configure DNS response
+    dns.setErrorReplyCode(DNSReplyCode::NoError);
+
+    // Load saved WiFi information
+    prefs.begin("wifi_info", true);
+
+    String ssid = prefs.getString("ssid", "");
+    String pass = prefs.getString("pass", "");
+    prefs.end();
+
+    // Enable station mode
+    WiFi.mode(WIFI_STA);
+
+    // Enable WebSocket events
+    ws.onEvent(
+        onWsEvent
+    );
+
+    // If no WiFi credentials exist,
+    // open setup portal
+    if(ssid == "") {
+        startSetupMode();
+        return;
+    }
+
+    // Try connecting to saved network
+    WiFi.begin(ssid, pass);
+    int attempts = 0;
+
+    // Wait for connection
+    while(WiFi.status() != WL_CONNECTED && attempts < 15) {
+        // Connecting LED state
+        analogWrite(red, 0);
+        analogWrite(green, 255);
+        analogWrite(blue, 255);
+        attempts++;
+        delay(500);
+    }
+
+    // Connection successful
+    if(WiFi.status() == WL_CONNECTED) {
+        normalHubStart();
+    }
+
+    // Otherwise return to setup mode
+    else {
+        startSetupMode();
+    }
+}
+
+// Main program loop
+void loop() {
+    // Process captive portal DNS
+    dns.processNextRequest();
+
+    // Clean unused WebSocket clients
+    ws.cleanupClients();
+
+    // If connection was lost,
+    // attempt reconnection
+    if(WiFi.status() != WL_CONNECTED && wasLogged
+    ) {
+        // Connection failed LED
+        analogWrite(red, 0);
+        analogWrite(green, 255);
+        analogWrite(blue, 255);
+
+        //Get Values Again
+        prefs.begin("wifi_info",true);
+        String ssid = prefs.getString("ssid", "");
+        String pass = prefs.getString("pass", "");
+        prefs.end();
+
+        // Attempt reconnect
+        WiFi.begin(ssid, pass);
+    }else if(WiFi.status() == WL_CONNECTED && wasLogged){
+        // Green status LED
+        analogWrite(red, 255);
+        analogWrite(green, 0);
+        analogWrite(blue, 255);
+    }
+}
+                </code></pre>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    05
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Software
+                    </p>
+
+
+                    <h2>
+                        Studio Web Detection
+                    </h2>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <p>
+
+                The Studio web application communicates with the hub
+                and updates when a device becomes available.
+
+            </p>
+
+
+
+
+
+            <div class="codeWindow">
+
+
+                <div class="codeHeader">
+                    WEB APPLICATION CODE
+                </div>
+
+
+                <pre><code>
+const HUB_URL = "ws://inventa-hub.local/ws";
+let socket;
+
+function connectToHub() {
+    socket = new WebSocket(HUB_URL);
+
+    socket.onerror = () => {
+        document.querySelector(".status-dot-hub").style.backgroundColor = "#FF4D4D";
+        document.getElementById("hubStatus").innerHTML = `Hub Connection Failed`;
+    };
+
+    socket.onopen = () => {
+        document.querySelector(".status-dot-hub").style.backgroundColor = "#34D399";
+        document.getElementById("hubStatus").innerHTML = `Hub Ready`;
+    };
+}
+                </code></pre>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    06
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Results
+                    </p>
+
+
+                    <h2>
+                        Completed Features
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="results">
+
+
+                <div>
+                    ✓ WiFi communication established
+                </div>
+
+
+                <div>
+                    ✓ Captive portal created
+                </div>
+
+
+                <div>
+                    ✓ LED status system implemented
+                </div>
+
+
+                <div>
+                    ✓ Studio detects connected hub
+                </div>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section class="sectionBlock future">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    07
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Future Development
+                    </p>
+
+
+                    <h2>
+                        Next Phase Of Inventa
+                    </h2>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <p>
+
+                The next step is transforming the hub from a networking
+                device into the central controller of the Inventa ecosystem.
+
+            </p>
+
+
+
+
+            <ul>
+
+                <li>
+                    Building the visual node programming system
+                </li>
+
+
+                <li>
+                    Sending node logic over the network
+                </li>
+
+
+                <li>
+                    Creating a hub interpreter
+                </li>
+
+
+                <li>
+                    Developing modular hardware communication
+                </li>
+
+
+                <li>
+                    Creating plug-and-play Inventa modules
+                </li>
+
+
+            </ul>
+
+
+
+        </section>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <footer>
+
+        INVENTA • HARDWARE DEVELOPMENT LOG
+
+    </footer>
+
+
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

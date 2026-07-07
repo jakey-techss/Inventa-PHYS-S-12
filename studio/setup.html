@@ -1,151 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventa | Kit Guide</title>
+<meta charset="UTF-8">
+<title>Inventa | Hub Setup</title>
 
-    <link rel="stylesheet" href="/special/nav.css">
-    <link rel="stylesheet" href="setup.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+<link rel="stylesheet" href="setup.css">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/favicon_io/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="bg"></div>
-    <div class="gridOverlay"></div>
 
-    <!-- NAV -->
-    <nav>
-        <a href="/index.html" class="brandLink">
-            <div class="left">
-                <img src="/week1/asset/Logo.png" alt="Inventa Logo">
-                <h2><span class="blue">I</span>nvent<span class="orange">a</span></h2>
-            </div>
-        </a>
+<div class="bg"></div>
 
-        <a href="https://github.com/jakey-techss" class="profileLink">
-            <div class="right">
-                <p>Joshua Fineboy-Mark</p>
-                <img src="/week1/asset/Github.png" alt="GitHub">
-            </div>
-        </a>
-    </nav>
+<!-- TOP NAV -->
+<nav>
+    <div class="nav-left">
+        <img src="/week1/asset/Logo.png">
+        <h2><span class="blue">I</span>nvent<span class="orange">a</span> Hub Setup</h2>
+    </div>
 
-    <!-- MAIN -->
-    <main class="container">
-        <!-- HERO -->
-        <section class="hero">
-            <div class="heroBadge">
-                <span class="statusDot"></span>
-                <p>Kit Setup Guide</p>
-            </div>
+    <div class="nav-right">
+        <span class="status white"></span>
+        <span class="status red"></span>
+        <span class="status green"></span>
+        <p>System Status Indicators</p>
+    </div>
+</nav>
 
-            <h1>Set Up Your Inventa Hub in Minutes</h1>
+<!-- HERO -->
+<section class="hero">
+    <h1>Hub Connection Setup</h1>
+    <p>
+        Follow this guide to connect your Inventa Hub to a network and enter Studio mode.
+        The hub uses a 3-state system: <b>White</b>, <b>Red</b>, and <b>Green</b>.
+    </p>
+</section>
 
-            <p class="heroText">
-                Follow one of the setup flows below depending on whether you're configuring a brand-new
-                Inventa Hub or reconnecting an existing kit to Studio.
-            </p>
+<!-- STATUS EXPLANATION -->
+<section class="grid">
 
-            <div class="heroStats">
-                <div class="statCard">
-                    <span class="statLabel">Estimated Setup</span>
-                    <h3>2–5 min</h3>
-                </div>
-                <div class="statCard">
-                    <span class="statLabel">Modes</span>
-                    <h3>2 Setup Paths</h3>
-                </div>
-                <div class="statCard">
-                    <span class="statLabel">Studio Ready</span>
-                    <h3>Auto Discovery</h3>
-                </div>
-            </div>
-        </section>
+    <div class="card white-card">
+        <h2>⚪ White — Setup Mode</h2>
+        <p>
+            The hub is ready for configuration.  
+            This appears when:
+        </p>
+        <ul>
+            <li>First-time setup</li>
+            <li>Previous network not found</li>
+            <li>Manual reset</li>
+        </ul>
+        <p class="note">A WiFi network called <b>“Inventa Setup”</b> will appear.</p>
+    </div>
 
-        <!-- GRID -->
-        <section class="grid">
-            <!-- NEW KIT -->
-            <article class="card">
-                <div class="cardTop">
-                    <div class="cardIcon">🆕</div>
-                    <div>
-                        <p class="eyebrow">First-Time Configuration</p>
-                        <h2>New Kit Setup</h2>
-                    </div>
-                </div>
+    <div class="card red-card">
+        <h2>🔴 Red — Connection Failed</h2>
+        <p>
+            The hub could not connect to the network.
+        </p>
+        <ul>
+            <li>Wrong WiFi name or password</li>
+            <li>Hotspot compatibility off</li>
+            <li>Max device limit reached</li>
+            <li>Network turned off</li>
+        </ul>
+        <p class="note">Hub will return to setup mode automatically (White).</p>
+    </div>
 
-                <ol class="steps">
-                    <li><span>1</span>Power on the Inventa Hub device</li>
-                    <li><span>2</span>Wait for WiFi network: <b>Inventa-Setup</b></li>
-                    <li><span>3</span>Connect using phone or laptop</li>
-                    <li><span>4</span>Open browser → <b>192.168.4.1</b></li>
-                    <li><span>5</span>Enter your WiFi SSID + Password</li>
-                    <li><span>6</span>Click Save → device will reboot</li>
-                    <li><span>7</span>Open Studio → system will auto-connect</li>
-                </ol>
+    <div class="card green-card">
+        <h2>🟢 Green — Connected</h2>
+        <p>
+            The hub successfully connected to WiFi.
+        </p>
+        <ul>
+            <li>Data link active</li>
+            <li>Studio connection enabled</li>
+            <li>Ready for robotics control</li>
+        </ul>
+        <p class="note">You can now return to Studio.</p>
+    </div>
 
-                <div class="note">
-                    <strong>Tip:</strong> If setup fails, restart the hub and reconnect to the setup network.
-                </div>
-            </article>
+</section>
 
-            <!-- EXISTING KIT -->
-            <article class="card">
-                <div class="cardTop">
-                    <div class="cardIcon">⚙️</div>
-                    <div>
-                        <p class="eyebrow">Reconnect Existing Hardware</p>
-                        <h2>Existing Kit Setup</h2>
-                    </div>
-                </div>
+<!-- SETUP STEPS -->
+<section class="steps">
 
-                <ol class="steps">
-                    <li><span>1</span>Power on your Inventa Hub</li>
-                    <li><span>2</span>Ensure it is already connected to WiFi</li>
-                    <li><span>3</span>Open Studio dashboard</li>
-                    <li><span>4</span>Wait for device scan</li>
-                    <li><span>5</span>Select your hub from available devices</li>
-                    <li><span>6</span>Click Connect</li>
-                    <li><span>7</span>Begin interaction / control mode</li>
-                </ol>
+    <h2>Setup Flow</h2>
 
-                <div class="note">
-                    <strong>Tip:</strong> If device is not found, make sure your computer and hub are on the same network or restart the hub.
-                </div>
-            </article>
-        </section>
+    <div class="step-card">
+        <div class="step-num">1</div>
+        <p>Turn on the Inventa Hub device.</p>
+    </div>
 
-        <!-- CTA -->
-        <section class="footerCTA">
-            <div class="ctaPanel">
-                <div>
-                    <p class="ctaEyebrow">Ready to continue?</p>
-                    <h2>Launch Inventa Studio</h2>
-                    <p class="ctaText">
-                        Once your hub is connected, head into Studio to start building, controlling,
-                        and experimenting with your invention system.
-                    </p>
-                </div>
+    <div class="step-card">
+        <div class="step-num">2</div>
+        <p>If white mode appears → connect to <b>Inventa Setup</b> network.</p>
+    </div>
 
-                <div class="ctaActions">
-                    <a href="/studio.html" class="primary">Open Studio</a>
-                    <a href="/index.html" class="secondary">Back Home</a>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="step-card">
+        <div class="step-num">3</div>
+        <p>Open browser and go to <b>192.168.4.1</b>.</p>
+    </div>
+
+    <div class="step-card">
+        <div class="step-num">4</div>
+        <p>Enter WiFi name + password for your home/hotspot network.</p>
+    </div>
+
+    <div class="step-card">
+        <div class="step-num">5</div>
+        <p>Hub processes data and attempts connection.</p>
+    </div>
+
+    <div class="step-card">
+        <div class="step-num">6</div>
+        <p>
+            If correct → <span class="green-text">Green light;</span>  
+            If wrong → <span class="red-text">Red → back to White</span>
+        </p>
+    </div>
+
+    <div class="step-card">
+        <div class="step-num">7</div>
+        <p>Reconnect to your network and open Studio.</p>
+    </div>
+
+</section>
+
+<!-- TROUBLESHOOTING -->
+<section class="trouble">
+
+    <h2>Troubleshooting</h2>
+
+    <div class="card">
+        <p>If the hub stays red:</p>
+        <ul>
+            <li>Check WiFi password accuracy</li>
+            <li>Enable hotspot compatibility mode</li>
+            <li>Ensure device limit is not reached</li>
+            <li>Restart router or hotspot</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <p>If hub disconnects suddenly:</p>
+        <ul>
+            <li>Network went offline</li>
+            <li>Hub requires restart</li>
+            <li>Re-enter setup mode manually</li>
+        </ul>
+        <p class="note">System will always fallback to White (safe mode).</p>
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <a href="/studio.html">Open Studio →</a>
+</section>
+
 </body>
-
 </html>

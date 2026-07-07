@@ -1,1 +1,2431 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Inventa | Studio</title>
+
+    <link rel="stylesheet" href="studio.css" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="studio-shell">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <a href="/index.html" class="brand">
+                    <img src="/week1/asset/Logo.png" alt="Inventa Logo">
+                    <div class="brand-text">
+                        <h1><span class="blue">I</span>nvent<span class="purple">a</span> Studio</h1>
+                        <p>Visual AI + Robotics Builder</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="topbar-center">
+                <button class="toolbar-btn">New Tab</button>
+                <button class="toolbar-btn">Save</button>
+                <button class="toolbar-btn">Load</button>
+                <button class="toolbar-btn">Export</button>
+            </div>
+
+            <div class="topbar-right">
+                <div class="studio-status">
+                    <span class="status-dot-hub" id="hubStatusDot"></span>
+                    <span id="hubStatus">Connecting To Hub</span>
+                </div>
+                <button class="run-btn">Upload Code</button>
+                <button class="icon-btn">⚙</button>
+            </div>
+        </header>
+
+        <!-- MAIN STUDIO -->
+        <main class="studio-main">
+
+            <aside class="sidebar left-sidebar">
+                <div class="sidebar-inner">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search blocks..." />
+                    </div>
+
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header ai-text">
+                                <span class="group-dot ai-bg"></span>
+                                ML & AI
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Data Column</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Categories</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row condition-text">
+                                                <span class="ai-mini-port-dot condition-bg"></span>
+                                                <span class="ai-mini-port-label">Condition</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ai-text ai-output-row">
+                                                <span class="ai-mini-port-label">AI Model</span>
+                                                <span class="ai-mini-port-dot ai-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create Classification Model</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Data Column</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Factor Columns</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ai-text ai-output-row">
+                                                <span class="ai-mini-port-label">AI Model</span>
+                                                <span class="ai-mini-port-dot ai-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create Regression Model</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ai-text">
+                                                <span class="ai-mini-port-dot ai-bg"></span>
+                                                <span class="ai-mini-port-label">AI Model</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Data Input</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row -text ai-output-row">
+                                                <span class="ai-mini-port-label">Prediction</span>
+                                                <span class="ai-mini-port-dot any"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Predict</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row media-text">
+                                                <span class="ai-mini-port-dot media-bg"></span>
+                                                <span class="ai-mini-port-label">Audio</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Text</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Speech To Text</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Text</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row media-text ai-output-row">
+                                                <span class="ai-mini-port-label">Audio</span>
+                                                <span class="ai-mini-port-dot media-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Text To Speech</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header data-text">
+                                <span class="group-dot data-bg"></span>
+                                Data
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Column Names</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create Data Set</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Values</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Add Row</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row condition-text">
+                                                <span class="ai-mini-port-dot condition-bg"></span>
+                                                <span class="ai-mini-port-label">Condition</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Remove Row</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">ID</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Remove Row</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row condition-text">
+                                                <span class="ai-mini-port-dot condition-bg"></span>
+                                                <span class="ai-mini-port-label">Condition</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Filter Rows</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Column</span>
+                                            </div>
+                                            <div class="ai-mini-port-row number-text">
+                                                <span class="ai-mini-port-dot number-bg"></span>
+                                                <span class="ai-mini-port-label">Order</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Sort Dataset</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Column Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Column</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get Column</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Column Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Add Column</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Column Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Delete Column</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Old Column Name</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">New Column Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Rename Column</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Remove Missing Values</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Value</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Fill Missing Values</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Column</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Average</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Average Column</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Column</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Max</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Max Column</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Column</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Number of Rows</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Count Rows</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Row ID</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Column Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ai-output-row">
+                                                <span class="ai-mini-port-label">Value</span>
+                                                <span class="ai-mini-port-dot any"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get Cell Value</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Row ID</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Column Name</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Value</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ai-output-row data-text">
+                                                <span class="ai-mini-port-label">Modified Dataset</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Replace Cell Value</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header category-text">
+                                <span class="group-dot category-bg"></span>
+                                Variables
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <input class="block-mini-input" type="text" placeholder="String">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create String</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <input class="block-mini-input" type="number" placeholder="Number">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Number</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create Number</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <select name="bool" id="boolslect" class="block-mini-input">
+                                                    <option>True</option>
+                                                    <option>False</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create Boolean</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Name</span>
+                                            </div>
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Value</span>
+                                            </div>
+                                            <div class="ai-mini-port-row bool-text">
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                                <span class="ai-mini-port-label">isMutable?</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create Variable</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Value</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Set Variable</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Amount</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Change Variable By</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <select name="vars" id="allVars" class="block-mini-input">
+
+                                            </select>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get Variable</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Name</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Starting Items</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Create List</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Item</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Add To List</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Items</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Remove From List</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Index</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Remove From List</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row condition-text">
+                                                <span class="ai-mini-port-dot condition-bg"></span>
+                                                <span class="ai-mini-port-label">Condition</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Remove From List</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Index</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">List Item</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get List Item</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Item</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">List Contains Item</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">List Length</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get List Length</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header string-text">
+                                <span class="group-dot string-bg"></span>
+                                String Methods
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String #1</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String #2</span> </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Mutated String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Join Strings</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span> </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Length</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">String Length</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Index</span> </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Character</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get Character At</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Start Index</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">End Index (ex)</span> </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Substring</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Contains?</span> </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Contains Text</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Starts With?</span> </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Starts With</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Ends With?</span> </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Ends With</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Find String</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Replacement String</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Replace String</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Start Index</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Stop Index (ex)</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Replacement String</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Replace String</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Make UPPERCASE</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Make lowercase</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Trim String</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number Of Times</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Repeat String</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Separator</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Split String</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Number</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">String To Number</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row string-text ai-output-row">
+                                                <span class="ai-mini-port-label">String</span>
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Number To String</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">String</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">isEmpty?</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header ops-text">
+                                <span class="group-dot ops-bg"></span>
+                                Math
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Sum</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Add Numbers +</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Difference</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Subtract Numbers -</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Product</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Multiply Numbers ×</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Quotient</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Divide Numbers ÷</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Remainder</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Modulus %</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Value</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Round</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Max</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Min</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Number</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Generate Random Number</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Equals ==</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Not Equals !=</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Greater Than ></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #1</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Number #2</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row bool-text ai-output-row">
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Less Than &lt;</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header condition-text">
+                                <span class="group-dot condition-bg"></span>
+                                Control
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row bool-text">
+                                                <span class="ai-mini-port-dot bool-bg"></span>
+                                                <span class="ai-mini-port-label">Boolean</span>
+                                            </div>
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-label">Do</span>
+                                                <span class="ai-mini-port-dot any"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right"
+                                            style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-label">Do</span>
+                                                <span class="ai-mini-port-dot any"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">If</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-dot any"></span>
+                                            <span class="ai-mini-port-label">Else Do</span>
+                                        </div>
+                                        <div class="ai-mini-port-row bool-text">
+                                            <span class="ai-mini-port-dot bool-bg"></span>
+                                            <span class="ai-mini-port-label">Boolean</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">If Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">Else Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Else-If</div>
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row bool-text">
+                                            <span class="ai-mini-port-dot bool-bg"></span>
+                                            <span class="ai-mini-port-label">Boolean</span>
+                                        </div>
+                                        <div class="ai-mini-port-row category-text">
+                                            <span class="ai-mini-port-dot category-bg"></span>
+                                            <span class="ai-mini-port-label">Output Variable</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                        <div class="ai-mini-port-row condition-text">
+                                            <span class="ai-mini-port-label">Condition</span>
+                                            <span class="ai-mini-port-dot condition-bg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Condition Builder</div>
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row bool-text">
+                                            <span class="ai-mini-port-dot bool-bg"></span>
+                                            <span class="ai-mini-port-label">Boolean</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">If Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">Else Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">If-Else</div>
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row ops-text">
+                                            <span class="ai-mini-port-dot ops-bg"></span>
+                                            <span class="ai-mini-port-label">Number Of Times</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Repeat</div>
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row bool-text">
+                                            <span class="ai-mini-port-dot bool-bg"></span>
+                                            <span class="ai-mini-port-label">Boolean</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">While</div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row ops-text">
+                                            <span class="ai-mini-port-dot ops-bg"></span>
+                                            <span class="ai-mini-port-label">Milliseconds</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label">Do</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Wait</div>
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-dot any"></span>
+                                            <span class="ai-mini-port-label">Do</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row">
+                                            <span class="ai-mini-port-label"></span>
+                                            <span class="ai-mini-port-dot"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Break</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header number-text">
+                                <span class="group-dot number-bg"></span>
+                                Functions
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Do</span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Call Example Function</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="sidebar-group collapsible-group">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header module-text">
+                                <span class="group-dot module-bg"></span>
+                                In-Built Modules
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+
+                                            <div class="ai-mini-port-row ">
+                                                <span class="ai-mini-port-label">Port: </span>
+                                                <select name="port" id="port" class="block-mini-input">
+                                                    <option>D0</option>
+                                                    <option>D1</option>
+                                                    <option>D2</option>
+                                                    <option>D3</option>
+                                                    <option>D4</option>
+                                                    <option>D5</option>
+                                                    <option>D6</option>
+                                                    <option>D7</option>
+                                                    <option>D8</option>
+                                                    <option>D9</option>
+                                                    <option>D10</option>
+                                                </select>
+                                            </div>
+                                            <div class="ai-mini-port-row ">
+                                                <span class="ai-mini-port-label">Direction: </span>
+                                                <select name="port" id="port" class="block-mini-input">
+                                                    <option>Clockwise</option>
+                                                    <option>Counter-Clockwise</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label">Do</span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Speed</span>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Drive Motor</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <button class="add-block-btn">＋ Add Module</button>
+                </div>
+            </aside>
+
+
+
+            <!-- CANVAS -->
+            <section class="canvas-panel">
+                <div class="canvas-grid" id="codingCanvas">
+
+                </div>
+            </section>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="sidebar right-sidebar">
+                <div class="sidebar-inner right-inner">
+                    <div class="inspector-header">
+                        <div class="inspector-title ai-text">
+                            <span class="group-dot ai-bg"></span>
+                            AI Model Inference
+                        </div>
+                        <p>Runs the selected AI model on the input image using categories and threshold.</p>
+                    </div>
+
+                    <div class="inspector-section">
+                        <h3>Inputs</h3>
+
+                        <div class="inspector-row">
+                            <div class="inspector-label data-text">
+                                <span class="mini-dot data-bg"></span>
+                                Image
+                            </div>
+                            <p>Input image data</p>
+                        </div>
+
+                        <div class="inspector-row">
+                            <div class="inspector-label category-text">
+                                <span class="mini-dot category-bg"></span>
+                                Categories
+                            </div>
+                            <p>List of categories</p>
+                        </div>
+
+                        <div class="inspector-row">
+                            <div class="inspector-label data-text">
+                                <span class="mini-dot data-bg"></span>
+                                Threshold
+                            </div>
+                            <p>Confidence threshold</p>
+                        </div>
+                    </div>
+
+                    <div class="inspector-section">
+                        <h3>Outputs</h3>
+
+                        <div class="inspector-row">
+                            <div class="inspector-label ai-text">
+                                <span class="mini-dot ai-bg"></span>
+                                Result
+                            </div>
+                            <p>Inference result</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-box">
+                        <div class="preview-head">Result Preview</div>
+                        <div class="preview-body">
+                            <p>No result yet.</p>
+                            <span>Run the model to see output.</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- BOTTOM BAR -->
+        <footer class="bottom-bar">
+            <div class="bottom-left">
+                <button class="zoom-btn">100%</button>
+                <button class="small-tool-btn">＋</button>
+                <button class="small-tool-btn">－</button>
+                <button class="small-tool-btn">⌖</button>
+            </div>
+            <div style="display: flex; gap:12px">
+                <div class="bottom-center">
+                    <div class="console-pill">Data Console</div>
+                </div>
+                <div class="bottom-center">
+                    <div class="console-pill">Functions</div>
+                </div>
+            </div>
+            <div class="bottom-right">
+                <span class="message-text">No messages</span>
+                <span class="status-dot small-green"></span>
+            </div>
+        </footer>
+    </div>
+    <div id="node-context-menu" class="node-context-menu hidden">
+        <button class="context-menu-item" data-action="copy">
+            <span class="context-menu-icon">⧉</span>
+            <span>Copy Node</span>
+        </button>
+
+        <button class="context-menu-item delete-item" data-action="delete">
+            <span class="context-menu-icon">✕</span>
+            <span>Delete Node</span>
+        </button>
+    </div>
+    <script src="studio.js"></script>
+</body>
+
+</html>

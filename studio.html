@@ -25,7 +25,6 @@
 
 <body>
     <div class="studio-shell">
-
         <!-- TOP BAR -->
         <header class="topbar">
             <div class="topbar-left">
@@ -2270,19 +2269,12 @@
                                         <div class="ai-model-sidebar-left">
 
                                             <div class="ai-mini-port-row ">
-                                                <span class="ai-mini-port-label">Port: </span>
+                                                <span class="ai-mini-port-label">Location: </span>
                                                 <select name="port" id="port" class="block-mini-input">
-                                                    <option>D0</option>
-                                                    <option>D1</option>
-                                                    <option>D2</option>
-                                                    <option>D3</option>
-                                                    <option>D4</option>
-                                                    <option>D5</option>
-                                                    <option>D6</option>
-                                                    <option>D7</option>
-                                                    <option>D8</option>
-                                                    <option>D9</option>
-                                                    <option>D10</option>
+                                                    <option>Front Left</option>
+                                                    <option>Front Right</option>
+                                                    <option>Back Left</option>
+                                                    <option>Back Right</option>
                                                 </select>
                                             </div>
                                             <div class="ai-mini-port-row ">
@@ -2326,12 +2318,24 @@
             <!-- CANVAS -->
             <section class="canvas-panel">
                 <div class="canvas-grid" id="codingCanvas">
+                        <div class="sidebar-list ai-model-list">
+                            <div style="width: 150px;">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-right">
+                                        <div class="ai-mini-port-row ">
+                                            <span class="ai-mini-port-label">On Program Start</span>
+                                            <span class="ai-mini-port-dot any"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
                 </div>
             </section>
 
             <!-- RIGHT SIDEBAR -->
-            <aside class="sidebar right-sidebar">
+            <aside class="sidebar right-sidebar" id="block-info-bar">
                 <div class="sidebar-inner right-inner">
                     <div class="inspector-header">
                         <div class="inspector-title ai-text">
@@ -2396,17 +2400,14 @@
         <footer class="bottom-bar">
             <div class="bottom-left">
                 <button class="zoom-btn">100%</button>
-                <button class="small-tool-btn">＋</button>
+                <button class="small-tool-btn" id="zoomIn">＋</button>
                 <button class="small-tool-btn">－</button>
                 <button class="small-tool-btn">⌖</button>
             </div>
             <div style="display: flex; gap:12px">
-                <div class="bottom-center">
-                    <div class="console-pill">Data Console</div>
-                </div>
-                <div class="bottom-center">
-                    <div class="console-pill">Functions</div>
-                </div>
+               <button class="toolbar-btn">Data Workspace</button>
+                <button class="toolbar-btn">Function Factory</button>
+                 <button class="toolbar-btn" id="Clear">Clear Workspace</button>
             </div>
             <div class="bottom-right">
                 <span class="message-text">No messages</span>
@@ -2423,6 +2424,14 @@
         <button class="context-menu-item delete-item" data-action="delete">
             <span class="context-menu-icon">✕</span>
             <span>Delete Node</span>
+        </button>
+    </div>
+    <div id="canvas-context-menu" class="node-context-menu hidden">
+        
+
+        <button class="context-menu-item delete-item" data-action="delete">
+            <span class="context-menu-icon">✕</span>
+            <span>Clear Workspace</span>
         </button>
     </div>
     <script src="studio.js"></script>

@@ -34,6 +34,9 @@ function setupSidebarDrag() {
     const canvas = document.getElementById("codingCanvas");
 
     sidebarBlocks.forEach(block => {
+        block.addEventListener("click",(e)=>{
+        document.getElementById("block-info-bar").style.display = "flex"
+    })
         block.addEventListener("mousedown", (e) => {
             
 
@@ -41,7 +44,7 @@ function setupSidebarDrag() {
             clone.classList.add("canvas-block");
             clone.style.position = "absolute";
             clone.style.pointerEvents = "none"; // while dragging
-            clone.style.zIndex = "9999";
+            clone.style.zIndex = "20";
 
             document.body.appendChild(clone);
 
@@ -148,14 +151,21 @@ let contextTargetNode = null;
 
 function attachNodeContextMenu(node) {
     node.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
         e.stopPropagation();
-
         contextTargetNode = node;
         openContextMenu(e.clientX, e.clientY);
     });
+
+    node.addEventListener("click",(e)=>{
+        document.getElementById("block-info-bar").style.display = "flex"
+    })
 }
-
-
+document.getElementById("Clear").addEventListener("click",()=>{
+    document.querySelectorAll("#codingCanvas .canvas-block").forEach((el)=>{
+        deleteNode(el)
+    })
+})
 function openContextMenu(x, y) {
     contextMenu.classList.remove("hidden");
 
@@ -206,7 +216,6 @@ contextMenu.addEventListener("click", (e) => {
 
     hideContextMenu();
 });
-
 
 function copyNode(node) {
     const clone = node.cloneNode(true);

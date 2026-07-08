@@ -269,6 +269,9 @@ a{
 .right-sidebar{
     border-right:none;
     display: none;
+    position: absolute;
+    right: 0;
+    height: 100%;
     border-left:1px solid var(--border);
 }
 

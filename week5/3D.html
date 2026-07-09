@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventa | 3D Printing</title>
+
+
+    <link rel="stylesheet" href="/special/nav.css">
+    <link rel="stylesheet" href="3D.css">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <a href="/index.html">
+
+            <div class="left">
+
+                <img src="/week1/asset/Logo.png">
+
+                <h2>
+                    <span class="blue">I</span>nvent<span class="orange">a</span>
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <a href="https://github.com/jakey-techss" target="_blank">
+
+            <div class="right">
+
+                <p class="gray">
+                    Joshua Fineboy-Mark
+                </p>
+
+                <img src="/week1/asset/Github.png">
+
+            </div>
+
+        </a>
+
+    </nav>
+
+
+
+
+
+    <div class="content">
+
+
+        <section id="intro">
+
+
+            <div id="tableOfContent">
+
+                <h3>
+                    On this page
+                </h3>
+
+
+                <ul>
+
+                    <li><a href="#module">
+                            LED Module Fabrication
+                        </a></li>
+
+
+                    <li><a href="#files">
+                            Fabrication Files
+                        </a></li>
+
+
+                    <li><a href="#scan">
+                            Photogrammetry Experiment
+                        </a></li>
+
+
+                    <li><a href="#comparison">
+                            Scan Comparison
+                        </a></li>
+
+
+                    <li><a href="#project">
+                            Final Project Development
+                        </a></li>
+
+
+                    <li><a href="#bom">
+                            Bill of Materials
+                        </a></li>
+
+
+                    <li><a href="#timeline">
+                            Timeline
+                        </a></li>
+
+                </ul>
+
+
+            </div>
+
+
+
+
+
+            <div class="heroContent">
+
+
+                <p class="eyebrow">
+                    Week Documentation • Digital Fabrication
+                </p>
+
+
+                <h1>
+                    3D Printing & Photogrammetry
+                </h1>
+
+
+                <p class="heroText">
+
+                    This week focused on creating a physical component for my
+                    final project while exploring different methods of digital
+                    capture through photogrammetry.
+
+                    I designed and printed a modular LED component using
+                    opaque and semi-transparent plastics, then compared multiple
+                    photogrammetry workflows by scanning the same object using
+                    RealityScan, Polycam, Kiri Engine, and a ChatGPT-assisted
+                    workflow.
+
+                </p>
+
+
+
+
+                <div class="heroImage">
+
+                    <img src="assets/ChatGPT Image Jul 8, 2026, 12_48_01 PM.png">
+
+
+                    <p class="caption">
+
+                        Concept design for the modular LED component. The goal was
+                        to create a physical module that could become part of the
+                        larger Inventa robotic ecosystem.
+
+                    </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <section id="module" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    01
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Fabrication
+                    </p>
+
+                    <h2>
+                        3D Printed LED Module
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <div class="splitLayout">
+
+
+                <div class="textPanel">
+
+
+                    <p>
+
+                        For this assignment I designed a physical component that
+                        could contribute to my final project. I created a modular LED
+                        housing designed to demonstrate how physical components can
+                        attach together as part of a larger robotic system.
+
+                    </p>
+
+
+
+                    <p>
+
+                        The design focuses on controlling light diffusion through
+                        material selection. The outer shell uses opaque plastic while
+                        the light-diffusing section uses semi-transparent material to
+                        create a soft illuminated appearance.
+
+                    </p>
+
+
+
+                    <p>
+
+                        This component also allowed me to test the physical dimensions
+                        and design language that will eventually be used throughout
+                        the modular robot platform.
+
+                    </p>
+
+
+
+                </div>
+
+
+
+
+
+                <div class="imagePanel">
+
+
+                    <img src="assets/LEDMake.jpg">
+
+
+                    <p class="caption">
+
+                        Printed LED enclosure prototype showing the interaction
+                        between transparent and opaque materials.
+
+                    </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="files" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    02
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Fabrication Output
+                    </p>
+
+
+                    <h2>
+                        Design Files
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="downloadGrid">
+
+
+                <a href="assets/LED Module Casing.obj" download="Fusion 360 File">
+                    Fusion 360 File
+                    <br>
+                    <span>.obj</span>
+                </a>
+
+
+                <a href="assets/LED Module_Module Example v1_Body1.stl" download="Casing STL Model">
+                    Casing STL Model
+                    <br>
+                    <span>.stl</span>
+                </a>
+
+                <a href="assets/LED Module_Module Example v1_Body6.stl" download="Cover STL Model">
+                    Cover STL Model
+                    <br>
+                    <span>.stl</span>
+                </a>
+
+                <a href="assets/(Unsaved)_0.4n_0.2mm_PLA_MK4S_22m.bgcode" download="Sliced Print File">
+                    Sliced Print File
+                    <br>
+                    <span>.gcode</span>
+                </a>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="scan" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    03
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Digital Reconstruction
+                    </p>
+
+
+                    <h2>
+                        Photogrammetry Experiment
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="splitLayout">
+
+
+                <div class="textPanel">
+
+
+                    <p>
+
+                        To explore photogrammetry workflows, I captured 64 images
+                        of a teddy bear from multiple angles and used the same source
+                        images across several applications.
+
+                    </p>
+
+
+
+                    <p>
+
+                        The purpose of this experiment was to compare how different
+                        software approaches reconstruct geometry, generate textures,
+                        and handle imperfect real-world scanning conditions.
+
+                    </p>
+
+
+                </div>
+
+
+
+
+                <div class="imagePanel">
+
+                    <img src="assets/Group 62.png">
+
+
+                    <p class="caption">
+
+                        I took over 200 photos to get all the pictures necessary for the photogrammetry software to do
+                        work well enough to produce the following outcomes. Here are some of them
+
+                    </p>
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="comparison" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    04
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Results
+                    </p>
+
+
+                    <h2>
+                        Photogrammetry Comparison
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="comparisonGrid">
+
+
+                <div>
+
+                    <img src="assets/realityscan.png">
+
+                    <h3>
+                        RealityScan
+                    </h3>
+
+                    <p>
+                        Mobile focused workflow with fast reconstruction and strong
+                        texture generation.
+                    </p>
+
+                </div>
+
+
+
+                <div>
+
+                    <img src="assets/polycam.png">
+
+                    <h3>
+                        Polycam
+                    </h3>
+
+                    <p>
+                        Compared for mesh quality, ease of use, and scanning speed.
+                    </p>
+
+                </div>
+
+
+
+                <div>
+
+                    <img src="assets/kiri.png">
+
+                    <h3>
+                        Kiri Engine
+                    </h3>
+
+                    <p>
+                        Evaluated for reconstruction accuracy and final model detail.
+                    </p>
+
+                </div>
+
+
+
+                <div>
+
+                    <img src="assets/ChatGPT.png">
+
+                    <h3>
+                        ChatGPT Workflow
+                    </h3>
+
+                    <p>
+                        Used as an experimental comparison for AI-assisted analysis.
+                    </p>
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="project" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    05
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Final Project
+                    </p>
+
+
+                    <h2>
+                        Modular Robotics Platform
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="splitLayout">
+
+
+                <div class="textPanel">
+
+
+                    <p>
+
+                        The final project is a modular robotic platform centered
+                        around a main hub. The hub acts as the central controller and
+                        allows different modules to be attached through magnetic
+                        pogo-pin connectors.
+
+                    </p>
+
+
+
+                    <p>
+
+                        Modules communicate through a shared I2C bus, allowing sensors,
+                        motors, lighting systems, and controllers to become
+                        interchangeable components.
+
+                    </p>
+
+
+                </div>
+
+
+
+
+                <div class="imagePanel">
+
+                    <img src="assets/Dimensions.png">
+
+
+                    <p class="caption">
+
+                        Concept architecture showing the hub acting as the center of
+                        the modular ecosystem.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="bom" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    06
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Planning
+                    </p>
+
+
+                    <h2>
+                        Bill of Materials
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="bom">
+
+
+                <div>
+                    ESP32-S3 Microcontroller
+                    <span>Main Hub Controller + AI Communication</span>
+                </div>
+
+
+                <div>
+                    Custom Hub PCB
+                    <span>Central Power + Module Communication System</span>
+                </div>
+
+
+                <div>
+                    Pogo Pins + Magnets
+                    <span>Modular Hardware Connections</span>
+                </div>
+
+
+                <div>
+                    Battery + Charging Module
+                    <span>Portable Power System</span>
+                </div>
+
+
+                <div>
+                    Voltage Regulator
+                    <span>Power Management For Sensors And Motors</span>
+                </div>
+
+                <div>
+                    Camera Module
+                    <span>Object Recognition + Vision Data</span>
+                </div>
+
+
+                <div>
+                    Temperature Sensor
+                    <span>Environmental Temperature Data</span>
+                </div>
+
+
+                <div>
+                    Distance Sensor
+                    <span>Obstacle Detection + Navigation</span>
+                </div>
+
+
+                <div>
+                    Gas Sensor
+                    <span>Air Quality Monitoring</span>
+                </div>
+
+
+                <div>
+                    Motion Sensor (IMU)
+                    <span>Movement + Orientation Tracking</span>
+                </div>
+
+                <div>
+                    Microphone Module
+                    <span>Audio Input + Voice Interaction</span>
+                </div>
+
+                <div>
+                    LCD Display Module
+                    <span>Visual Feedback + Data Display</span>
+                </div>
+
+
+                <div>
+                    LED Module
+                    <span>Status Indicators + Visual Responses</span>
+                </div>
+
+
+                <div>
+                    Speaker Module
+                    <span>Audio Feedback + Voice Responses</span>
+                </div>
+
+
+                <div>
+                    Motor Drivers + DC Motors
+                    <span>Wheel Movement + Motion Control</span>
+                </div>
+
+
+                <div>
+                    Wheel Modules
+                    <span>Robot Mobility System</span>
+                </div>
+
+
+                <div>
+                    Joystick Controller
+                    <span>Manual Robot Control</span>
+                </div>
+
+
+                <div>
+                    Wireless Communication Module
+                    <span>Remote Control + Data Transfer</span>
+                </div>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <section id="timeline" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    07
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Schedule
+                    </p>
+
+
+                    <h2>
+                        Next Three Weeks
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="timeline">
+
+
+                <div>
+
+                    <h3>
+                        Week 1 — Hardware Foundation + Software Architecture
+                    </h3>
+
+                    <p>
+                        Establish the core architecture of Inventa by completing the hub,
+                        module connection system, and the foundation of the software stack.
+                    </p>
+
+                    <ul>
+                        <li>Finalize hub enclosure design and physical dimensions</li>
+                        <li>Complete pogo pin + magnetic connector layout</li>
+                        <li>Finalize module communication system using I2C bus</li>
+                        <li>Create first prototype of the main hub</li>
+                        <li>Test power delivery between hub and modules</li>
+                        <li>Set up ESP32 XIAO C3 development environment</li>
+                        <li>Create base firmware for module detection and communication</li>
+                        <li>Create software architecture for sensors, outputs, and movement</li>
+                        <li>Design initial data structure for sensor readings</li>
+                        <li>Create first version of the Inventa control interface</li>
+                    </ul>
+
+                </div>
+
+
+
+
+                <div>
+
+                    <h3>
+                        Week 2 — Module Integration + Robot Intelligence
+                    </h3>
+
+                    <p>
+                        Connect the physical modules together and develop the software
+                        required for the robot to collect data and respond to its environment.
+                    </p>
+
+
+                    <ul>
+
+                        <li>Assemble wheel module and test motor control</li>
+                        <li>Integrate motor drivers with the hub controller</li>
+                        <li>Implement basic movement commands (forward, reverse, turn)</li>
+                        <li>Connect and test environmental sensors</li>
+                        <li>Implement temperature, distance, gas, and motion data collection</li>
+                        <li>Create unified sensor data communication protocol</li>
+                        <li>Build module identification system</li>
+                        <li>Create LED response behaviors based on sensor inputs</li>
+                        <li>Implement LCD display for live sensor information</li>
+                        <li>Test wireless communication between controller and robot</li>
+                        <li>Begin AI/data processing pipeline for interpreting sensor data</li>
+
+                    </ul>
+
+                </div>
+
+
+
+
+
+                <div>
+
+                    <h3>
+                        Week 3 — Final Assembly + Intelligence + Documentation
+                    </h3>
+
+
+                    <p>
+                        Transform the prototype into a complete MVP by finishing software,
+                        improving reliability, and preparing the final demonstration.
+                    </p>
+
+
+                    <ul>
+
+                        <li>Complete final physical assembly of the robot</li>
+                        <li>Finalize all module housings and 3D printed components</li>
+                        <li>Complete software for controlling all connected modules</li>
+                        <li>Create automated behaviors based on sensor input</li>
+                        <li>Implement camera/object recognition workflow</li>
+                        <li>Complete LCD interface and user feedback system</li>
+                        <li>Add speaker responses for robot interactions</li>
+                        <li>Test communication reliability across all modules</li>
+                        <li>Debug hardware failures and improve stability</li>
+                        <li>Capture final photos, videos, and documentation</li>
+                        <li>Complete BOM, timeline, and final project presentation</li>
+
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>

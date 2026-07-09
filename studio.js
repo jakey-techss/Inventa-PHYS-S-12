@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     connectToHub();
     setupSidebarDrag();
 });
-
+let initialScale = 1
 document.querySelectorAll('.sidebar-group-toggle').forEach(toggle => {
     const group = toggle.closest('.collapsible-group');
     group.classList.toggle('is-collapsed');
@@ -28,6 +28,7 @@ function connectToHub() {
         document.getElementById("hubStatus").innerHTML = `Hub Ready`;
     };
 }
+
 
 function setupSidebarDrag() {
     const sidebarBlocks = document.querySelectorAll(".ai-model-sidebar-block");
@@ -148,7 +149,6 @@ function makeCanvasBlockDraggable(block, canvas) {
 const contextMenu = document.getElementById("node-context-menu");
 let contextTargetNode = null;
 
-
 function attachNodeContextMenu(node) {
     node.addEventListener("contextmenu", (e) => {
         e.preventDefault();
@@ -156,10 +156,6 @@ function attachNodeContextMenu(node) {
         contextTargetNode = node;
         openContextMenu(e.clientX, e.clientY);
     });
-
-    node.addEventListener("click",(e)=>{
-        document.getElementById("block-info-bar").style.display = "flex"
-    })
 }
 document.getElementById("Clear").addEventListener("click",()=>{
     document.querySelectorAll("#codingCanvas .canvas-block").forEach((el)=>{
@@ -214,9 +210,21 @@ contextMenu.addEventListener("click", (e) => {
         deleteNode(contextTargetNode);
     }
 
+    if (action === "node-docs") {
+        openDocs(contextTargetNode);
+    }
+
     hideContextMenu();
 });
-
+function openDocs(node){
+    document.querySelector(".studio-main").style.gridTemplateColumns = "360px auto 360px"
+}
+function closeDocs(){
+     document.querySelector(".studio-main").style.gridTemplateColumns = "360px auto 0px"
+}
+document.getElementById("close").addEventListener("click",()=>{
+    closeDocs()
+})
 function copyNode(node) {
     const clone = node.cloneNode(true);
     const currentLeft = parseInt(node.style.left || 0, 10);

@@ -233,27 +233,28 @@
                         </button>
 
                         <div class="sidebar-list ai-model-list">
-                            <div class="sidebar-list ai-model-list">
-                                <div class="ai-model-sidebar-block">
-                                    <div class="ai-model-sidebar-top">
-                                        <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row category-text">
-                                                <span class="ai-mini-port-dot category-bg"></span>
-                                                <span class="ai-mini-port-label">Column Names</span>
-                                            </div>
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row data-text">
+                                            <span class="ai-mini-port-dot data-bg"></span>
+                                            <span class="ai-mini-port-label">Data</span>
                                         </div>
-
-                                        <div class="ai-model-sidebar-right">
-                                            <div class="ai-mini-port-row data-text ai-output-row">
-                                                <span class="ai-mini-port-label">Dataset</span>
-                                                <span class="ai-mini-port-dot data-bg"></span>
-                                            </div>
+                                        <div class="ai-mini-port-row category-text">
+                                            <span class="ai-mini-port-dot category-bg"></span>
+                                            <span class="ai-mini-port-label">Column Names</span>
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Create Data Set</div>
+                                    <div class="ai-model-sidebar-right">
+                                        <div class="ai-mini-port-row data-text ai-output-row">
+                                            <span class="ai-mini-port-label">Dataset</span>
+                                            <span class="ai-mini-port-dot data-bg"></span>
+                                        </div>
+                                    </div>
                                 </div>
 
+                                <div class="ai-model-sidebar-title">Create Data Set</div>
                             </div>
 
                         </div>
@@ -2313,24 +2314,35 @@
                 </div>
             </aside>
 
-
-
             <!-- CANVAS -->
-            <section class="canvas-panel">
+            <section class="canvas-panel" id="everything">
                 <div class="canvas-grid" id="codingCanvas">
-                        <div class="sidebar-list ai-model-list">
-                            <div style="width: 150px;">
-                                <div class="ai-model-sidebar-top">
-                                    <div class="ai-model-sidebar-right">
-                                        <div class="ai-mini-port-row ">
-                                            <span class="ai-mini-port-label">On Program Start</span>
-                                            <span class="ai-mini-port-dot any"></span>
-                                        </div>
+                    <div class="sidebar-list ai-model-list">
+                        <div style="width: 150px;">
+                            <div class="ai-model-sidebar-top">
+                                <div class="ai-model-sidebar-right">
+                                    <div class="ai-mini-port-row ">
+                                        <span class="ai-mini-port-label">On Program Start</span>
+                                        <span class="ai-mini-port-dot any"></span>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                    </div>
+                     <div class="sidebar-list ai-model-list">
+                        <div style="width: 250px; margin-top: 20px;">
+                            <div class="ai-model-sidebar-top">
+                                <div class="ai-model-sidebar-right">
+                                    <div class="ai-mini-port-row ">
+                                        <span class="ai-mini-port-label">On Data Collection Stopped</span>
+                                        <span class="ai-mini-port-dot any"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 
@@ -2338,10 +2350,19 @@
             <aside class="sidebar right-sidebar" id="block-info-bar">
                 <div class="sidebar-inner right-inner">
                     <div class="inspector-header">
-                        <div class="inspector-title ai-text">
-                            <span class="group-dot ai-bg"></span>
-                            AI Model Inference
+                        <div class="inspector-header-top">
+                            <div class="inspector-title ai-text">
+                                <span class="group-dot ai-bg"></span>
+                                AI Model Inference
+                            </div>
+
+                            <button class="inspector-close-btn" aria-label="Close inspector" id="close">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M6 6L18 18M18 6L6 18" />
+                                </svg>
+                            </button>
                         </div>
+
                         <p>Runs the selected AI model on the input image using categories and threshold.</p>
                     </div>
 
@@ -2399,15 +2420,12 @@
         <!-- BOTTOM BAR -->
         <footer class="bottom-bar">
             <div class="bottom-left">
-                <button class="zoom-btn">100%</button>
-                <button class="small-tool-btn" id="zoomIn">＋</button>
-                <button class="small-tool-btn">－</button>
-                <button class="small-tool-btn">⌖</button>
+
             </div>
             <div style="display: flex; gap:12px">
-               <button class="toolbar-btn">Data Workspace</button>
+                <button class="toolbar-btn">Data Workspace</button>
                 <button class="toolbar-btn">Function Factory</button>
-                 <button class="toolbar-btn" id="Clear">Clear Workspace</button>
+                <button class="toolbar-btn" id="Clear">Clear Workspace</button>
             </div>
             <div class="bottom-right">
                 <span class="message-text">No messages</span>
@@ -2416,24 +2434,22 @@
         </footer>
     </div>
     <div id="node-context-menu" class="node-context-menu hidden">
+        <button class="context-menu-item" data-action="node-docs">
+            <span class="context-menu-icon">📚</span>
+            <span>Open Node Docs</span>
+        </button>
+
         <button class="context-menu-item" data-action="copy">
             <span class="context-menu-icon">⧉</span>
             <span>Copy Node</span>
         </button>
 
         <button class="context-menu-item delete-item" data-action="delete">
-            <span class="context-menu-icon">✕</span>
+            <span class="context-menu-icon">🗑️</span>
             <span>Delete Node</span>
         </button>
     </div>
-    <div id="canvas-context-menu" class="node-context-menu hidden">
-        
 
-        <button class="context-menu-item delete-item" data-action="delete">
-            <span class="context-menu-icon">✕</span>
-            <span>Clear Workspace</span>
-        </button>
-    </div>
     <script src="studio.js"></script>
 </body>
 

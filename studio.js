@@ -63,8 +63,16 @@ function setupSidebarDrag() {
         block.addEventListener("click", (e) => {
             document.getElementById("block-info-bar").style.display = "flex"
         })
-        block.addEventListener("mousedown", (e) => {
+        let universalConnector = document.createElement("div")
+        universalConnector.classList.add('ai-mini-port-row')
+        universalConnector.innerHTML = `
+        <span class="ai-mini-port-dot any"></span>
+        <span class="ai-mini-port-label">Universal Connector</span>
+        `                 
 
+        block.children[0].children[0].appendChild(universalConnector)
+        block.addEventListener("mousedown", (e) => {
+             
 
             const clone = block.cloneNode(true);
             clone.classList.add("canvas-block");
@@ -254,7 +262,10 @@ function openDocs(node) {
         return item.name == node.lastElementChild.innerHTML
     })
     setTimeout(()=>{
-        document.getElementById("Docsheader").children[1].innerHTML = nodeInfo.name
+        document.getElementById("Docsheader").innerHTML = `<div class="inspector-title ${nodeInfo.blockCategory}-text" id="Docsheader">
+                                <span class="group-dot ${nodeInfo.blockCategory}-bg"></span>
+                                <span>${nodeInfo.name}</span>
+                            </div>`
     document.getElementById("nodeDes").innerHTML = nodeInfo.description
     let inputContainer = document.querySelector(".inspector-section")
     let outputContainer = document.getElementById("outputHolder")

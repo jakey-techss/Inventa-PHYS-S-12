@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventa | Sensors & CNC Planning</title>
+
+    <link rel="stylesheet" href="/special/nav.css">
+    <link rel="stylesheet" href="input-devices.css">
+
+
+    <link rel="apple-touch-icon" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" href="/favicon_io/favicon-32x32.png">
+
+</head>
+
+
+<body>
+    <nav>
+
+        <a href="/index.html">
+
+            <div class="left">
+
+                <img src="/week1/asset/Logo.png">
+
+                <h2>
+                    <span class="blue">I</span>nvent<span class="orange">a</span>
+                </h2>
+
+            </div>
+
+        </a>
+
+
+        <a href="https://github.com/jakey-techss" target="_blank">
+
+            <div class="right">
+
+                <p class="gray">
+                    Joshua Fineboy-Mark
+                </p>
+
+                <img src="/week1/asset/Github.png">
+
+            </div>
+
+        </a>
+
+    </nav>
+
+    <div class="content">
+
+
+
+        <section id="intro">
+
+
+            <div id="tableOfContent">
+
+
+                <h3>
+                    On this page
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        <a href="#weight">
+                            Capacitive Weight Sensor
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#weightCalibration">
+                            Weight Calibration
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#temperature">
+                            Temperature Sensor
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#tempCalibration">
+                            Temperature Calibration
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#cnc">
+                            InventaKit CNC Organizer
+                        </a>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+
+
+
+
+
+            <div class="heroContent">
+
+
+                <p class="eyebrow">
+                    Week Documentation • Digital Fabrication
+                </p>
+
+
+                <h1>
+                    Sensors,
+                    <br>
+                    Calibration
+                    & CNC
+                </h1>
+
+
+
+                <p class="heroText">
+
+                    This week focused on designing custom sensing systems, collecting
+                    calibration data, and creating a manufacturing plan for an
+                    InventaKit organizer (CNC Assignment).
+
+                </p>
+
+
+
+                <div class="heroImage">
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/W7H_Y4cN2T4?si=R8q_OR1YPhCCi6qb"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+                    <p class="caption">
+
+                        Concept design for the InventaKit organizer that will be
+                        manufactured using CNC fabrication methods.
+
+                    </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="weight" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    01
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Sensor Development
+                    </p>
+
+                    <h2>
+                        Capacitive Weight Sensor
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="splitLayout">
+
+
+                <div class="textPanel">
+
+
+                    <p>
+
+                        A capacitive weight sensor was created using an ESP32
+                        microcontroller to measure changes caused by applied force.
+
+                    </p>
+
+
+                    <p>
+
+                        The sensor continuously records capacitance changes without
+                        using the delay() function. Instead, timer-based updates were
+                        implemented to allow the system to remain responsive.
+
+                    </p>
+
+
+                    <p>
+
+                        The raw sensor readings were later converted into meaningful
+                        weight measurements through calibration.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="imagePanel">
+
+                    <img src="assets/weight+weight1.jpg">
+
+
+                    <p class="caption">
+
+                        Prototype of the custom capacitive weight measurement system.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <section class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+                <span class="sectionNumber">
+                    02
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Hardware
+                    </p>
+
+
+                    <h2>
+                        Weight Sensor Schematic
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="imagePanel">
+
+                <img src="assets/txrx_schematic.jpg">
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <section id="weightCalibration" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    03
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Data Analysis
+                    </p>
+
+
+                    <h2>
+                        Weight Calibration
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="textPanel">
+
+
+                <p>
+
+                    Known weights were applied to the sensor while recording the
+                    raw values returned by the ESP32.
+
+                    The relationship between capacitance and weight was analyzed
+                    through calibration graphs to determine how sensor readings
+                    correspond to physical measurements. It was best determined to be Quartic using the R&sup2;
+                    consideration factor. Calibration was done in desmos graphing calculator
+
+                </p>
+
+
+            </div>
+
+
+
+            <img src="assets/Screenshot 2026-07-14 at 11.29.22.png">
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <section class="sectionBlock codeBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    04
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Programming
+                    </p>
+
+
+                    <h2>
+                        Weight Sensor Code
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <pre>
+
+long result;   //variable for the result of the tx_rx measurement.
+int analog_pin = A0;
+int tx_pin = D4;
+
+void setup() {
+    pinMode(tx_pin, OUTPUT);      //Pin 4 provides the voltage step
+    Serial.begin(9600);
+}
+
+void loop() {
+    long x = tx_rx();
+    result = (1.4154415*(pow(10,-16)))*pow(x,4) - (1.1409937*(pow(10,-10)))*pow(x,3) + (0.000034409583*(pow(x,2))) - (4.5992302*x) + 229827.16;
+    result*=(80/70);
+    Serial.println(result);
+}
+
+
+long tx_rx(){         // Function to execute rx_tx algorithm and return a value
+                      // that depends on coupling of two electrodes.
+                      // Value returned is a long integer.
+  int read_high;
+  int read_low;
+  int diff;
+  long int sum;
+  int N_samples = 100; 
+
+  sum = 0;
+
+  for (int i = 0; i < N_samples; i++){
+   digitalWrite(tx_pin,HIGH);              // Step the voltage high on conductor 1.
+   read_high = analogRead(analog_pin);     // Measure response of conductor 2.
+   delayMicroseconds(2);                 // Delay to reach steady state.
+   digitalWrite(tx_pin,LOW);               // Step the voltage to zero on conductor 1.
+   read_low = analogRead(analog_pin);      // Measure response of conductor 2.
+   diff = read_high - read_low;            // desired answer is the difference between high and low.
+   sum += diff;                            // Sums up N_samples of these measurements.
+ }
+  return sum;
+}     
+
+</pre>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="temperature" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    05
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Embedded System
+                    </p>
+
+
+                    <h2>
+                        Temperature Sensor + OLED
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="splitLayout">
+
+
+                <div class="textPanel">
+
+
+                    <p>
+
+                        The second sensor system uses a thermistor to measure
+                        temperature and an OLED display to show live readings.
+
+                    </p>
+
+
+                    <p>
+
+                        The system was designed using C++ classes to separate the
+                        temperature sensor logic from the display system.
+
+                    </p>
+
+
+                    <p>
+
+                        Timer-based updates were used instead of delay() to manage
+                        sensor readings and screen refreshes.
+
+                    </p>
+
+
+                </div>
+
+
+
+
+                <div class="imagePanel">
+
+                    <img src="assets/IMG_20260714_150134240.jpg">
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    06
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Hardware
+                    </p>
+
+
+                    <h2>
+                        Temperature Schematic
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <img src="assets/thermistor_schem.jpg">
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <section id="tempCalibration" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    07
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Calibration
+                    </p>
+
+
+                    <h2>
+                        Temperature Data
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <p>
+
+                The thermistor has a nonlinear relationship between resistance
+                and temperature. Calibration was performed by comparing ADC
+                values from the microcontroller against known temperatures.
+
+            </p>
+
+
+
+            <img src="assets/Thermistor_data.png">
+
+
+
+        </section>
+
+
+        <section class="sectionBlock codeBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    04
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Programming
+                    </p>
+
+
+                    <h2>
+                        Thermistor Code
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+            <pre>
+                #include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define I2C_SDA D4
+#define I2C_SCL D5
+
+
+TwoWire I2C_screen = TwoWire(0);
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &I2C_screen, -1);
+
+class Thermometer{
+  int ThermistorPin;
+  int Vo;
+  float R1 = 10000;
+  float R2, T;
+  float A = 3.354e-03;
+  float B = 2.5698e-4;
+  long prevMilli=0;
+  int delayTime = 0;
+  int lastT = getTemperature();
+  
+  public:
+  Thermometer(int pin, int delay){
+    ThermistorPin = pin;
+    delayTime = delay;
+
+  }
+
+  float getTemperature(){
+    if(millis()-prevMilli >= delayTime){
+      prevMilli = millis();
+      Vo = analogRead(ThermistorPin);
+      R2 = R1 * 1/(4095.0 / (float)Vo - 1.0);  //Calculate resistance of thermistor from voltage divider math.
+      T = (1.0 / (A + B*log(R2/R1) ));  // Calculate temperature using datasheet formula.
+      T = T - 273.15;  
+      lastT = T;
+    }
+    return lastT;
+  }
+
+};
+
+Thermometer term(A0,1000);
+void setup() {
+  Serial.begin(9600); 
+  I2C_screen.begin(I2C_SDA, I2C_SCL, 10000);
+
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    Serial.println("SSD1306 allocation failed");
+    while (1);
+  }
+
+  
+
+  display.setTextColor(SSD1306_WHITE);
+  display.setTextSize(2);
+  display.setCursor(0,0); 
+  display.println(term.getTemperature());
+  display.display();
+}
+
+void loop() {
+  display.clearDisplay();
+  display.setCursor(0,0); 
+  display.print("Temp: ");
+  display.println(term.getTemperature());
+  display.display();
+}   
+
+</pre>
+
+
+
+        </section>
+
+
+
+
+
+        <section id="cnc" class="sectionBlock">
+
+
+            <div class="sectionHeading">
+
+
+                <span class="sectionNumber">
+                    08
+                </span>
+
+
+                <div>
+
+                    <p class="sectionLabel">
+                        Manufacturing
+                    </p>
+
+
+                    <h2>
+                        InventaKit CNC Organizer
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="splitLayout">
+
+
+                <div class="textPanel">
+
+
+                    <p>
+
+                        For the CNC assignment I designed an organizer for the
+                        InventaKit ecosystem.
+
+                    </p>
+
+
+                    <p>
+
+                        The organizer will store modules, sensors, cables, and
+                        electronic components while maintaining the modular design
+                        language of Inventa.
+
+                    </p>
+
+
+                    <p>
+
+                        The design will be manufactured using CNC routing from sheet
+                        material such as plywood or OSB.
+
+                    </p>
+
+
+                </div>
+
+
+
+
+                <div class="imagePanel">
+
+
+                    <img src="assets/ChatGPT Image Jul 12, 2026, 11_29_13 PM.png">
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>

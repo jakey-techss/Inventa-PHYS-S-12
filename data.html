@@ -27,17 +27,17 @@
 <body>
 
 
-<div class="data-workspace">
+    <div class="data-workspace">
 
 
-<!-- =========================
+        <!-- =========================
      TOP BAR
 ========================= -->
 
-<header class="data-topbar">
+        <header class="data-topbar">
 
 
-    <div class="topbar-left">
+            <div class="topbar-left">
                 <a href="/index.html" class="brand">
                     <img src="/week1/asset/Logo.png" alt="Inventa Logo">
                     <div class="brand-text">
@@ -49,524 +49,385 @@
 
 
 
-    <div class="data-top-actions">
+            <div class="data-top-actions">
 
 
-        <div class="hub-status">
-
-            <span></span>
-
-            Hub Connected
-
-        </div>
+                <div class="studio-status">
+                    <span class="status-dot-hub" id="hubStatusDot"></span>
+                    <span id="hubStatus">Connecting To Hub</span>
+                </div>
 
 
-        <button class="icon-button">
-            ⚙
-        </button>
+                <button class="icon-button">
+                    ⚙
+                </button>
 
 
-    </div>
+            </div>
 
 
-</header>
+        </header>
 
+        <div class="data-main">
 
-
-
-
-<!-- =========================
-     MAIN AREA
-========================= -->
-
-<div class="data-main">
-
-
-
-
-
-<!-- =========================
+            <!-- =========================
      DATASET SIDEBAR
 ========================= -->
 
 
-<aside class="dataset-sidebar">
+            <aside class="dataset-sidebar">
 
 
-<div class="sidebar-title">
+                <div class="sidebar-title">
 
-    <h2>
-        Datasets
-    </h2>
+                    <h2>
+                        Datasets
+                    </h2>
 
 
-    <button class="new-dataset">
-        + New
-    </button>
+                    <button class="new-dataset">
+                        + New
+                    </button>
 
 
-</div>
+                </div>
 
+                <div class="dataset-search">
 
+                    <input placeholder="Search datasets...">
 
+                </div>
 
-<div class="dataset-search">
+                <div class="dataset-list">
 
-<input placeholder="Search datasets...">
 
-</div>
 
+                    <div class="dataset-item active">
 
 
+                        <div class="dataset-icon sensor">
+                            📊
+                        </div>
 
 
+                        <div>
 
-<div class="dataset-list">
+                            <h3>
+                                Dashboard
+                            </h3>
 
+                            <p>
+                                Manage all your datasets
+                            </p>
 
+                        </div>
 
-<div class="dataset-item active">
 
+                    </div>
 
-<div class="dataset-icon sensor">
-    ◉
-</div>
 
 
-<div>
 
-<h3>
-Obstacle Detection
-</h3>
 
-<p>
-Distance Sensor
-</p>
+                    <div class="dataset-item">
 
-</div>
 
+                        <div class="dataset-icon camera">
+                            ◉
+                        </div>
 
-</div>
 
+                        <div>
 
+                            <h3>
+                                Vision Dataset
+                            </h3>
 
+                            <p>
+                                Camera Module
+                            </p>
 
+                        </div>
 
-<div class="dataset-item">
 
+                    </div>
 
-<div class="dataset-icon camera">
-    ◉
-</div>
 
 
-<div>
 
-<h3>
-Vision Dataset
-</h3>
 
-<p>
-Camera Module
-</p>
+                    <div class="dataset-item">
 
-</div>
 
+                        <div class="dataset-icon temp">
+                            ◉
+                        </div>
 
-</div>
 
+                        <div>
 
+                            <h3>
+                                Environment Data
+                            </h3>
 
+                            <p>
+                                Temperature Sensor
+                            </p>
 
+                        </div>
 
-<div class="dataset-item">
 
+                    </div>
 
-<div class="dataset-icon temp">
-    ◉
-</div>
 
 
-<div>
 
-<h3>
-Environment Data
-</h3>
+                </div>
 
-<p>
-Temperature Sensor
-</p>
 
-</div>
 
+            </aside>
 
-</div>
 
 
 
 
-</div>
 
 
-
-</aside>
-
-
-
-
-
-
-
-<!-- =========================
+            <!-- =========================
      WORKSPACE CONTENT
 ========================= -->
 
-<main class="dataset-workspace">
+            <main class="dataset-workspace">
 
 
 
 
 
-<!-- DATASET HEADER -->
+                <!-- DATASET HEADER -->
 
-<section class="dataset-header">
+                <section class="dataset-header">
 
 
-<div>
+                    <div>
 
 
-<h2>
-Obstacle Detection
-</h2>
+                        <h2>
+                            Dashboard
+                        </h2>
 
 
-<p>
-Created from Distance Sensor Module
-</p>
+                        <p>
+                            Create and manage all your datasets
+                        </p>
 
 
-</div>
+                    </div>
 
 
 
-<div class="dataset-actions">
+                    <div class="dataset-actions">
+                        <a href="studio.html"><button>
+                            Return To Studio
+                        </button></a>
+                         <button>
+                            Scan Hub
+                        </button>
 
+                        <button>
+                            Import Dataset
+                        </button>
 
-<button>
-Import CSV
-</button>
+                        <button>
+                            Export Dataset
+                        </button>
 
-<button>
-Export
-</button>
+                    </div>
 
-<button>
-Duplicate
-</button>
 
-<button class="danger">
-Delete
-</button>
+                </section>
 
-<button class="primary">
-Train AI
-</button>
+                <!-- STAT CARDS -->
 
+                <section class="dataset-stats">
 
 
-</div>
 
+                    <div class="stat-card">
 
-</section>
+                        <span>
+                            Samples
+                        </span>
 
+                        <strong>
+                            12,480
+                        </strong>
 
+                    </div>
 
 
 
 
+                    <div class="stat-card">
 
-<!-- STAT CARDS -->
+                        <span>
+                            Number Of Detected Sensors
+                        </span>
 
+                        <strong>
+                            5
+                        </strong>
 
-<section class="dataset-stats">
+                    </div>
 
 
 
-<div class="stat-card">
 
-<span>
-Samples
-</span>
+                    <div class="stat-card">
 
-<strong>
-12,480
-</strong>
+                        <span>
+                            Classes
+                        </span>
 
-</div>
+                        <strong>
+                            2
+                        </strong>
 
+                    </div>
 
 
 
-<div class="stat-card">
 
-<span>
-Features
-</span>
+                    <div class="stat-card">
 
-<strong>
-8
-</strong>
+                        <span>
+                            Source
+                        </span>
 
-</div>
+                        <strong>
+                            I2C Sensor
+                        </strong>
 
+                    </div>
+                </section>
 
-
-
-<div class="stat-card">
-
-<span>
-Classes
-</span>
-
-<strong>
-3
-</strong>
-
-</div>
-
-
-
-
-<div class="stat-card">
-
-<span>
-Source
-</span>
-
-<strong>
-I2C Sensor
-</strong>
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- =========================
-     PIPELINE
-========================= -->
-
-
-<section class="panel pipeline-panel">
-
-
-<div class="panel-header">
-
-<h3>
-Dataset Pipeline
-</h3>
-
-</div>
-
-
-
-
-<div class="pipeline">
-
-
-<div class="pipeline-step active">
-
-<div class="pipeline-dot"></div>
-
-Raw
-
-</div>
-
-
-
-<div class="pipeline-line"></div>
-
-
-
-<div class="pipeline-step active">
-
-<div class="pipeline-dot"></div>
-
-Cleaned
-
-</div>
-
-
-
-<div class="pipeline-line"></div>
-
-
-
-
-<div class="pipeline-step">
-
-<div class="pipeline-dot"></div>
-
-Labeled
-
-</div>
-
-
-
-<div class="pipeline-line"></div>
-
-
-
-
-<div class="pipeline-step">
-
-<div class="pipeline-dot"></div>
-
-AI Ready
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- =========================
+                <!-- =========================
      SENSOR MODULES
 ========================= -->
 
 
-<section class="panel">
+                <section class="panel">
 
 
-<div class="panel-header">
+                    <div class="panel-header">
 
-<h3>
-Connected Hardware
-</h3>
+                        <h3>
+                            Connected Hardware
+                        </h3>
 
 
-<span class="live">
-LIVE
-</span>
+                        <span class="live">
+                            LIVE
+                        </span>
 
 
-</div>
+                    </div>
 
 
 
 
-<div class="sensor-grid">
+                    <div class="sensor-grid">
 
 
 
-<div class="sensor-card">
+                        <div class="sensor-card">
 
 
-<div class="sensor-title">
+                            <div class="sensor-title">
 
-<span></span>
+                                <span></span>
 
-Distance Sensor
+                                Distance Sensor
 
-</div>
+                            </div>
 
 
-<h2>
-2.54 m
-</h2>
+                            <h2>
+                                2.54 m
+                            </h2>
 
 
-<p>
-I2C Address: 0x31
-</p>
+                            <p>
+                                I2C Address: 0x31
+                            </p>
 
 
-</div>
+                        </div>
 
 
 
 
 
 
-<div class="sensor-card">
+                        <div class="sensor-card">
 
 
-<div class="sensor-title">
+                            <div class="sensor-title">
 
-<span></span>
+                                <span></span>
 
-Temperature
+                                Temperature
 
-</div>
+                            </div>
 
 
-<h2>
-22.4°C
-</h2>
+                            <h2>
+                                22.4°C
+                            </h2>
 
 
-<p>
-I2C Address: 0x44
-</p>
+                            <p>
+                                I2C Address: 0x44
+                            </p>
 
 
-</div>
+                        </div>
 
 
 
 
 
-<div class="sensor-card">
+                        <div class="sensor-card">
 
 
-<div class="sensor-title">
+                            <div class="sensor-title">
 
-<span></span>
+                                <span></span>
 
-Camera Module
+                                Camera Module
 
-</div>
+                            </div>
 
 
-<h2>
-Streaming
-</h2>
+                            <h2>
+                                Streaming
+                            </h2>
 
 
-<p>
-Resolution: 1280x720
-</p>
+                            <p>
+                                Resolution: 1280x720
+                            </p>
 
 
-</div>
+                        </div>
 
 
 
-</div>
+                    </div>
 
 
 
-</section>
+                </section>
 
 
 
@@ -576,128 +437,128 @@ Resolution: 1280x720
 
 
 
-<!-- =========================
+                <!-- =========================
      LIVE DATA + CONFIG
 ========================= -->
 
 
-<div class="workspace-grid">
+                <div class="workspace-grid">
 
 
 
 
 
-<section class="panel data-preview">
+                    <section class="panel data-preview">
 
 
-<div class="panel-header">
+                        <div class="panel-header">
 
-<h3>
-Live Data Preview
-</h3>
+                            <h3>
+                                Live Data Preview
+                            </h3>
 
 
-<span class="recording">
-● Recording
-</span>
+                            <span class="recording">
+                                ● Recording
+                            </span>
 
 
-</div>
+                        </div>
 
 
 
 
 
-<table>
+                        <table>
 
 
-<thead>
+                            <thead>
 
-<tr>
+                                <tr>
 
-<th>
-Distance
-</th>
+                                    <th>
+                                        Distance
+                                    </th>
 
-<th>
-Temperature
-</th>
+                                    <th>
+                                        Temperature
+                                    </th>
 
-<th>
-Label
-</th>
+                                    <th>
+                                        Label
+                                    </th>
 
-</tr>
+                                </tr>
 
-</thead>
+                            </thead>
 
 
 
-<tbody>
+                            <tbody>
 
 
-<tr>
+                                <tr>
 
-<td>
-2.31
-</td>
+                                    <td>
+                                        2.31
+                                    </td>
 
-<td>
-21.5°C
-</td>
+                                    <td>
+                                        21.5°C
+                                    </td>
 
-<td class="safe">
-Safe
-</td>
+                                    <td class="safe">
+                                        Safe
+                                    </td>
 
-</tr>
+                                </tr>
 
 
 
-<tr>
+                                <tr>
 
-<td>
-5.82
-</td>
+                                    <td>
+                                        5.82
+                                    </td>
 
-<td>
-28.2°C
-</td>
+                                    <td>
+                                        28.2°C
+                                    </td>
 
-<td class="warning">
-Warning
-</td>
+                                    <td class="warning">
+                                        Warning
+                                    </td>
 
-</tr>
+                                </tr>
 
 
 
-<tr>
+                                <tr>
 
-<td>
-1.42
-</td>
+                                    <td>
+                                        1.42
+                                    </td>
 
-<td>
-20.8°C
-</td>
+                                    <td>
+                                        20.8°C
+                                    </td>
 
-<td class="safe">
-Safe
-</td>
+                                    <td class="safe">
+                                        Safe
+                                    </td>
 
-</tr>
+                                </tr>
 
 
-</tbody>
+                            </tbody>
 
 
-</table>
+                        </table>
 
 
 
 
-</section>
+                    </section>
 
 
 
@@ -708,58 +569,58 @@ Safe
 
 
 
-<section class="panel configure-panel">
+                    <section class="panel configure-panel">
 
 
-<div class="panel-header">
+                        <div class="panel-header">
 
-<h3>
-Configure Dataset
-</h3>
+                            <h3>
+                                Configure Dataset
+                            </h3>
 
 
-</div>
+                        </div>
 
 
 
 
 
-<label>
+                        <label>
 
-Dataset Name
+                            Dataset Name
 
-<input value="Obstacle Detection">
+                            <input value="Obstacle Detection">
 
-</label>
+                        </label>
 
 
 
 
 
 
-<label>
+                        <label>
 
-Sensor Module
+                            Sensor Module
 
 
-<select>
+                            <select>
 
-<option>
-Distance Sensor
-</option>
+                                <option>
+                                    Distance Sensor
+                                </option>
 
-<option>
-Camera Module
-</option>
+                                <option>
+                                    Camera Module
+                                </option>
 
-<option>
-Temperature Sensor
-</option>
+                                <option>
+                                    Temperature Sensor
+                                </option>
 
-</select>
+                            </select>
 
 
-</label>
+                        </label>
 
 
 
@@ -767,82 +628,82 @@ Temperature Sensor
 
 
 
-<label>
+                        <label>
 
-Capture Mode
+                            Capture Mode
 
 
-<select>
+                            <select>
 
-<option>
-Continuous
-</option>
+                                <option>
+                                    Continuous
+                                </option>
 
 
-<option>
-Manual
-</option>
+                                <option>
+                                    Manual
+                                </option>
 
 
-<option>
-Timed
-</option>
+                                <option>
+                                    Timed
+                                </option>
 
 
-</select>
+                            </select>
 
 
-</label>
+                        </label>
 
 
 
 
 
 
-<label>
+                        <label>
 
-Sample Rate
+                            Sample Rate
 
 
-<input value="100 ms">
+                            <input value="100 ms">
 
 
-</label>
+                        </label>
 
 
 
 
 
 
-<label>
+                        <label>
 
-Number Of Samples
+                            Number Of Samples
 
 
-<input value="1000">
+                            <input value="1000">
 
 
-</label>
+                        </label>
 
 
 
 
 
-<button class="record-button">
+                        <button class="record-button">
 
-Start Collection
+                            Configure Data Collection
 
-</button>
+                        </button>
 
 
 
-</section>
+                    </section>
 
 
 
 
 
-</div>
+                </div>
 
 
 
@@ -853,166 +714,165 @@ Start Collection
 
 
 
-<!-- =========================
+                <!-- =========================
      CHART
 ========================= -->
 
 
-<section class="panel chart-panel">
+                <section class="panel chart-panel">
 
 
-<div class="panel-header">
+                    <div class="panel-header">
 
-<h3>
-Sensor Stream
-</h3>
-
-
-</div>
+                        <h3>
+                            Sensor Stream
+                        </h3>
 
 
-<div class="chart-placeholder">
+                    </div>
 
 
-<div class="chart-grid"></div>
+                    <div class="chart-placeholder">
 
 
-<p>
-Live Sensor Graph
-</p>
+                        <div class="chart-grid"></div>
 
 
-</div>
+                        <p>
+                            Live Sensor Graph
+                        </p>
 
 
-</section>
+                    </div>
 
 
-
+                </section>
 
 
 
 
 
 
-<!-- =========================
+
+
+
+                <!-- =========================
      TIMELINE
 ========================= -->
 
 
-<section class="panel timeline-panel">
+                <section class="panel timeline-panel">
 
 
-<div class="panel-header">
+                    <div class="panel-header">
 
-<h3>
-Dataset Activity Timeline
-</h3>
+                        <h3>
+                            Dataset Activity Timeline
+                        </h3>
 
 
-</div>
+                    </div>
 
 
 
 
-<div class="timeline">
+                    <div class="timeline">
 
 
-<div class="timeline-item">
+                        <div class="timeline-item">
 
 
-<span></span>
+                            <span></span>
 
 
-<div>
+                            <div>
 
-<h4>
-CSV Imported
-</h4>
+                                <h4>
+                                    CSV Imported
+                                </h4>
 
-<p>
-Today • 10:32 AM
-</p>
+                                <p>
+                                    Today • 10:32 AM
+                                </p>
 
-</div>
+                            </div>
 
 
-</div>
+                        </div>
 
 
 
 
 
-<div class="timeline-item">
+                        <div class="timeline-item">
 
 
-<span></span>
+                            <span></span>
 
 
-<div>
+                            <div>
 
-<h4>
-Recording Started
-</h4>
+                                <h4>
+                                    Recording Started
+                                </h4>
 
-<p>
-Today • 10:40 AM
-</p>
+                                <p>
+                                    Today • 10:40 AM
+                                </p>
 
-</div>
+                            </div>
 
 
-</div>
+                        </div>
 
 
 
 
 
-<div class="timeline-item">
+                        <div class="timeline-item">
 
 
-<span></span>
+                            <span></span>
 
 
-<div>
+                            <div>
 
-<h4>
-Labels Updated
-</h4>
+                                <h4>
+                                    Labels Updated
+                                </h4>
 
-<p>
-Today • 10:55 AM
-</p>
+                                <p>
+                                    Today • 10:55 AM
+                                </p>
 
-</div>
+                            </div>
 
 
-</div>
+                        </div>
 
 
 
 
-</div>
+                    </div>
 
 
 
 
-</section>
+                </section>
 
 
 
 
 
 
-</main>
+            </main>
 
 
-</div>
+        </div>
 
 
-</div>
-
-
+    </div>
+    <script src="data.js"></script>
 </body>
 
 </html>

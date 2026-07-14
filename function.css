@@ -33,6 +33,137 @@
     --radius-md: 14px;
     --radius-sm: 10px;
 }
+:root {
+    --bg: #0b0b0f;
+    --panel: #12131a;
+    --panel-2: #171923;
+    --border: rgba(255,255,255,0.08);
+
+    --text: #f5f7fb;
+    --muted: #8f99ad;
+
+    --blue: #5fa8ff;
+    --blue-glow: rgba(95,168,255,0.35);
+}
+
+
+/* Container */
+.inventa-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 280px;
+}
+
+
+/* Label */
+.inventa-label {
+    color: var(--muted);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* Input shell */
+.inventa-input-wrapper {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    height: 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.015)
+        );
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    padding: 0 14px;
+
+    transition:
+        border .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+/* Icon */
+.input-icon {
+
+    color: var(--blue);
+
+    font-size: 14px;
+
+    opacity: .8;
+
+}
+
+
+/* Actual input */
+.inventa-input {
+
+    flex: 1;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: var(--text);
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    font-size: 14px;
+}
+
+
+/* Placeholder */
+.inventa-input::placeholder {
+
+    color: #667085;
+
+}
+
+
+/* Hover */
+.inventa-input-wrapper:hover {
+
+    border-color:
+        rgba(95,168,255,.35);
+
+}
+
+
+/* Focus */
+.inventa-input-wrapper:focus-within {
+
+    border-color: var(--blue);
+
+    background:
+        rgba(95,168,255,.05);
+
+    box-shadow:
+        0 0 0 3px rgba(95,168,255,.12),
+        0 0 25px var(--blue-glow);
+
+}
+
+
+/* Disabled */
+.inventa-input:disabled {
+
+    opacity: .4;
+    cursor: not-allowed;
+
+}
 .any {
   background: white;
   animation: moveGradient 3s linear infinite;
@@ -1229,7 +1360,7 @@ transform:rotate(30deg);
 ========================= */
 .studio-main{
     display:grid;
-    grid-template-columns: 360px auto 0px;
+    grid-template-columns: 360px auto 300px;
     min-height:0;
 }
 
@@ -1246,6 +1377,7 @@ transform:rotate(30deg);
 }
 
 .right-sidebar{
+    width: 300px;
     border-right:none;
     display: block;
     border-left:1px solid var(--border);

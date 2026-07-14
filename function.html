@@ -7,9 +7,9 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Inventa | Studio</title>
+    <title>Inventa | Function Factory</title>
 
-    <link rel="stylesheet" href="studio.css">
+    <link rel="stylesheet" href="function.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
@@ -32,24 +32,22 @@
                     <img src="/week1/asset/Logo.png" alt="Inventa Logo">
                     <div class="brand-text">
                         <h1><span class="blue">I</span>nvent<span class="purple">a</span> Studio</h1>
-                        <p>Visual AI + Robotics Builder</p>
+                        <p>Function Builder</p>
                     </div>
                 </a>
             </div>
 
             <div class="topbar-center">
-                <button class="toolbar-btn">New Notes</button>
-                <button class="toolbar-btn">Save</button>
-                <button class="toolbar-btn">Load</button>
-                <button class="toolbar-btn">Export</button>
+                <div class="inventa-input-wrapper">
+                    <span class="input-icon">◈</span>
+                    <input class="inventa-input" type="text" placeholder="Enter function name..." />
+                </div>
+                <button class="toolbar-btn">New Note</button>
+                <button class="toolbar-btn">New Function</button>
             </div>
 
             <div class="topbar-right">
-                <div class="studio-status">
-                    <span class="status-dot-hub" id="hubStatusDot"></span>
-                    <span id="hubStatus">Connecting To Hub</span>
-                </div>
-                <button class="run-btn">Upload Code</button>
+                <button class="run-btn">Export Node</button>
                 <button class="icon-btn" id="openSettings">⚙</button>
             </div>
         </header>
@@ -2358,7 +2356,7 @@
                             <div class="ai-model-sidebar-top">
                                 <div class="ai-model-sidebar-right">
                                     <div class="ai-mini-port-row ">
-                                        <span class="ai-mini-port-label">On Program Start</span>
+                                        <span class="ai-mini-port-label">On Function Call</span>
                                         <span class="ai-mini-port-dot any" id="onStart"></span>
                                     </div>
                                 </div>
@@ -2366,19 +2364,7 @@
                         </div>
 
                     </div>
-                    <div class="sidebar-list ai-model-list">
-                        <div style="width: 250px; margin-top: 20px;">
-                            <div class="ai-model-sidebar-top">
-                                <div class="ai-model-sidebar-right">
-                                    <div class="ai-mini-port-row ">
-                                        <span class="ai-mini-port-label">On Data Collection Stopped</span>
-                                        <span class="ai-mini-port-dot any" id="dataCollection"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
                 </div>
             </section>
 
@@ -2387,9 +2373,9 @@
                 <div class="sidebar-inner right-inner">
                     <div class="inspector-header">
                         <div class="inspector-header-top">
-                            <div class="inspector-title ai-text" id="Docsheader">
-                                <span class="group-dot ai-bg"></span>
-                                <span></span>
+                            <div class="inspector-title number-text" id="Docsheader">
+                                <span class="group-dot number-bg"></span>
+                                <span>Function Factory</span>
                             </div>
 
                             <button class="inspector-close-btn" aria-label="Close inspector" id="close">
@@ -2420,13 +2406,9 @@
 
             </div>
             <div style="display: flex; gap:12px">
+                <a href="studio.html"><button class="toolbar-btn">Return To Studio</button></a>
                 <a href="data.html"><button class="toolbar-btn">Data Workspace</button></a>
-                <a href="function.html"><button class="toolbar-btn">Function Factory</button></a>
                 <button class="toolbar-btn" id="Clear">Clear Workspace</button>
-            </div>
-            <div class="bottom-right">
-                <span class="message-text" id="logText">No messages</span>
-                <span class="status-dot" id="status-dot-bottom"></span>
             </div>
         </footer>
     </div>
@@ -2609,7 +2591,7 @@
 
     </div>
 
-    <script src="studio.js"></script>
+    <script src="function.js"></script>
 </body>
 
 </html>

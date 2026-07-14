@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Inventa | Data Workspace</title>
+    <link rel="stylesheet" href="studio.css">
+    <link rel="stylesheet" href="data.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+
+
+<div class="data-workspace">
+
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<header class="data-topbar">
+
+
+    <div class="topbar-left">
+                <a href="/index.html" class="brand">
+                    <img src="/week1/asset/Logo.png" alt="Inventa Logo">
+                    <div class="brand-text">
+                        <h1><span class="blue">I</span>nvent<span class="purple">a</span> Studio</h1>
+                        <p>Data Workspace</p>
+                    </div>
+                </a>
+            </div>
+
+
+
+    <div class="data-top-actions">
+
+
+        <div class="hub-status">
+
+            <span></span>
+
+            Hub Connected
+
+        </div>
+
+
+        <button class="icon-button">
+            ⚙
+        </button>
+
+
+    </div>
+
+
+</header>
+
+
+
+
+
+<!-- =========================
+     MAIN AREA
+========================= -->
+
+<div class="data-main">
+
+
+
+
+
+<!-- =========================
+     DATASET SIDEBAR
+========================= -->
+
+
+<aside class="dataset-sidebar">
+
+
+<div class="sidebar-title">
+
+    <h2>
+        Datasets
+    </h2>
+
+
+    <button class="new-dataset">
+        + New
+    </button>
+
+
+</div>
+
+
+
+
+<div class="dataset-search">
+
+<input placeholder="Search datasets...">
+
+</div>
+
+
+
+
+
+
+<div class="dataset-list">
+
+
+
+<div class="dataset-item active">
+
+
+<div class="dataset-icon sensor">
+    ◉
+</div>
+
+
+<div>
+
+<h3>
+Obstacle Detection
+</h3>
+
+<p>
+Distance Sensor
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="dataset-item">
+
+
+<div class="dataset-icon camera">
+    ◉
+</div>
+
+
+<div>
+
+<h3>
+Vision Dataset
+</h3>
+
+<p>
+Camera Module
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="dataset-item">
+
+
+<div class="dataset-icon temp">
+    ◉
+</div>
+
+
+<div>
+
+<h3>
+Environment Data
+</h3>
+
+<p>
+Temperature Sensor
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</aside>
+
+
+
+
+
+
+
+<!-- =========================
+     WORKSPACE CONTENT
+========================= -->
+
+<main class="dataset-workspace">
+
+
+
+
+
+<!-- DATASET HEADER -->
+
+<section class="dataset-header">
+
+
+<div>
+
+
+<h2>
+Obstacle Detection
+</h2>
+
+
+<p>
+Created from Distance Sensor Module
+</p>
+
+
+</div>
+
+
+
+<div class="dataset-actions">
+
+
+<button>
+Import CSV
+</button>
+
+<button>
+Export
+</button>
+
+<button>
+Duplicate
+</button>
+
+<button class="danger">
+Delete
+</button>
+
+<button class="primary">
+Train AI
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- STAT CARDS -->
+
+
+<section class="dataset-stats">
+
+
+
+<div class="stat-card">
+
+<span>
+Samples
+</span>
+
+<strong>
+12,480
+</strong>
+
+</div>
+
+
+
+
+<div class="stat-card">
+
+<span>
+Features
+</span>
+
+<strong>
+8
+</strong>
+
+</div>
+
+
+
+
+<div class="stat-card">
+
+<span>
+Classes
+</span>
+
+<strong>
+3
+</strong>
+
+</div>
+
+
+
+
+<div class="stat-card">
+
+<span>
+Source
+</span>
+
+<strong>
+I2C Sensor
+</strong>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     PIPELINE
+========================= -->
+
+
+<section class="panel pipeline-panel">
+
+
+<div class="panel-header">
+
+<h3>
+Dataset Pipeline
+</h3>
+
+</div>
+
+
+
+
+<div class="pipeline">
+
+
+<div class="pipeline-step active">
+
+<div class="pipeline-dot"></div>
+
+Raw
+
+</div>
+
+
+
+<div class="pipeline-line"></div>
+
+
+
+<div class="pipeline-step active">
+
+<div class="pipeline-dot"></div>
+
+Cleaned
+
+</div>
+
+
+
+<div class="pipeline-line"></div>
+
+
+
+
+<div class="pipeline-step">
+
+<div class="pipeline-dot"></div>
+
+Labeled
+
+</div>
+
+
+
+<div class="pipeline-line"></div>
+
+
+
+
+<div class="pipeline-step">
+
+<div class="pipeline-dot"></div>
+
+AI Ready
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     SENSOR MODULES
+========================= -->
+
+
+<section class="panel">
+
+
+<div class="panel-header">
+
+<h3>
+Connected Hardware
+</h3>
+
+
+<span class="live">
+LIVE
+</span>
+
+
+</div>
+
+
+
+
+<div class="sensor-grid">
+
+
+
+<div class="sensor-card">
+
+
+<div class="sensor-title">
+
+<span></span>
+
+Distance Sensor
+
+</div>
+
+
+<h2>
+2.54 m
+</h2>
+
+
+<p>
+I2C Address: 0x31
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="sensor-card">
+
+
+<div class="sensor-title">
+
+<span></span>
+
+Temperature
+
+</div>
+
+
+<h2>
+22.4°C
+</h2>
+
+
+<p>
+I2C Address: 0x44
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="sensor-card">
+
+
+<div class="sensor-title">
+
+<span></span>
+
+Camera Module
+
+</div>
+
+
+<h2>
+Streaming
+</h2>
+
+
+<p>
+Resolution: 1280x720
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     LIVE DATA + CONFIG
+========================= -->
+
+
+<div class="workspace-grid">
+
+
+
+
+
+<section class="panel data-preview">
+
+
+<div class="panel-header">
+
+<h3>
+Live Data Preview
+</h3>
+
+
+<span class="recording">
+● Recording
+</span>
+
+
+</div>
+
+
+
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+Distance
+</th>
+
+<th>
+Temperature
+</th>
+
+<th>
+Label
+</th>
+
+</tr>
+
+</thead>
+
+
+
+<tbody>
+
+
+<tr>
+
+<td>
+2.31
+</td>
+
+<td>
+21.5°C
+</td>
+
+<td class="safe">
+Safe
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+5.82
+</td>
+
+<td>
+28.2°C
+</td>
+
+<td class="warning">
+Warning
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+1.42
+</td>
+
+<td>
+20.8°C
+</td>
+
+<td class="safe">
+Safe
+</td>
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="panel configure-panel">
+
+
+<div class="panel-header">
+
+<h3>
+Configure Dataset
+</h3>
+
+
+</div>
+
+
+
+
+
+<label>
+
+Dataset Name
+
+<input value="Obstacle Detection">
+
+</label>
+
+
+
+
+
+
+<label>
+
+Sensor Module
+
+
+<select>
+
+<option>
+Distance Sensor
+</option>
+
+<option>
+Camera Module
+</option>
+
+<option>
+Temperature Sensor
+</option>
+
+</select>
+
+
+</label>
+
+
+
+
+
+
+
+<label>
+
+Capture Mode
+
+
+<select>
+
+<option>
+Continuous
+</option>
+
+
+<option>
+Manual
+</option>
+
+
+<option>
+Timed
+</option>
+
+
+</select>
+
+
+</label>
+
+
+
+
+
+
+<label>
+
+Sample Rate
+
+
+<input value="100 ms">
+
+
+</label>
+
+
+
+
+
+
+<label>
+
+Number Of Samples
+
+
+<input value="1000">
+
+
+</label>
+
+
+
+
+
+<button class="record-button">
+
+Start Collection
+
+</button>
+
+
+
+</section>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     CHART
+========================= -->
+
+
+<section class="panel chart-panel">
+
+
+<div class="panel-header">
+
+<h3>
+Sensor Stream
+</h3>
+
+
+</div>
+
+
+<div class="chart-placeholder">
+
+
+<div class="chart-grid"></div>
+
+
+<p>
+Live Sensor Graph
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     TIMELINE
+========================= -->
+
+
+<section class="panel timeline-panel">
+
+
+<div class="panel-header">
+
+<h3>
+Dataset Activity Timeline
+</h3>
+
+
+</div>
+
+
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+
+<span></span>
+
+
+<div>
+
+<h4>
+CSV Imported
+</h4>
+
+<p>
+Today • 10:32 AM
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="timeline-item">
+
+
+<span></span>
+
+
+<div>
+
+<h4>
+Recording Started
+</h4>
+
+<p>
+Today • 10:40 AM
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="timeline-item">
+
+
+<span></span>
+
+
+<div>
+
+<h4>
+Labels Updated
+</h4>
+
+<p>
+Today • 10:55 AM
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+</div>
+
+
+</body>
+
+</html>

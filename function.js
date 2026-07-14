@@ -23,8 +23,6 @@ const nodeLibrary = [
     )
 ]
 document.addEventListener("DOMContentLoaded", () => {
-    log("Connecting To Hub", "process");
-    connectToHub();
     setupSidebarDrag();
 });
 let initialScale = 1
@@ -396,16 +394,6 @@ tabs.forEach(tab => {
 
 });
 
-function log(message, type) {
-    document.getElementById("logText").innerHTML = message;
-    if (type.toLowerCase() == "error") {
-        document.getElementById("status-dot-bottom").style.backgroundColor = "var(--alert)"
-    } else if (type.toLowerCase() == "process") {
-        document.getElementById("status-dot-bottom").style.backgroundColor = "var(--warn)"
-    } else {
-        document.getElementById("status-dot-bottom").style.backgroundColor = "var(--success)"
-    }
-}
 
 document.getElementById("searchNodes").addEventListener("input", () => {
     document.querySelectorAll(".ai-model-sidebar-block").forEach((el) => {

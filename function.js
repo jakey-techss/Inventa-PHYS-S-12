@@ -20,11 +20,24 @@ const nodeLibrary = [
         ],
         "Create a classification model that can classify any input into given categories by using the categories variable and condition. This can be used in 'Predict' node to get output from the model",
         "ai"
+    ),
+    new node("Create Regression Model",
+        [
+            { input: "Data Column", category: "data", acceptedTypes: ["DataColumn", " Variable&lt;List&gt;"], description: "The data column that will be passed into the AI model for regression." },
+            { input: "Factor Columns", category: "category", acceptedTypes: ["Variable&lt;List&gt;"], description: "A list of columns that should be taken into account when creating thee regression. Must be columns containing numerical data" },
+        ],
+        [
+            { output: "AI Model", category: "ai", outputType: "AI Model", description: "An AI Model that can be used to predict outcomes using data" },
+        ],
+        "Create a regression model that trains on collected data and can make numerical predictions, taking into account the necessary factors",
+        "ai"
     )
 ]
 document.addEventListener("DOMContentLoaded", () => {
     log("Connecting To Hub", "process");
-    connectToHub();
+    setInterval(() => {
+        connectToHub();
+    }, 5000)
     setupSidebarDrag();
 });
 let initialScale = 1
@@ -68,7 +81,7 @@ function setupSidebarDrag() {
         universalConnector.innerHTML = `
         <span class="ai-mini-port-dot any"></span>
         <span class="ai-mini-port-label">Universal Connector</span>
-        `                 
+        `
 
         block.children[0].children[0].appendChild(universalConnector)
         block.addEventListener("mousedown", (e) => {
@@ -250,26 +263,25 @@ contextMenu.addEventListener("click", (e) => {
     hideContextMenu();
 });
 function openDocs(node) {
-    
-    document.querySelectorAll(".inspector-row").forEach((child)=>{
-        try{
+    document.querySelectorAll(".inspector-row").forEach((child) => {
+        try {
             document.querySelector(".inspector-section").removeChild(child)
-        }catch{
+        } catch {
             document.getElementById("outputHolder").removeChild(child)
         }
     })
     let nodeInfo = nodeLibrary.find((item) => {
         return item.name == node.lastElementChild.innerHTML
     })
-    setTimeout(()=>{
-        document.getElementById("Docsheader").innerHTML = `<div class="inspector-title ${nodeInfo.blockCategory}-text" id="Docsheader">
+    
+    document.getElementById("Docsheader").innerHTML = `<div class="inspector-title ${nodeInfo.blockCategory}-text" id="Docsheader">
                                 <span class="group-dot ${nodeInfo.blockCategory}-bg"></span>
                                 <span>${nodeInfo.name}</span>
                             </div>`
     document.getElementById("nodeDes").innerHTML = nodeInfo.description
     let inputContainer = document.querySelector(".inspector-section")
     let outputContainer = document.getElementById("outputHolder")
-    
+
     nodeInfo.inputValues.forEach((input) => {
         let inputBox = document.createElement("div")
         inputBox.classList.add("inspector-row")
@@ -296,15 +308,14 @@ function openDocs(node) {
         outputContainer.appendChild(inputBox)
     })
     document.querySelector(".studio-main").style.gridTemplateColumns = "360px auto 360px"
-    },0)
-    
+
 }
 function closeDocs() {
     document.querySelector(".studio-main").style.gridTemplateColumns = "360px auto 0px"
-    document.querySelectorAll(".inspector-row").forEach((child)=>{
-        try{
+    document.querySelectorAll(".inspector-row").forEach((child) => {
+        try {
             document.querySelector(".inspector-section").removeChild(child)
-        }catch{
+        } catch {
             document.getElementById("outputHolder").removeChild(child)
         }
     })
@@ -494,27 +505,28 @@ function getSocketPosition(socket) {
     };
 
 }
-document.addEventListener("click", (e)=>{
+document.addEventListener("click", (e) => {
 
-    if(!e.target.classList.contains("ai-mini-port-dot")){
-        if(activeNode != null){
-        activeNode.style.boxShadow="";
-        activeNode=null;}
+    if (!e.target.classList.contains("ai-mini-port-dot")) {
+        if (activeNode != null) {
+            activeNode.style.boxShadow = "";
+            activeNode = null;
+        }
         return;
     }
     const el = e.target;
 
 
-    if(activeNode == null){
+    if (activeNode == null) {
 
         activeNode = el;
 
         el.style.boxShadow =
-        "0 0 15px #5fa8ff";
+            "0 0 15px #5fa8ff";
 
     }
 
-    else{
+    else {
 
         createConnection(
             getSocketPosition(activeNode),
@@ -522,9 +534,9 @@ document.addEventListener("click", (e)=>{
         );
 
 
-        activeNode.style.boxShadow="";
+        activeNode.style.boxShadow = "";
 
-        activeNode=null;
+        activeNode = null;
 
     }
 

@@ -28,7 +28,8 @@
     --ops: #00C8B3;
     --bool: #FDAFA4;
      --alert: #FF4D4D;
-
+     --any: white;
+     --variable: #FF9A3D;
     --radius-lg: 18px;
     --radius-md: 14px;
     --radius-sm: 10px;
@@ -1126,7 +1127,7 @@ transform:rotate(30deg);
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 }
 
 .inspector-title {
@@ -1134,6 +1135,7 @@ transform:rotate(30deg);
     align-items: center;
     gap: 10px;
     font-size: 1rem;
+    margin-top: 8px;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: #f5f7ff;
@@ -1794,7 +1796,9 @@ transform:rotate(30deg);
     color:var(--text-dim);
     font-size:14px;
 }
-
+strong{
+    color: white;
+}
 /* =========================
    CATEGORY COLORS
 ========================= */
@@ -1808,12 +1812,15 @@ transform:rotate(30deg);
 .ai-text{ color: var(--ai); }
 .ops-text{ color: var(--ops); }
 .bool-text{ color: var(--bool); }
+.variable-text{ color: var(--variable); }
 
 .data-bg{ background: var(--data); color: var(--data); }
 .category-bg{ background: var(--category); color: var(--category); }
 .module-bg{ background: var(--module); color: var(--module); }
 .string-bg{ background: var(--string); color: var(--string); }
 .media-bg{ background: var(--media); color: var(--media); }
+.any-bg{ background: var(--any); color: var(--any); }
+.variable-bg{ background: var(--variable); color: var(--variable); }
 .number-bg{ background: var(--number); color: var(--number); }
 .ops-bg{ background: var(--ops); color: var(--ops); }
 .bool-bg{ background: var(--bool); color: var(--bool); }
@@ -2156,8 +2163,10 @@ input[type=number] {
 /* right side stays at the end */
 .ai-model-sidebar-right{
     display:flex;
+    flex-direction: column;
     justify-content:flex-end;
-    align-items:flex-start;
+    gap:12px;
+    align-items: flex-end;
     flex-shrink:0;
     min-width:max-content;
 }

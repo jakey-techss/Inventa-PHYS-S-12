@@ -1,0 +1,616 @@
+:root{
+
+    --background:#080a0f;
+
+    --panel:#111722;
+
+    --panel-light:#161e2b;
+
+    --border:#263244;
+
+    --blue:#3b82f6;
+
+    --orange:#ff8c42;
+
+    --text:#f5f7fb;
+
+    --gray:#9aa6b8;
+
+}
+
+
+
+*{
+
+    box-sizing:border-box;
+
+}
+
+
+
+body{
+
+    margin:0;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    font-family:Inter,Arial,sans-serif;
+
+}
+
+
+
+.content{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:40px;
+
+}
+
+
+
+
+
+
+/* HERO */
+
+
+
+#intro{
+
+    display:grid;
+
+    grid-template-columns:250px 1fr;
+
+    gap:70px;
+
+    margin-top:70px;
+
+}
+
+
+
+#tableOfContent{
+
+    position:sticky;
+
+    top:40px;
+
+    height:max-content;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:25px;
+
+}
+
+
+
+#tableOfContent h3{
+
+    font-family:"Space Grotesk";
+
+    margin-top:0;
+
+}
+
+
+
+#tableOfContent ul{
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+
+
+#tableOfContent li{
+
+    margin:15px 0;
+
+}
+
+
+
+#tableOfContent a{
+
+    color:var(--gray);
+
+    text-decoration:none;
+
+    transition:.2s;
+
+}
+
+
+
+#tableOfContent a:hover{
+
+    color:var(--blue);
+
+}
+
+
+
+
+.eyebrow{
+
+    color:var(--blue);
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+
+
+h1{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:4rem;
+
+    line-height:1.05;
+
+    margin:25px 0;
+
+}
+
+
+
+.heroText{
+
+    color:var(--gray);
+
+    font-size:1.25rem;
+
+    line-height:1.8;
+
+    max-width:800px;
+
+}
+
+
+
+.heroImage{
+
+    margin-top:45px;
+
+}
+
+
+
+.heroImage img{
+
+    width:100%;
+
+    border-radius:25px;
+
+    border:1px solid var(--border);
+
+}
+
+
+
+
+
+.caption{
+
+    color:var(--gray);
+
+    font-size:.9rem;
+
+    margin-top:12px;
+
+}
+
+
+
+
+
+
+
+
+/* SECTION SYSTEM */
+
+
+
+.sectionBlock{
+
+    margin-top:120px;
+
+}
+
+
+
+
+.sectionHeading{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    margin-bottom:45px;
+
+}
+
+
+
+.sectionNumber{
+
+    font-size:4rem;
+
+    font-weight:700;
+
+    color:#ffffff20;
+
+    font-family:"Space Grotesk";
+
+}
+
+
+
+.sectionLabel{
+
+    color:var(--blue);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.8rem;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.sectionHeading h2{
+
+    margin:0;
+
+    font-family:"Space Grotesk";
+
+    font-size:2.5rem;
+
+}
+
+
+
+
+
+
+/* TEXT */
+
+
+
+.textPanel{
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:35px;
+
+}
+
+
+
+.textPanel p{
+
+    color:#c1c9d6;
+
+    line-height:1.8;
+
+    font-size:1.05rem;
+
+}
+
+
+
+
+
+
+
+/* IMAGE */
+
+
+
+.imagePanel{
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:25px;
+
+}
+
+
+
+.imagePanel img{
+
+    width:100%;
+
+    border-radius:15px;
+
+}
+
+
+
+
+
+
+
+/* SPLIT LAYOUT */
+
+
+
+.splitLayout{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+    align-items:center;
+
+}
+
+
+
+
+
+
+
+/* CODE */
+
+
+
+.codeBlock pre{
+
+    background:#070b11;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    overflow-x:auto;
+
+    color:#d7e4ff;
+
+    font-family:
+
+    "JetBrains Mono",
+
+    "Fira Code",
+
+    monospace;
+
+    line-height:1.7;
+
+    font-size:.95rem;
+
+}
+
+
+
+.codeBlock pre::before{
+
+    content:"INVENTA CODE";
+
+    display:block;
+
+    color:var(--blue);
+
+    font-size:.75rem;
+
+    margin-bottom:20px;
+
+    letter-spacing:2px;
+
+}
+
+
+
+
+
+/* FUTURE LIST */
+
+
+
+.futureList{
+
+    padding:0;
+
+    display:grid;
+
+    gap:15px;
+
+}
+
+
+
+.futureList li{
+
+    list-style:none;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    padding:25px;
+
+    border-radius:18px;
+
+    color:#ccd5e3;
+
+}
+
+
+
+.futureList li::before{
+
+    content:"→ ";
+
+    color:var(--blue);
+
+}
+
+
+
+
+
+
+/* SYSTEM IMAGE */
+
+
+
+.imagePanel iframe{
+
+    width:100%;
+
+    border-radius:15px;
+
+}
+
+
+
+
+
+/* HOVER EFFECTS */
+
+
+
+.textPanel,
+.imagePanel,
+.futureList li{
+
+    transition:.25s;
+
+}
+
+
+
+.textPanel:hover,
+.imagePanel:hover,
+.futureList li:hover{
+
+    border-color:#3b82f6;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+
+
+/* MOBILE */
+
+
+
+@media(max-width:1000px){
+
+
+
+#intro{
+
+    display:block;
+
+}
+
+
+
+#tableOfContent{
+
+    position:relative;
+
+    margin-bottom:40px;
+
+}
+
+
+
+h1{
+
+    font-size:2.8rem;
+
+}
+
+
+
+.splitLayout{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.sectionHeading h2{
+
+    font-size:2rem;
+
+}
+
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+
+.content{
+
+    padding:20px;
+
+}
+
+
+
+.sectionNumber{
+
+    font-size:2.5rem;
+
+}
+
+
+
+h1{
+
+    font-size:2.2rem;
+
+}
+
+
+
+}

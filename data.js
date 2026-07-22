@@ -1,6 +1,8 @@
 const HUB_URL = "ws://inventa-hub.local/ws";
 let socket
-connectToHub()
+setInterval(()=>{
+        connectToHub();
+    },5000)
 function connectToHub() {
     socket = new WebSocket(HUB_URL);
 

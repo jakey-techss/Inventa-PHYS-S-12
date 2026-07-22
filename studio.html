@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>Inventa | Studio</title>
 
     <link rel="stylesheet" href="studio.css">
@@ -14,7 +11,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +24,7 @@
         <!-- TOP BAR -->
         <header class="topbar">
             <div class="topbar-left">
-                <a href="/index.html" class="brand">
+                <a href="dashboard.html" class="brand">
                     <img src="/week1/asset/Logo.png" alt="Inventa Logo">
                     <div class="brand-text">
                         <h1><span class="blue">I</span>nvent<span class="purple">a</span> Studio</h1>
@@ -175,6 +171,42 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row ai-text">
+                                                <span class="ai-mini-port-dot ai-bg"></span>
+                                                <span class="ai-mini-port-label">AI Model</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Data Input</span>
+                                            </div>
+
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Expected Value</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row ops-text ai-output-row">
+                                                <span class="ai-mini-port-label">Accuracy</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Evaluate Model</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
                                             <div class="ai-mini-port-row media-text">
                                                 <span class="ai-mini-port-dot media-bg"></span>
                                                 <span class="ai-mini-port-label">Audio</span>
@@ -237,8 +269,7 @@
                                     <div class="ai-model-sidebar-left">
                                         <div class="ai-mini-port-row ">
                                             <span class="ai-mini-port-label">Data: </span>
-                                            <select name="port" id="port" class="block-mini-input"
-                                                style="width: 140px;">
+                                            <select name="port" id="port" class="block-mini-input">
                                                 <option>Vision Dataset</option>
                                                 <option>Environment Data</option>
                                             </select>
@@ -355,8 +386,8 @@
                                                 <span class="ai-mini-port-dot data-bg"></span>
                                                 <span class="ai-mini-port-label">Dataset</span>
                                             </div>
-                                            <div class="ai-mini-port-row ops-text">
-                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">ID</span>
                                             </div>
                                         </div>
@@ -415,13 +446,43 @@
                                                 <span class="ai-mini-port-dot data-bg"></span>
                                                 <span class="ai-mini-port-label">Dataset</span>
                                             </div>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">ID</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row data-text ai-output-row">
+                                                <span class="ai-mini-port-label">Row</span>
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get Row</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
                                             <div class="ai-mini-port-row data-text">
                                                 <span class="ai-mini-port-dot data-bg"></span>
                                                 <span class="ai-mini-port-label">Column</span>
                                             </div>
                                             <div class="ai-mini-port-row number-text">
                                                 <span class="ai-mini-port-dot number-bg"></span>
-                                                <span class="ai-mini-port-label">Order</span>
+                                                <span class="ai-mini-port-label">Sort Function</span>
                                             </div>
                                         </div>
 
@@ -464,6 +525,31 @@
                                     </div>
 
                                     <div class="ai-model-sidebar-title">Get Column</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">Column Names</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get All Column Names</div>
                                 </div>
 
                             </div>
@@ -600,8 +686,8 @@
                                                 <span class="ai-mini-port-label">Dataset</span>
                                             </div>
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
-                                                <span class="ai-mini-port-label">Value</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label category-text">Value</span>
                                             </div>
                                         </div>
 
@@ -689,10 +775,6 @@
                                                 <span class="ai-mini-port-dot data-bg"></span>
                                                 <span class="ai-mini-port-label">Dataset</span>
                                             </div>
-                                            <div class="ai-mini-port-row data-text">
-                                                <span class="ai-mini-port-dot data-bg"></span>
-                                                <span class="ai-mini-port-label">Column</span>
-                                            </div>
                                         </div>
 
                                         <div class="ai-model-sidebar-right">
@@ -715,9 +797,13 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row ops-text">
-                                                <span class="ai-mini-port-dot ops-bg"></span>
-                                                <span class="ai-mini-port-label">Row ID</span>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Row</span>
                                             </div>
                                             <div class="ai-mini-port-row data-text">
                                                 <span class="ai-mini-port-dot data-bg"></span>
@@ -727,8 +813,8 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row ai-output-row">
-                                                <span class="ai-mini-port-label">Value</span>
-                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label category-text">Value</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -745,17 +831,21 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row ops-text">
-                                                <span class="ai-mini-port-dot ops-bg"></span>
-                                                <span class="ai-mini-port-label">Row ID</span>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
                                             </div>
                                             <div class="ai-mini-port-row data-text">
                                                 <span class="ai-mini-port-dot data-bg"></span>
-                                                <span class="ai-mini-port-label">Column Name</span>
+                                                <span class="ai-mini-port-label">Row</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Column</span>
                                             </div>
                                             <div class="ai-mini-port-row ">
-                                                <span class="ai-mini-port-dot any"></span>
-                                                <span class="ai-mini-port-label">Value</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label category-text">Value</span>
                                             </div>
                                         </div>
 
@@ -768,6 +858,34 @@
                                     </div>
 
                                     <div class="ai-model-sidebar-title">Replace Cell Value</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Data Title</span>
+                                            </div>
+                                            <div class="ai-mini-port-row data-text">
+                                                <span class="ai-mini-port-dot data-bg"></span>
+                                                <span class="ai-mini-port-label">Dataset</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Export Dataset To Data Workspace</div>
                                 </div>
 
                             </div>
@@ -900,18 +1018,10 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row string-text">
-                                                <span class="ai-mini-port-dot string-bg"></span>
-                                                <span class="ai-mini-port-label">Name</span>
-                                            </div>
-                                            <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
-                                                <span class="ai-mini-port-label">Value</span>
-                                            </div>
-                                            <div class="ai-mini-port-row bool-text">
-                                                <span class="ai-mini-port-dot bool-bg"></span>
-                                                <span class="ai-mini-port-label">isMutable?</span>
-                                            </div>
+
+                                            <select name="vars" id="allVars" class="block-mini-input">
+
+                                            </select>
                                         </div>
 
                                         <div class="ai-model-sidebar-right">
@@ -922,7 +1032,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Create Local Variable</div>
+                                    <div class="ai-model-sidebar-title">Get Control Variable</div>
                                 </div>
 
                             </div>
@@ -939,8 +1049,8 @@
                                             </div>
 
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
-                                                <span class="ai-mini-port-label">Value</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label category-text">New Value</span>
                                             </div>
                                         </div>
 
@@ -1017,8 +1127,8 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row category-text">
-                                                <span class="ai-mini-port-dot category-bg"></span>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
                                                 <span class="ai-mini-port-label">Name</span>
                                             </div>
 
@@ -1060,7 +1170,7 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row category-text ai-output-row">
-                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-label">Modified List</span>
                                                 <span class="ai-mini-port-dot category-bg"></span>
                                             </div>
                                         </div>
@@ -1090,13 +1200,13 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row category-text ai-output-row">
-                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-label">Modified List</span>
                                                 <span class="ai-mini-port-dot category-bg"></span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Remove From List</div>
+                                    <div class="ai-model-sidebar-title">Itemed Remove From List</div>
                                 </div>
 
                             </div>
@@ -1120,13 +1230,13 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row category-text ai-output-row">
-                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-label">Modified List</span>
                                                 <span class="ai-mini-port-dot category-bg"></span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Remove From List</div>
+                                    <div class="ai-model-sidebar-title">Indexed Remove From List</div>
                                 </div>
 
                             </div>
@@ -1150,13 +1260,13 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row category-text ai-output-row">
-                                                <span class="ai-mini-port-label">Modified Variable</span>
+                                                <span class="ai-mini-port-label">Modified List</span>
                                                 <span class="ai-mini-port-dot category-bg"></span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Remove From List</div>
+                                    <div class="ai-model-sidebar-title">Conditioned Remove From List</div>
                                 </div>
 
                             </div>
@@ -1167,6 +1277,10 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label">Variable</span>
+                                            </div>
                                             <div class="ai-mini-port-row ops-text">
                                                 <span class="ai-mini-port-dot ops-bg"></span>
                                                 <span class="ai-mini-port-label">Index</span>
@@ -1175,8 +1289,8 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
                                                 <span class="ai-mini-port-label">List Item</span>
+                                                <span class="ai-mini-port-dot any"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1193,6 +1307,39 @@
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
                                             <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label category-text">Variable</span>
+                                            </div>
+                                            <div class="ai-mini-port-row any-text">
+                                                <span class="ai-mini-port-dot any-bg"></span>
+                                                <span class="ai-mini-port-label">List Item</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="ai-model-sidebar-right">
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-label ops-text">Index</span>
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ai-model-sidebar-title">Get Item Index</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="sidebar-list ai-model-list">
+                                <div class="ai-model-sidebar-block">
+                                    <div class="ai-model-sidebar-top">
+                                        <div class="ai-model-sidebar-left">
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot category-bg"></span>
+                                                <span class="ai-mini-port-label category-text">Variable</span>
+                                            </div>
+                                            <div class="ai-mini-port-row">
                                                 <span class="ai-mini-port-dot any"></span>
                                                 <span class="ai-mini-port-label">Item</span>
                                             </div>
@@ -1206,7 +1353,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">List Contains Item</div>
+                                    <div class="ai-model-sidebar-title">List Contains Item?</div>
                                 </div>
 
                             </div>
@@ -1296,7 +1443,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">String Length</div>
+                                    <div class="ai-model-sidebar-title">Get String Length</div>
                                 </div>
 
                             </div>
@@ -1352,7 +1499,7 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row string-text ai-output-row">
-                                                <span class="ai-mini-port-label">Modified String</span>
+                                                <span class="ai-mini-port-label">Extracted String</span>
                                                 <span class="ai-mini-port-dot string-bg"></span>
                                             </div>
                                         </div>
@@ -1375,7 +1522,7 @@
                                             </div>
                                             <div class="ai-mini-port-row string-text">
                                                 <span class="ai-mini-port-dot string-bg"></span>
-                                                <span class="ai-mini-port-label">Contains?</span> </span>
+                                                <span class="ai-mini-port-label">Text</span> </span>
                                             </div>
                                         </div>
 
@@ -1404,7 +1551,11 @@
                                             </div>
                                             <div class="ai-mini-port-row string-text">
                                                 <span class="ai-mini-port-dot string-bg"></span>
-                                                <span class="ai-mini-port-label">Starts With?</span> </span>
+                                                <span class="ai-mini-port-label">Text</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">Start Length</span> </span>
                                             </div>
                                         </div>
 
@@ -1433,7 +1584,11 @@
                                             </div>
                                             <div class="ai-mini-port-row string-text">
                                                 <span class="ai-mini-port-dot string-bg"></span>
-                                                <span class="ai-mini-port-label">Ends With?</span> </span>
+                                                <span class="ai-mini-port-label">Text</span> </span>
+                                            </div>
+                                            <div class="ai-mini-port-row ops-text">
+                                                <span class="ai-mini-port-dot ops-bg"></span>
+                                                <span class="ai-mini-port-label">End Length</span> </span>
                                             </div>
                                         </div>
 
@@ -1478,7 +1633,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Replace String</div>
+                                    <div class="ai-model-sidebar-title">Text Based Replace String</div>
                                 </div>
 
                             </div>
@@ -1515,7 +1670,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Replace String</div>
+                                    <div class="ai-model-sidebar-title">Index Based Replace String</div>
                                 </div>
 
                             </div>
@@ -1609,6 +1764,10 @@
                                                 <span class="ai-mini-port-dot ops-bg"></span>
                                                 <span class="ai-mini-port-label">Number Of Times</span>
                                             </div>
+                                            <div class="ai-mini-port-row string-text">
+                                                <span class="ai-mini-port-dot string-bg"></span>
+                                                <span class="ai-mini-port-label">Delimeter</span>
+                                            </div>
                                         </div>
 
                                         <div class="ai-model-sidebar-right">
@@ -1641,9 +1800,9 @@
                                         </div>
 
                                         <div class="ai-model-sidebar-right">
-                                            <div class="ai-mini-port-row string-text ai-output-row">
-                                                <span class="ai-mini-port-label">Modified String</span>
-                                                <span class="ai-mini-port-dot string-bg"></span>
+                                            <div class="ai-mini-port-row category-text ai-output-row">
+                                                <span class="ai-mini-port-label">String List</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1762,7 +1921,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Add Numbers +</div>
+                                    <div class="ai-model-sidebar-title">Add Numbers</div>
                                 </div>
 
                             </div>
@@ -1791,7 +1950,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Subtract Numbers -</div>
+                                    <div class="ai-model-sidebar-title">Subtract Numbers</div>
                                 </div>
 
                             </div>
@@ -1820,7 +1979,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Multiply Numbers ×</div>
+                                    <div class="ai-model-sidebar-title">Multiply Numbers</div>
                                 </div>
 
                             </div>
@@ -1849,7 +2008,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Divide Numbers ÷</div>
+                                    <div class="ai-model-sidebar-title">Divide Numbers</div>
                                 </div>
 
                             </div>
@@ -2101,7 +2260,7 @@
                                         </div>
                                         <div class="ai-mini-port-row category-text">
                                             <span class="ai-mini-port-dot category-bg"></span>
-                                            <span class="ai-mini-port-label">Output Variable</span>
+                                            <span class="ai-mini-port-label">Control Variable</span>
                                         </div>
                                     </div>
 
@@ -2264,57 +2423,57 @@
                     </div>
                     <div class="sidebar-group collapsible-group">
                         <button class="sidebar-group-toggle" type="button">
-                            <div class="sidebar-group-header module-text">
-                                <span class="group-dot module-bg"></span>
-                                In-Built Modules
+                            <div class="sidebar-group-header media-text">
+                                <span class="group-dot media-bg"></span>
+                                Media
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                    </div>
+                    <div class="sidebar-group collapsible-group" id="OLEDModule">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header">
+                                <span class="group-dot any-bg"></span>
+                                OLED Module
                             </div>
                             <span class="toggle-chevron">▾</span>
                         </button>
                         <div class="sidebar-list ai-model-list">
-                            <div class="sidebar-list ai-model-list">
-                                <div class="ai-model-sidebar-block">
-                                    <div class="ai-model-sidebar-top">
-                                        <div class="ai-model-sidebar-left">
-
-                                            <div class="ai-mini-port-row ">
-                                                <span class="ai-mini-port-label">Location: </span>
-                                                <select name="port" id="port" class="block-mini-input">
-                                                    <option>Front Left</option>
-                                                    <option>Front Right</option>
-                                                    <option>Back Left</option>
-                                                    <option>Back Right</option>
-                                                </select>
-                                            </div>
-                                            <div class="ai-mini-port-row ">
-                                                <span class="ai-mini-port-label">Direction: </span>
-                                                <select name="port" id="port" class="block-mini-input">
-                                                    <option>Clockwise</option>
-                                                    <option>Counter-Clockwise</option>
-
-                                                </select>
-                                            </div>
-
-                                            <div class="ai-mini-port-row ops-text">
-                                                <span class="ai-mini-port-dot ops-bg"></span>
-                                                <span class="ai-mini-port-label">Speed</span>
-                                            </div>
-
-                                        </div>
-
-
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
                                     </div>
 
-                                    <div class="ai-model-sidebar-title">Drive Motor</div>
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                    </div>
                                 </div>
 
+                                <div class="ai-model-sidebar-title">Turn On OLED</div>
                             </div>
 
                         </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                        <div class="ai-mini-port-row string-text">
+                                            <span class="ai-mini-port-dot string-bg"></span>
+                                            <span class="ai-mini-port-label">Text</span>
+                                        </div>
+                                    </div>
 
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                    </div>
+                                </div>
 
+                                <div class="ai-model-sidebar-title">Write To LED</div>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <button class="add-block-btn">＋ Add Module</button>
                 </div>
             </aside>
 

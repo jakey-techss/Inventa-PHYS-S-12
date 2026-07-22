@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventa | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <a href="index.html"><img src="/week1/asset/Logo.png" alt="Inventa Logo" style="width: 50px;"></a>
+
+                <div>
+                    <h2>INVENTA</h2>
+                    <span>Studio Dashboard</span>
+                </div>
+
+            </div>
+
+            <nav>
+
+                <button class="nav active">
+                    Dashboard
+                </button>
+
+                <button class="nav">
+                    Templates
+                </button>
+
+                <button class="nav">
+                    Settings
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="storage-card">
+
+                    <h4>Local Workspace</h4>
+
+                    <p>Your projects are stored locally in your browser.</p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <main>
+
+            <header>
+
+                <div>
+
+                    <h1>Projects</h1>
+
+                    <p>Create and manage your Inventa robots.</p>
+
+                </div>
+
+                <button class="create-btn" id="create-btn">
+
+                    <span>＋</span>
+
+                    New Project
+
+                </button>
+
+            </header>
+
+            <section class="hero">
+
+                <div>
+
+                    <span class="badge">
+                        LOCAL WORKSPACE
+                    </span>
+
+                    <h2>
+                        Build. Connect. Invent.
+                    </h2>
+
+                    <p>
+                        Everything stays on your computer. Create projects, edit them in Studio,
+                        and manage them instantly.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <section class="projects">
+
+                <div class="section-title">
+
+                    <h3>Your Projects</h3>
+
+                    <span id="projectCount">
+                        0 Projects
+                    </span>
+
+                </div>
+
+                <div id="projectGrid" class="project-grid">
+
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+    <!-- Overlay -->
+<div class="modal-overlay" id="newProjectModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="modal-tag">
+                    NEW PROJECT
+                </span>
+
+                <h2>Create Project</h2>
+
+                <p>
+                    Start building your next Inventa robot.
+                </p>
+
+            </div>
+
+            <button class="close-modal">
+                ✕
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div class="input-group">
+
+                <label>Project Name</label>
+
+                <input
+                    type="text"
+                    placeholder="Example: Warehouse Rover" id="projectName">
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Description</label>
+
+                <textarea
+                    placeholder="Describe what this robot will do..." id="des"></textarea>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Project Icon</label>
+
+                <div class="icon-picker">
+
+                    <button class="icon selected">🤖</button>
+                    <button class="icon">🚗</button>
+                    <button class="icon">🛰️</button>
+                    <button class="icon">🦾</button>
+                    <button class="icon">⚙️</button>
+                    <button class="icon">🚁</button>
+                    <button class="icon">📦</button>
+                    <button class="icon">💡</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="cancel-btn" id="cancel-btn">
+                Cancel
+            </button>
+
+            <button class="create-project-btn" id="create-project-btn">
+                Create Project
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="dashboard.js"></script>
+</body>
+
+</html>

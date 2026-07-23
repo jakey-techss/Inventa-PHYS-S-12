@@ -1,10 +1,11 @@
 let projects = window.localStorage.getItem("projects");
-if(projects != null){
+
+if (projects != null) {
     let projectList = JSON.parse(projects);
     console.log(projectList.length)
     document.getElementById("projectCount").innerHTML = projectList.length + (projectList.length > 1 || projectList.length == 0 ? " Projects" : " Project")
-    if(projectList.length > 0){
-        for(i = projectList.length-1; i >= 0; i--){
+    if (projectList.length > 0) {
+        for (i = projectList.length - 1; i >= 0; i--) {
             let e = projectList[i]
             let project = JSON.parse(e);
             let projectContainer = document.createElement("div")
@@ -33,47 +34,52 @@ if(projects != null){
                                 Delete
                             </button>
                         </div>`
-        document.getElementById("projectGrid").appendChild(projectContainer)
+            document.getElementById("projectGrid").appendChild(projectContainer)
+            document.getElementById(`${project.id}OpenButton`).addEventListener("click", () => {
+                window.location.assign(`studio.html?projectId=${encodeURIComponent(project.id)}`);
+            })
         }
+        
     }
 }
-document.getElementById("create-btn").addEventListener("click", ()=>{
+
+document.getElementById("create-btn").addEventListener("click", () => {
     document.getElementById("newProjectModal").style.display = "flex"
-    document.getElementById("cancel-btn").addEventListener("click",()=>{
+    document.getElementById("cancel-btn").addEventListener("click", () => {
         document.getElementById("newProjectModal").style.display = "none"
     })
-    document.getElementById("create-project-btn").addEventListener("click",()=>{
+    document.getElementById("create-project-btn").addEventListener("click", () => {
         let username = document.getElementById("projectName").value
-        if(username.trim().length == 0){
-            if(projects == null){
+        if (username.trim().length == 0) {
+            if (projects == null) {
                 username = "Inventa Project #1"
-            }else{
+            } else {
                 username = "Inventa Project #" + JSON.parse(projects).length
             }
         }
         let description = document.getElementById("des").value
-        if(description.trim().length == 0){
+        if (description.trim().length == 0) {
             description = "An Inventa Project"
         }
         let icon = document.querySelector(".selected").innerHTML
-        let completedCompilation = new project(username,description,icon)
-        if(projects == null){
-                projects = [];
-                projects.push(JSON.stringify(completedCompilation));
-                projects = JSON.stringify(projects)
-                window.localStorage.setItem("projects",projects)
-            }else{
-                projects = JSON.parse(projects);
-                projects.push(JSON.stringify(completedCompilation));
-                projects = JSON.stringify(projects)
-                window.localStorage.setItem("projects",projects)
-            }
+        let completedCompilation = new project(username, description, icon)
+        if (projects == null) {
+            projects = [];
+            projects.push(JSON.stringify(completedCompilation));
+            projects = JSON.stringify(projects)
+            window.localStorage.setItem("projects", projects)
+        } else {
+            projects = JSON.parse(projects);
+            projects.push(JSON.stringify(completedCompilation));
+            projects = JSON.stringify(projects)
+            window.localStorage.setItem("projects", projects)
+        }
         window.location.assign("studio.html")
-        
+
     })
-    document.querySelectorAll(".icon").forEach((child)=>{
-        child.addEventListener("click",()=>{
-            if(!child.classList.contains("selected")){
+    document.querySelectorAll(".icon").forEach((child) => {
+        child.addEventListener("click", () => {
+            if (!child.classList.contains("selected")) {
                 document.querySelector(".selected").classList.remove("selected")
                 child.classList.add("selected")
             }
@@ -81,8 +87,8 @@ document.getElementById("create-btn").addEventListener("click", ()=>{
     })
 
 })
-class project{
-    constructor(name, description, icon, id){
+class project {
+    constructor(name, description, icon, id) {
         this.id = self.crypto.randomUUID()
         this.name = name
         this.description = description

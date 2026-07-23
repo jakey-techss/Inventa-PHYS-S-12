@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>Inventa | Data Workspace</title>
     <link rel="stylesheet" href="studio.css">
     <link rel="stylesheet" href="data.css">
@@ -14,7 +11,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,58 +125,6 @@
 
 
 
-                    <div class="dataset-item">
-
-
-                        <div class="dataset-icon camera">
-                            ◉
-                        </div>
-
-
-                        <div>
-
-                            <h3>
-                                Vision Dataset
-                            </h3>
-
-                            <p>
-                                Camera Module
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-
-
-
-                    <div class="dataset-item">
-
-
-                        <div class="dataset-icon temp">
-                            ◉
-                        </div>
-
-
-                        <div>
-
-                            <h3>
-                                Environment Data
-                            </h3>
-
-                            <p>
-                                Temperature Sensor
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-
 
                 </div>
 
@@ -227,9 +171,9 @@
 
 
                     <div class="dataset-actions">
-                        <a href="studio.html"><button>
-                            Return To Studio
-                        </button></a>
+                        <button id="studioBtn">
+                                Return To Studio
+                            </button>
 
                         <button>
                             Import Dataset
@@ -257,7 +201,7 @@
                         </span>
 
                         <strong>
-                            12,480
+                            0
                         </strong>
 
                     </div>
@@ -271,8 +215,8 @@
                             Number Of Detected Sensors
                         </span>
 
-                        <strong>
-                            5
+                        <strong id="sensorListCount">
+                            0
                         </strong>
 
                     </div>
@@ -286,8 +230,8 @@
                             Classes
                         </span>
 
-                        <strong>
-                            2
+                        <strong id="numDatasets">
+                            0
                         </strong>
 
                     </div>
@@ -335,91 +279,6 @@
 
                     <div class="sensor-grid">
 
-
-
-                        <div class="sensor-card">
-
-
-                            <div class="sensor-title">
-
-                                <span></span>
-
-                                Distance Sensor
-
-                            </div>
-
-
-                            <h2>
-                                2.54 m
-                            </h2>
-
-
-                            <p>
-                                I2C Address: 0x31
-                            </p>
-
-
-                        </div>
-
-
-
-
-
-
-                        <div class="sensor-card">
-
-
-                            <div class="sensor-title">
-
-                                <span></span>
-
-                                Temperature
-
-                            </div>
-
-
-                            <h2>
-                                22.4°C
-                            </h2>
-
-
-                            <p>
-                                I2C Address: 0x44
-                            </p>
-
-
-                        </div>
-
-
-
-
-
-                        <div class="sensor-card">
-
-
-                            <div class="sensor-title">
-
-                                <span></span>
-
-                                Camera Module
-
-                            </div>
-
-
-                            <h2>
-                                Streaming
-                            </h2>
-
-
-                            <p>
-                                Resolution: 1280x720
-                            </p>
-
-
-                        </div>
-
-
-
                     </div>
 
 
@@ -437,9 +296,6 @@
                 <!-- =========================
      LIVE DATA + CONFIG
 ========================= -->
-
-
-                <div class="workspace-grid">
 
 
 
@@ -559,163 +415,6 @@
 
 
 
-
-
-
-
-
-
-
-                    <section class="panel configure-panel">
-
-
-                        <div class="panel-header">
-
-                            <h3>
-                                Configure Dataset
-                            </h3>
-
-
-                        </div>
-
-
-
-
-
-                        <label>
-
-                            Dataset Name
-
-                            <input value="Obstacle Detection">
-
-                        </label>
-
-
-
-
-
-
-                        <label>
-
-                            Sensor Module
-
-
-                            <select>
-
-                                <option>
-                                    Distance Sensor
-                                </option>
-
-                                <option>
-                                    Camera Module
-                                </option>
-
-                                <option>
-                                    Temperature Sensor
-                                </option>
-
-                            </select>
-
-
-                        </label>
-
-
-
-
-
-
-
-                        <label>
-
-                            Capture Mode
-
-
-                            <select>
-
-                                <option>
-                                    Continuous
-                                </option>
-
-
-                                <option>
-                                    Manual
-                                </option>
-
-
-                                <option>
-                                    Timed
-                                </option>
-
-
-                            </select>
-
-
-                        </label>
-
-
-
-
-
-
-                        <label>
-
-                            Sample Rate
-
-
-                            <input value="100 ms">
-
-
-                        </label>
-
-
-
-
-
-
-                        <label>
-
-                            Number Of Samples
-
-
-                            <input value="1000">
-
-
-                        </label>
-
-
-
-
-
-                        <button class="record-button">
-
-                            Configure Data Collection
-
-                        </button>
-
-
-
-                    </section>
-
-
-
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-                <!-- =========================
-     CHART
-========================= -->
-
-
                 <section class="panel chart-panel">
 
 
@@ -747,17 +446,6 @@
 
 
 
-
-
-
-
-
-
-                <!-- =========================
-     TIMELINE
-========================= -->
-
-
                 <section class="panel timeline-panel">
 
 
@@ -769,7 +457,6 @@
 
 
                     </div>
-
 
 
 
@@ -798,9 +485,6 @@
                         </div>
 
 
-
-
-
                         <div class="timeline-item">
 
 
@@ -822,10 +506,6 @@
 
                         </div>
 
-
-
-
-
                         <div class="timeline-item">
 
 
@@ -846,27 +526,107 @@
 
 
                         </div>
-
-
-
-
                     </div>
-
-
-
-
                 </section>
 
 
-
-
-
-
             </main>
-
-
         </div>
 
+    </div>
+    <div class="modal-overlay" id="datasetModal">
+
+        <div class="dataset-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Configure Dataset</h2>
+                    <p>Create a new dataset for training.</p>
+                </div>
+
+                <button class="close-modal">
+                    ✕
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <label>
+
+                    Dataset Name
+
+                    <input value="" type="text">
+
+                </label>
+
+                <label>
+
+                    Sensor Module
+
+                    <select class="SensorModules">
+
+                        
+
+                    </select>
+
+                </label>
+
+                <label>
+
+                    Capture Mode
+
+                    <select class="CaptureMode">
+
+                        <option value="timed">
+                                    Timed
+                                </option>
+
+
+                                <option value="manual">
+                                    Manual
+                                </option>
+
+
+                                <option value="continuous" >
+                                    Continuous Limit
+                                </option>
+
+                    </select>
+
+                </label>
+
+                <label class="notManual">
+
+                    Sample Rate(ms)
+
+                    <input value="100" type="number" class="SampleRate">
+                </label>
+
+                <label style="display: none;" class="specialSample">
+
+                    Number Of Samples
+
+                    <input value="1000" type="number" class="SampleCount">
+
+                </label>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="cancel-button">
+                    Cancel
+                </button>
+
+                <button class="record-button" id="record-button2">
+                    Configure Dataset
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
     <script src="data.js"></script>

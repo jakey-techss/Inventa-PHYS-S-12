@@ -1,4 +1,5 @@
 let activeNode;
+let currentProjectID = new URLSearchParams(window.location.search).get("projectId");
 class node {
     constructor(name, inputValues, outputValues, description, blockCategory) {
         this.name = name
@@ -8,6 +9,9 @@ class node {
         this.blockCategory = blockCategory
     }
 }
+document.getElementById("data-workspace").addEventListener("click",()=>{
+    window.location.assign(`data.html?projectId=${encodeURIComponent(currentProjectID)}`);
+})
 const nodeLibrary = [
     new node("Create Classification Model",
         [
@@ -335,10 +339,10 @@ const nodeLibrary = [
     ),
     new node("Create Boolean",
         [
-            { input: "Boolean Dropdown", category: "condition", acceptedTypes: ["Boolean Dropdown"], description: "A simple boolean. True or False" },
+            { input: "Boolean Dropdown", category: "bool", acceptedTypes: ["Boolean Dropdown"], description: "A simple boolean. True or False" },
         ],
         [
-            { output: "Boolean", category: "condition", outputType: ["Boolean"], description: "> -1)</strong> to <strong>1.79 x 10<sup>308</sup></strong>" },
+            { output: "Boolean", category: "bool", outputType: ["Boolean"], description: "A simple true ot false output" },
         ],
         "Creates a simple number",
         "category"
@@ -352,7 +356,7 @@ const nodeLibrary = [
                     "<br>DataColumn", "AI Model"]],
                 description: "The value of the variable. Leave blank for default null value. Also keep in mind <strong>The variable will only store data types it was first initialized with</strong>. This means that if you create a variable and the first value you assign to it is a string it an only store strings."
             },
-            { input: "isMutable?", category: "condition", acceptedTypes: ["<br>Boolean", "<br>Variable&lt;Boolean&gt;"], description: "Is the variable too be changed leter on. If the value is not meant set this to false otherwise if you plan to change the value of this variahle set it to true" },
+            { input: "isMutable?", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&lt;Boolean&gt;"], description: "Is the variable too be changed leter on. If the value is not meant set this to false otherwise if you plan to change the value of this variahle set it to true" },
 
         ],
         [
@@ -550,7 +554,7 @@ const nodeLibrary = [
         ],
         [
             {
-                output: "Boolean", category: "condition", outputType: ["<br>Variable&lt;Boolean&gt;", "<br>Boolean"], description: "Returns true if the item is found in the list; returns false otherwise"
+                output: "Boolean", category: "bool", outputType: ["<br>Variable&lt;Boolean&gt;", "<br>Boolean"], description: "Returns true if the item is found in the list; returns false otherwise"
             }
         ],
         "Checks if the specified item can be found inside the list",
@@ -640,7 +644,7 @@ const nodeLibrary = [
         ],
         [
             {
-                output: "Boolean", category: "condition", outputType: ["Boolean"], description: "Checks if the given text can be found inside the string. Take note that this node is case sensitive."
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "Checks if the given text can be found inside the string. Take note that this node is case sensitive."
             }
         ],
         "Checks if a string contains a particular text",
@@ -654,7 +658,7 @@ const nodeLibrary = [
         ],
         [
             {
-                output: "Boolean", category: "condition", outputType: ["Boolean"], description: "Checks within the specified length from the first until the specified length if the values are equivalent to the Text parameter "
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "Checks within the specified length from the first until the specified length if the values are equivalent to the Text parameter "
             }
         ],
         "Checks if a string starts with a particular string as determined by the Start Length parameter",
@@ -668,7 +672,7 @@ const nodeLibrary = [
         ],
         [
             {
-                output: "Boolean", category: "condition", outputType: ["Boolean"], description: "Checks within the specified length from the end of the string until the specified length if the values are equivalent to each other"
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "Checks within the specified length from the end of the string until the specified length if the values are equivalent to each other"
             }
         ],
         "Checks if a string end with a particular string as determined by the End Length parameter",
@@ -796,7 +800,7 @@ const nodeLibrary = [
         ],
         [
             {
-                output: "Boolean", category: "condition", outputType: ["Boolean"], description: "This will return true if the String is truly empty"
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "This will return true if the String is truly empty"
             }
         ],
         "Checks if a string is empty. Keep in mind that a SPACE character does not count as empty. To avoid this use the trim node on the string before applying this node",
@@ -854,6 +858,341 @@ const nodeLibrary = [
         "Calculates the quotient of both numbers",
         "ops"
     ),
+    new node("Modulus %",
+        [
+            { input: "Number #1", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The first number" },
+            { input: "Number #2", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The second number" },
+        ],
+        [
+            {
+                output: "Remainder", category: "ops", outputType: ["Number"], description: "The remainder of the division of number 2/number 1."
+            }
+        ],
+        "Calculates the remainder of a division between 2 numbers",
+        "ops"
+    ),
+    new node("Round",
+        [
+            { input: "Number #1", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The number to round." },
+            { input: "Position", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The position to round. For example if this is specified to be 100 (10<sup>2</sup>) it will round to the nearest hundred, if it is 0.1(10<sup>-1</sup>)it will round to the nearest tenth. This can only be values in <strong>exponents of 10</strong>" },
+        ],
+        [
+            {
+                output: "Value", category: "ops", outputType: ["Number"], description: "The number rounded in respect to the specified position."
+            }
+        ],
+        "Rounds a number with respect to a specified position. Keep in mind that this will round up if the number of the position before the specified posiion is 5 or greater. It will round down otherwise",
+        "ops"
+    ),
+    new node("Floor",
+        [
+            { input: "Number #1", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The number to floor." },
+            { input: "Position", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The position to floor. For example if this is specified to be 100 (10<sup>2</sup>) it will floor to the nearest hundred, if it is 0.1(10<sup>-1</sup>)it will floor to the nearest tenth. This can only be values in <strong>exponents of 10</strong>" },
+        ],
+        [
+            {
+                output: "Value", category: "ops", outputType: ["Number"], description: "The number floored in respect to the specified position."
+            }
+        ],
+        "Floors a number with respect to a specified position. Keep in mind that this will floor the number irrespective of the preceding value.",
+        "ops"
+    ),
+    new node("Ceil",
+        [
+            { input: "Number #1", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The number to ceil." },
+            { input: "Position", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The position to ceil. For example if this is specified to be 100 (10<sup>2</sup>) it will ceil to the nearest hundred, if it is 0.1(10<sup>-1</sup>)it will ceil to the nearest tenth. This can only be values in <strong>exponents of 10</strong>" },
+        ],
+        [
+            {
+                output: "Value", category: "ops", outputType: ["Number"], description: "The number ceiled in respect to the specified position."
+            }
+        ],
+        "Ceils a number with respect to a specified position. Keep in mind that this will ceil the number irrespective of the preceding value. This is also known as the constant round up node.",
+        "ops"
+    ),
+    new node("Generate Random Number",
+        [
+            { input: "Max", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The max number. This is inclusive so the node will generate a random number taking into account this number as well." },
+            { input: "Min", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The min number. This is inclusive so the node will generate a random number taking into account this number as well." },
+        ],
+        [
+            {
+                output: "Number", category: "ops", outputType: ["Number"], description: "A random whole number between the specified min and max values."
+            }
+        ],
+        "Generates a random whole number between min and max, including min and max",
+        "ops"
+    ),
+    new node("Degrees To Radians",
+        [
+            { input: "Degrees", category: "ops", acceptedTypes: ["<br>Variable&lt;Number&gt;", "<br>Number"], description: "The degrees to be converted to radians" },
+        ],
+        [
+            {
+                output: "Radian", category: "ops", outputType: ["Radian"], description: "The radian value of the sepcified degree"
+            }
+        ],
+        "Converts a degree to it's corresponding radian.",
+        "ops"
+    ),
+    new node("Radians To Degrees",
+        [
+            { input: "Radian", category: "ops", acceptedTypes: ["Radian"], description: "The radian to be converted to a degree" },
+        ],
+        [
+            {
+                output: "Degrees", category: "ops", outputType: ["Number"], description: "The radian converted to its corresponding degree value"
+            }
+        ],
+        "Converts a radian to a degree",
+        "ops"
+    ),
+    new node("Sine",
+        [
+            { input: "Radian", category: "ops", acceptedTypes: ["Radian"], description: "The radian to be passed into the sine funtion" },
+        ],
+        [
+            {
+                output: "sin(x)", category: "ops", outputType: ["Number"], description: "The sine of the radian value that was passed into the node"
+            }
+        ],
+        "Gets the sine of the radian value",
+        "ops"
+    ),
+    new node("Cosine",
+        [
+            { input: "Radian", category: "ops", acceptedTypes: ["Radian"], description: "The radian to be passed into the cosine funtion" },
+        ],
+        [
+            {
+                output: "cos(x)", category: "ops", outputType: ["Number"], description: "The cosine of the radian value that was passed into the node"
+            }
+        ],
+        "Gets the cosine of the radian value",
+        "ops"
+    ),
+    new node("Tangent",
+        [
+            { input: "Radian", category: "ops", acceptedTypes: ["Radian"], description: "The radian to be passed into the tangent funtion" },
+        ],
+        [
+            {
+                output: "tan(x)", category: "ops", outputType: ["Number"], description: "The tangent of the radian value that was passed into the node"
+            }
+        ],
+        "Gets the tangent of the radian value",
+        "ops"
+    ),
+    new node("Cosecant",
+        [
+            { input: "Radian", category: "ops", acceptedTypes: ["Radian"], description: "The radian to be passed into the cosecant funtion" },
+        ],
+        [
+            {
+                output: "csc(x)", category: "ops", outputType: ["Number"], description: "The cosecant of the radian value that was passed into the node"
+            }
+        ],
+        "Gets the cosecant of the radian value",
+        "ops"
+    ),
+    new node("Secant",
+        [
+            { input: "Radian", category: "ops", acceptedTypes: ["Radian"], description: "The radian to be passed into the secant funtion" },
+        ],
+        [
+            {
+                output: "sec(x)", category: "ops", outputType: ["Number"], description: "The secant of the radian value that was passed into the node"
+            }
+        ],
+        "Gets the secant of the radian value",
+        "ops"
+    ),
+    new node("Cotangent",
+        [
+            { input: "Radian", category: "ops", acceptedTypes: ["Radian"], description: "The radian to be passed into the cotangent funtion" },
+        ],
+        [
+            {
+                output: "cot(x)", category: "ops", outputType: ["Number"], description: "The cotangent of the radian value that was passed into the node"
+            }
+        ],
+        "Gets the cotangent of the radian value",
+        "ops"
+    ),
+    new node("Equals",
+        [
+            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The first value for comparison" },
+            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The second value for comparison" },
+        ],
+        [
+            {
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "The value of the equality node"
+            }
+        ],
+        "Checks if 2 values are equal starting from the length then going on to compare the values",
+        "bool"
+    ),
+    new node("Not Equals",
+        [
+            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The first value for comparison" },
+            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The second value for comparison" },
+        ],
+        [
+            {
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "The value of the non-equality node"
+            }
+        ],
+        "Checks if 2 values are not equal starting from the length then going on to compare the values",
+        "bool"
+    ),
+    new node("Greater Than",
+        [
+            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The first value for comparison" },
+            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The second value for comparison" },
+        ],
+        [
+            {
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "The value of the greater than node"
+            }
+        ],
+        "Checks if value 2 is greater than value 1",
+        "bool"
+    ),
+    new node("Less Than",
+        [
+            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The first value for comparison" },
+            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The second value for comparison" },
+        ],
+        [
+            {
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "The value of the less than node"
+            }
+        ],
+        "Checks if value 2 is less than value 1",
+        "bool"
+    ),
+    new node("AND",
+        [
+            { input: "Boolean #1", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The first boolean to take into account" },
+            { input: "Boolean #2", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The second boolean to take into account" },
+        ],
+        [
+            {
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "Checks if both conditions are true"
+            }
+        ],
+        "Checks if both conditions passed into the node are true and then return true. The classic AND also known as the boolean multiplication method.",
+        "bool"
+    ),
+    new node("OR",
+        [
+            { input: "Boolean #1", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The first boolean to take into account" },
+            { input: "Boolean #2", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The second boolean to take into account" },
+        ],
+        [
+            {
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "Checks if at least one of conditions are true"
+            }
+        ],
+        "Checks if one of conditions passed into the node is true and then return true. The classic OR also known as the boolean addition method.",
+        "bool"
+    ),
+    new node("NOT",
+        [
+            { input: "Boolean", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The boolean to NOT" }
+        ],
+        [
+            {
+                output: "Boolean", category: "bool", outputType: ["Boolean"], description: "Flips the value of thee boolean being passed in"
+            }
+        ],
+        "Flips a variable to the opposite of its original value",
+        "bool"
+    ),
+    new node("If",
+        [
+            { input: "Boolean", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The boolean that defines the if condition" }
+        ],
+        [
+            {
+                output: "Do", category: "any", outputType: ["This should map to the next nodes that should run if the boolean is evaluated to be true"], description: "The actions to take if the boolean is true"
+            }
+        ],
+        "Checks if a boolean is true and then runs a specified piece of code if true. Keep in mind that if you use the 'Next Node' port instead of the 'Do' port the code will run irrespective of the boolean and will run asyncronously",
+        "bool"
+    ),
+    new node("Condition Builder",
+        [
+            { input: "Boolean", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The boolean that defines the condition. You would use the 'Control Variable' in the condition" },
+            { input: "Control Variable", category: "control", acceptedTypes: ["ControlVariable"], description: "The control variable of the condition block. This will be auto selected once all the nodes are correctly placed." },
+
+        ],
+        [
+            {
+                output: "Condition", category: "condition", outputType: ["Condition"], description: "The eventual condition output to be used in a corresponding node port."
+            }
+        ],
+        "Creates a special boolean based condition",
+        "bool"
+    ),
+    new node("If-Else",
+        [
+            { input: "Boolean", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The boolean that defines the if condition." },
+
+        ],
+        [
+            {
+                output: "If Do", category: "any", outputType: ["This should map to the next nodes that should run if the boolean is evaluated to be true"], description: "The actions to take if the boolean is true"
+            },
+            {
+                output: "Else Do", category: "any", outputType: ["This should map to the next nodes that should run if the boolean is evaluated to be true"], description: "The actions to take if the boolean is false"
+            }
+        ],
+        "Checks if a boolean is true and then runs a specified piece of code if true otherwise it runs the other else system. Keep in mind that if you use the 'Next Node' port instead of the 'Do' port the code will run irrespective of the boolean and will run asyncronously",
+        "bool"
+    ),
+    new node("Repeat",
+        [
+            { input: "Number Of Times", category: "ops", acceptedTypes: ["<br>Number", "<br>Variable&lt;Number&gt;"], description: "The number of times to run the code under do." },
+
+        ],
+        [
+            {
+                output: "Do", category: "any", outputType: ["This should map to the next nodes that should run everytime until the increment reaches the number of times"], description: "The actions to run everytime"
+            },
+
+        ],
+        "Repeats a group of nodes over and over a certain number of times",
+        "bool"
+    ),
+    new node("While",
+        [
+            { input: "Boolean", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&lt;Boolean&gt;"], description: "The condition to check for the loop to keep running" },
+
+        ],
+        [
+            {
+                output: "Do", category: "any", outputType: ["This should map to the next nodes that should run everytime until the boolean evaluates to false"], description: "A set of nodes to run while the condition is true"
+            },
+
+        ],
+        "Run a set of nodes only while a condition is true",
+        "bool"
+    ),
+    new node("Wait",
+        [
+            { input: "Milliseconds", category: "ops", acceptedTypes: ["<br>Number", "<br>Variable&lt;Number&gt;"], description: "Amount of time to wait" },
+
+        ],
+        [
+            {
+                output: "Do", category: "any", outputType: ["This should map to the next nodes that should run aftter the wait function is executed"], description: "The set of nodes to run after the wait is up"
+            },
+
+        ],
+        "Creates a delay for a group of nodes to happen",
+        "bool"
+    ),
 ]
 let fail = false;
 document.addEventListener("DOMContentLoaded", () => {
@@ -863,10 +1202,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (fail) {
             document.querySelector(".status-dot-hub").style.backgroundColor = "#FF4D4D";
             document.getElementById("hubStatus").innerHTML = `Retrying Connection`;
+            log("Retrying Connection", "error");
         }
-        log("Retrying Connection", "error");
         connectToHub();
-    }, 8000)
+    }, 15000)
     setupSidebarDrag();
 });
 let initialScale = 1
@@ -881,6 +1220,7 @@ document.querySelectorAll('.sidebar-group-toggle').forEach(toggle => {
 
 const HUB_URL = "ws://inventa-hub.local/ws";
 let socket;
+let modules = [];
 
 function connectToHub() {
     socket = new WebSocket(HUB_URL);
@@ -899,16 +1239,23 @@ function connectToHub() {
         document.getElementById("hubStatus").innerHTML = `Hub Ready`;
         log("Hub Connected", "success");
     };
-
-    socket.onmessage = (message) =>{
-        console.log(message.data)
-        if(message.data == "OLED Screen Detected"){
+    socket.onmessage = (message) => {
+    console.log(message.data)
+    if (message.data == "OLED Screen Detected") {
+        if (modules.indexOf("OLED") == -1) {
             document.getElementById("OLEDModule").style.display = "block"
-        }else{
+            modules.push("OLED");
+        }
+    } else if (message.data == "OLED Screen Not Detected") {
+        if (modules.indexOf("OLED") != -1) {
             document.getElementById("OLEDModule").style.display = "none"
+            modules.splice(modules.findIndex("OLED"), 1)
         }
     }
 }
+
+}
+
 function setupSidebarDrag() {
     const sidebarBlocks = document.querySelectorAll(".ai-model-sidebar-block");
     const canvas = document.getElementById("codingCanvas");

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Inventa | Live Data Viewer
+    </title>
+
+   
+    <link rel="stylesheet" href="studio.css">
+     <link rel="stylesheet" href="data.css">
+    <link rel="stylesheet" href="dataviewer.css">    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link
+        href="
+https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+
+
+<body>
+
+
+    <div class="data-workspace">
+
+
+
+        <!-- =========================
+TOP BAR
+========================= -->
+
+
+        <header class="data-topbar">
+
+
+            <div class="topbar-left">
+
+
+                <a href="dashboard.html" class="brand">
+
+
+                    <img src="/week1/asset/Logo.png" id="studioBtn">
+
+
+                    <div class="brand-text">
+
+
+                        <h1>
+                            <span class="blue">I</span>nvent<span class="purple">a</span> Studio
+                        </h1>
+
+
+                        <p id="hubStatus">
+                            Live Data Viewer
+                        </p>
+
+
+                    </div>
+
+
+                </a>
+
+
+            </div>
+
+
+
+            <div class="data-top-actions" style="display: flex; gap: 12px;">
+
+
+                <div class="studio-status">
+                    <span class="status-dot-hub" id="hubStatusDot"></span>
+                    <span id="hubStatus">Connecting To Hub</span>
+                </div>
+
+
+                <button class="icon-button">
+                    ⚙
+                </button>
+
+
+            </div>
+
+
+
+        </header>
+
+
+
+
+
+        <div class="data-main">
+
+
+
+
+
+            <!-- =========================
+SIDEBAR
+========================= -->
+
+
+             <aside class="dataset-sidebar">
+
+
+                <div class="sidebar-title">
+
+                    <h2>
+                        Datasets
+                    </h2>
+
+
+                    <button class="new-dataset">
+                        + New
+                    </button>
+
+
+                </div>
+
+                <div class="dataset-search">
+
+                    <input placeholder="Search datasets...">
+
+                </div>
+
+                <div class="dataset-list">
+
+
+
+                    <div class="dataset-item" id="dashboardHome">
+
+
+                        <div class="dataset-icon sensor">
+                            📊
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Dashboard
+                            </h3>
+
+                            <p>
+                                Manage all your datasets
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+            </aside>
+
+
+
+
+
+
+
+            <!-- =========================
+WORKSPACE
+========================= -->
+
+
+            <main class="dataset-workspace">
+
+
+
+
+
+                <section class="dataset-header">
+
+
+                    <div>
+
+
+                        <h2>
+                            Distance Sensor Stream
+                        </h2>
+
+
+                        <p>
+                            Viewing incoming sensor data in real time
+                        </p>
+
+
+                    </div>
+
+
+
+                    <div class="dataset-actions">
+
+
+                        <button>
+                            Pause
+                        </button>
+
+
+                        <button>
+                            Clear
+                        </button>
+
+
+                        <button class="primary">
+                            Export CSV
+                        </button>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+
+
+
+
+                <!-- =========================
+LIVE STATS
+========================= -->
+
+
+                <section class="dataset-stats">
+
+
+                    <div class="stat-card">
+
+
+                        <span>
+                            Samples Received
+                        </span>
+
+
+                        <strong id="samples">
+                            12458
+                        </strong>
+
+
+                    </div>
+
+
+
+
+                    <div class="stat-card">
+
+
+                        <span>
+                            Sample Rate
+                        </span>
+
+
+                        <strong>
+                            100 Hz
+                        </strong>
+
+
+                    </div>
+
+
+
+
+
+                    <div class="stat-card">
+
+
+                        <span>
+                            Latency
+                        </span>
+
+
+                        <strong>
+                            4 ms
+                        </strong>
+
+
+                    </div>
+
+
+
+
+                    <div class="stat-card">
+
+
+                        <span>
+                            Buffer
+                        </span>
+
+
+                        <strong>
+                            256
+                        </strong>
+
+
+                    </div>
+
+
+
+                </section>
+
+
+
+
+
+
+
+
+
+                <!-- =========================
+GRAPH
+========================= -->
+
+
+                <!--<section class="panel">
+
+
+                    <div class="panel-header">
+
+
+                        <h3>
+                            Live Sensor Graph
+                        </h3>
+
+
+                        <span class="live">
+                            STREAMING
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="live-chart">
+
+
+                        <div class="chart-grid"></div>
+
+
+                       
+
+
+                    </div>
+
+
+
+                </section> -->
+
+
+
+
+
+
+
+
+                <!-- =========================
+TABLE
+========================= -->
+
+
+                <section class="panel data-preview">
+
+
+                    <div class="panel-header">
+
+
+                        <h3>
+                            Incoming Data
+                        </h3>
+
+
+                        <span class="recording">
+                            ● Receiving
+                        </span>
+
+
+                    </div>
+
+
+
+
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Time
+                                </th>
+
+                                <th>
+                                    Distance
+                                </th>
+
+                                <th>
+                                    Temperature
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+
+                            </tr>
+
+
+                        </thead>
+
+
+
+                        <tbody>
+
+
+                            <tr>
+
+                                <td>
+                                    14:32:01.021
+                                </td>
+
+                                <td>
+                                    2.31m
+                                </td>
+
+                                <td>
+                                    21.5°C
+                                </td>
+
+                                <td class="safe">
+                                    Safe
+                                </td>
+
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    14:32:01.121
+                                </td>
+
+                                <td>
+                                    1.82m
+                                </td>
+
+                                <td>
+                                    21.6°C
+                                </td>
+
+                                <td class="warning">
+                                    Warning
+                                </td>
+
+
+                            </tr>
+
+
+
+                        </tbody>
+
+
+
+                    </table>
+
+
+
+                </section>
+
+
+
+
+
+
+
+
+
+                <!-- =========================
+RAW STREAM
+========================= -->
+
+
+                <section class="panel">
+
+
+                    <div class="panel-header">
+
+
+                        <h3>
+                            Raw Data Stream
+                        </h3>
+
+
+                    </div>
+
+
+
+                    <div class="terminal">
+
+
+                        <p>
+                            [14:32:01.021] distance = 2.31
+                        </p>
+
+
+                        <p>
+                            [14:32:01.121] distance = 1.82
+                        </p>
+
+
+                        <p>
+                            [14:32:01.221] distance = 1.79
+                        </p>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+
+
+
+            </main>
+
+
+        </div>
+
+
+    </div>
+    <div class="modal-overlay" id="datasetModal">
+
+        <div class="dataset-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Configure Dataset</h2>
+                    <p>Create a new dataset for training.</p>
+                </div>
+
+                <button class="close-modal">
+                    ✕
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <label>
+
+                    Dataset Name
+
+                    <input value="" type="text">
+
+                </label>
+
+                <label>
+
+                    Sensor Module
+
+                    <select class="SensorModules">
+
+                        
+
+                    </select>
+
+                </label>
+
+                <label>
+
+                    Capture Mode
+
+                    <select class="CaptureMode">
+
+                        <option value="timed">
+                                    Timed
+                                </option>
+
+
+                                <option value="manual">
+                                    Manual
+                                </option>
+
+
+                                <option value="continuous" >
+                                    Continuous Limit
+                                </option>
+
+                    </select>
+
+                </label>
+
+                <label class="notManual">
+
+                    Sample Rate(ms)
+
+                    <input value="100" type="number" class="SampleRate">
+                </label>
+
+                <label style="display: none;" class="specialSample">
+
+                    Number Of Samples
+
+                    <input value="1000" type="number" class="SampleCount">
+
+                </label>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="cancel-button">
+                    Cancel
+                </button>
+
+                <button class="record-button" id="record-button2">
+                    Configure Dataset
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="dataviewer.js"></script>
+</body>
+
+
+</html>

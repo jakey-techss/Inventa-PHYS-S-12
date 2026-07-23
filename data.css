@@ -747,8 +747,9 @@ button{
 .dataset-icon.camera{
 
     color:var(--purple);
+    color: hsl(40, 50, 80)
+} 
 
-}
 
 
 
@@ -1984,3 +1985,274 @@ button{
 
 }
 
+
+/* =========================================
+   DATASET CONFIGURATION MODAL
+========================================= */
+
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(4,10,18,.72);
+
+    backdrop-filter:blur(18px);
+
+    z-index:9999;
+
+}
+
+
+
+.dataset-modal{
+
+    width:560px;
+
+    max-width:92%;
+
+    background:
+
+    linear-gradient(
+        180deg,
+        rgba(18,26,47,.98),
+        rgba(10,17,31,.98)
+    );
+
+    border:1px solid rgba(95,168,255,.18);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.55),
+    0 0 50px rgba(46,168,255,.08);
+
+    overflow:hidden;
+
+    animation:popup .25s ease;
+
+}
+
+
+
+@keyframes popup{
+
+    from{
+
+        transform:translateY(18px) scale(.96);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:none;
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+/* HEADER */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    padding:24px 26px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+
+.modal-header h2{
+
+    margin:0;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:24px;
+
+}
+
+
+
+.modal-header p{
+
+    margin-top:6px;
+
+    color:var(--text-dim);
+
+    font-size:13px;
+
+}
+
+
+
+.close-modal{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.04);
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+
+
+.close-modal:hover{
+
+    border-color:var(--blue);
+
+    background:rgba(46,168,255,.08);
+
+}
+
+
+
+/* BODY */
+
+.modal-body{
+
+    padding:24px 26px;
+
+}
+
+
+
+.modal-body label{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    margin-bottom:18px;
+
+    font-size:14px;
+
+    color:var(--text-soft);
+
+}
+
+
+
+.modal-body input,
+
+.modal-body select{
+
+    height:46px;
+
+    padding:0 14px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.04);
+
+    color:white;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.modal-body input:focus,
+
+.modal-body select:focus{
+
+    border-color:var(--blue);
+
+    box-shadow:0 0 0 4px rgba(46,168,255,.08);
+
+}
+
+
+
+/* FOOTER */
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    padding:22px 26px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+
+.cancel-button{
+
+    width:120px;
+
+    height:46px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+#datasetModal{
+    display: none;
+}
+
+.cancel-button:hover{
+
+    border-color:var(--blue);
+
+}
+
+
+
+.modal-footer .record-button{
+
+    width:190px;
+
+    margin:0;
+
+}
+.specialSample{
+    display: none;
+}

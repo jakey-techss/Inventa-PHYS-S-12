@@ -1,5 +1,6 @@
 const HUB_URL = "ws://inventa-hub.local/ws";
 let currentProjectID = new URLSearchParams(window.location.search).get("projectId");
+let currentDatasetID = new URLSearchParams(window.location.search).get("datasetId");
 let socket;
 let sensorList = []
 setInterval(() => {
@@ -10,11 +11,13 @@ project = JSON.parse(project.find((pro) => {
     return JSON.parse(pro).id == currentProjectID
 }))
 if (project.datasets != null) {
-    document.getElementById("numDatasets").innerHTML = project.datasets.length
     project.datasets.forEach((dataset) => {
         let datasetItem = document.createElement('div');
         datasetItem.classList.add("dataset-item")
         datasetItem.id = JSON.parse(dataset).id+"Dataset"
+        if(JSON.parse(dataset).id == currentDatasetID){
+            datasetItem.classList.add("active")
+        }
         datasetItem.innerHTML = `
                         <div class="dataset-icon" style="color:hsl(${Math.random() * 361},100%,${(Math.random() * 21) + 50}%);">
                             ◉
@@ -37,20 +40,23 @@ if (project.datasets != null) {
                     </div>`
         document.querySelector('.dataset-list').appendChild(datasetItem)
         document.getElementById(datasetItem.id).addEventListener("click", () => {
-            console.log("HI")
             window.location.assign(`dataviewer.html?projectId=${encodeURIComponent(currentProjectID)}&datasetId=${encodeURIComponent(JSON.parse(dataset).id)}`);
         })
+        
     })
 }
 document.getElementById("studioBtn").addEventListener("click", () => {
     window.location.assign(`studio.html?projectId=${encodeURIComponent(currentProjectID)}`);
+})
+document.getElementById("dashboardHome").addEventListener("click", () => {
+    window.location.assign(`data.html?projectId=${encodeURIComponent(currentProjectID)}`);
 })
 function connectToHub() {
     socket = new WebSocket(HUB_URL);
 
     socket.onerror = () => {
         document.querySelector(".status-dot-hub").style.backgroundColor = "#FF4D4D";
-        document.getElementById("hubStatus").innerHTML = `Hub Connection Failed`;
+        document.getElementById("hubStatus").innerHTML = `Connection Dropped`;
     };
 
     socket.onopen = () => {

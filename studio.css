@@ -20,13 +20,13 @@
     --number: #AC7F5E;
      --module: #CB30E0;
     --media: #34C759;
-    --condition: #FDAFA4;
+    --condition: #B44C43;
     --ai: #9B6DFF;
     --string: #F6D75C;
     --success: #34D399;
     --warn: #FF8A3D;
     --ops: #00C8B3;
-    --bool: #FDAFA4;
+    --bool: #89AC76;
      --alert: #FF4D4D;
      --any: white;
      --variable: #FF9A3D;
@@ -1781,7 +1781,9 @@ transform:rotate(30deg);
     height:44px;
     font-size:18px;
 }
-
+.specialNodes{
+    display: none;
+}
 .console-pill{
     padding:12px 18px;
     border-radius:12px;

@@ -89,6 +89,9 @@ document.getElementById("create-btn").addEventListener("click", () => {
     document.getElementById("cancel-btn").addEventListener("click", () => {
         document.getElementById("newProjectModal").style.display = "none"
     })
+    document.getElementById("close-btn").addEventListener("click", () => {
+        document.getElementById("newProjectModal").style.display = "none"
+    })
     document.getElementById("create-project-btn").addEventListener("click", () => {
         let username = document.getElementById("projectName").value
         if (username.trim().length == 0) {

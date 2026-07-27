@@ -748,7 +748,10 @@ padding:35px;
     transition:.25s;
 
 }
-
+.projDesc{
+    height: 100px;
+    overflow-y: auto;
+}
 .open-btn:hover{
 
     transform:translateY(-2px);
@@ -1081,4 +1084,219 @@ padding:35px;
 
     box-shadow:0 14px 36px rgba(37,99,235,.35);
 
+}
+
+.delete-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(5,10,20,.72);
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.25s ease;
+    z-index:9999;
+}
+
+.delete-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.delete-modal{
+
+    width:430px;
+    max-width:92vw;
+
+    padding:34px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(32,39,56,.95),
+            rgba(18,24,37,.98)
+        );
+
+    border:1px solid rgba(255,255,255,.07);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.05);
+
+    text-align:center;
+
+    animation:popup .28s ease;
+}
+
+@keyframes popup{
+
+    from{
+
+        opacity:0;
+        transform:translateY(15px) scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+.delete-icon{
+
+    width:74px;
+    height:74px;
+
+    margin:auto;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,72,72,.18),
+            rgba(255,40,40,.06)
+        );
+
+    border:1px solid rgba(255,90,90,.25);
+
+    color:white;
+
+    font-size:30px;
+
+    margin-bottom:24px;
+}
+
+.delete-modal h2{
+
+    color:white;
+    font-size:28px;
+    font-weight:700;
+
+    margin-bottom:14px;
+}
+
+.delete-modal p{
+
+    color:#95a4bf;
+
+    line-height:1.7;
+    font-size:15px;
+
+    margin-bottom:28px;
+}
+
+.delete-info{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    text-align:left;
+
+    margin-bottom:28px;
+}
+
+.delete-info .label{
+
+    display:block;
+
+    color:#7f91ae;
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.12em;
+
+    margin-bottom:8px;
+}
+
+.delete-info .value{
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+}
+
+.delete-buttons{
+
+    display:flex;
+    gap:14px;
+}
+
+.delete-buttons button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.cancel-btn{
+
+    background:#2a3143;
+    color:#d4dceb;
+}
+
+.cancel-btn:hover{
+
+    background:#394359;
+}
+
+.delete-bt-overlay{
+
+    background:linear-gradient(
+        135deg,
+        #ff5757,
+        #dc2626
+    );
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+
+.delete-btn-overlay:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(255,60,60,.35);
 }

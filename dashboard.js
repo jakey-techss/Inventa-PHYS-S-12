@@ -2,7 +2,6 @@ let projects = window.localStorage.getItem("projects");
 
 if (projects != null) {
     let projectList = JSON.parse(projects);
-    console.log(projectList.length)
     document.getElementById("projectCount").innerHTML = projectList.length + (projectList.length > 1 || projectList.length == 0 ? " Projects" : " Project")
     if (projectList.length > 0) {
         for (i = projectList.length - 1; i >= 0; i--) {
@@ -22,7 +21,7 @@ if (projects != null) {
                         </div>
                         <div class="project-info">
                             <h3>${project.name}</h3>
-                            <p>
+                            <p class="projDesc">
                                 ${project.description}
                             </p>
                         </div>
@@ -38,10 +37,52 @@ if (projects != null) {
             document.getElementById(`${project.id}OpenButton`).addEventListener("click", () => {
                 window.location.assign(`studio.html?projectId=${encodeURIComponent(project.id)}`);
             })
+            document.getElementById(`${project.id}DeleteButton`).addEventListener("click", () => {
+
+                openDeletePopup(project.name)
+                function openDeletePopup(projectName) {
+
+                    deleteName.textContent = projectName;
+                    deleteOverlay.classList.add("show");
+
+                }
+
+                function closeDeletePopup() {
+
+                    deleteOverlay.classList.remove("show");
+
+                }
+
+                document.getElementById("cancelDelete").addEventListener("click", closeDeletePopup);
+                deleteOverlay.addEventListener("click", e => {
+
+                    if (e.target === deleteOverlay)
+                        closeDeletePopup();
+
+                });
+
+                document.getElementById("confirmDelete").addEventListener("click", () => {
+                    let currentProjectIndex = projectList.findIndex((proj)=>{
+                        return proj.id = project.id
+                    })
+                    projectList.splice(currentProjectIndex, 1);
+                    window.localStorage.setItem("projects", JSON.stringify(projectList))
+                    document.getElementById(project.id).style.display = "none"
+                    closeDeletePopup();
+                    window.location.reload()
+                    
+
+                });
+            })
         }
-        
+
+
     }
 }
+const deleteOverlay = document.getElementById("deleteOverlay");
+const deleteName = document.getElementById("deleteProjectName");
+
+
 
 document.getElementById("create-btn").addEventListener("click", () => {
     document.getElementById("newProjectModal").style.display = "flex"
@@ -74,7 +115,7 @@ document.getElementById("create-btn").addEventListener("click", () => {
             projects = JSON.stringify(projects)
             window.localStorage.setItem("projects", projects)
         }
-        window.location.assign("studio.html")
+        window.location.assign(`studio.html?projectId=${encodeURIComponent(completedCompilation.id)}`);
 
     })
     document.querySelectorAll(".icon").forEach((child) => {

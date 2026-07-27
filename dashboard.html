@@ -220,6 +220,40 @@
     </div>
 
 </div>
+<div class="delete-overlay" id="deleteOverlay">
+    <div class="delete-modal">
+
+        <div class="delete-icon">
+            <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <h2>Delete Project?</h2>
+
+        <p>
+            This action cannot be undone. All project files, settings,
+            and local data will be permanently removed.
+        </p>
+
+        <div class="delete-info">
+            <span class="label">Project</span>
+            <span class="value" id="deleteProjectName">
+                
+            </span>
+        </div>
+
+        <div class="delete-buttons">
+            <button class="cancel-btn" id="cancelDelete">
+                Cancel
+            </button>
+
+            <button class="delete-btn-overlay" id="confirmDelete">
+                <i class="fa-solid fa-trash"></i>
+                Delete
+            </button>
+        </div>
+
+    </div>
+</div>
 <script src="dashboard.js"></script>
 </body>
 

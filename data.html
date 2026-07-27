@@ -37,8 +37,8 @@
                 <a href="dashboard.html" class="brand">
                     <img src="/week1/asset/Logo.png" alt="Inventa Logo">
                     <div class="brand-text">
-                        <h1><span class="blue">I</span>nvent<span class="purple">a</span> Studio</h1>
-                        <p>Data Workspace</p>
+                        <h1><span class="blue" id="firstprojName"></span><span id="secondprojName"></span><span class="purple" id="LastprojName"></span></h1>
+                         <p>Data Workspace</p>
                     </div>
                 </a>
             </div>
@@ -71,7 +71,7 @@
 ========================= -->
 
 
-            <aside class="dataset-sidebar">
+            <aside class="dataset-sidebar" style="overflow-y: auto;">
 
 
                 <div class="sidebar-title">
@@ -175,14 +175,6 @@
                                 Return To Studio
                             </button>
 
-                        <button>
-                            Import Dataset
-                        </button>
-
-                        <button>
-                            Export Dataset
-                        </button>
-
                     </div>
 
 
@@ -200,7 +192,7 @@
                             Samples
                         </span>
 
-                        <strong>
+                        <strong id="samples">
                             0
                         </strong>
 
@@ -300,159 +292,13 @@
 
 
 
-
-                    <section class="panel data-preview">
-
-
-                        <div class="panel-header">
-
-                            <h3>
-                                Live Data Preview
-                            </h3>
-
-
-                            <span class="recording">
-                                ● Recording
-                            </span>
-
-
-                        </div>
-
-
-
-
-
-                        <table>
-
-
-                            <thead>
-
-                                <tr>
-
-                                    <th>
-                                        Distance
-                                    </th>
-
-                                    <th>
-                                        Temperature
-                                    </th>
-
-                                    <th>
-                                        Label
-                                    </th>
-
-                                </tr>
-
-                            </thead>
-
-
-
-                            <tbody>
-
-
-                                <tr>
-
-                                    <td>
-                                        2.31
-                                    </td>
-
-                                    <td>
-                                        21.5°C
-                                    </td>
-
-                                    <td class="safe">
-                                        Safe
-                                    </td>
-
-                                </tr>
-
-
-
-                                <tr>
-
-                                    <td>
-                                        5.82
-                                    </td>
-
-                                    <td>
-                                        28.2°C
-                                    </td>
-
-                                    <td class="warning">
-                                        Warning
-                                    </td>
-
-                                </tr>
-
-
-
-                                <tr>
-
-                                    <td>
-                                        1.42
-                                    </td>
-
-                                    <td>
-                                        20.8°C
-                                    </td>
-
-                                    <td class="safe">
-                                        Safe
-                                    </td>
-
-                                </tr>
-
-
-                            </tbody>
-
-
-                        </table>
-
-
-
-
-                    </section>
-
-
-
-                <section class="panel chart-panel">
-
-
-                    <div class="panel-header">
-
-                        <h3>
-                            Sensor Stream
-                        </h3>
-
-
-                    </div>
-
-
-                    <div class="chart-placeholder">
-
-
-                        <div class="chart-grid"></div>
-
-
-                        <p>
-                            Live Sensor Graph
-                        </p>
-
-
-                    </div>
-
-
-                </section>
-
-
-
                 <section class="panel timeline-panel">
 
 
                     <div class="panel-header">
 
                         <h3>
-                            Dataset Activity Timeline
+                            Project Data Activity Timeline
                         </h3>
 
 
@@ -461,71 +307,6 @@
 
 
                     <div class="timeline">
-
-
-                        <div class="timeline-item">
-
-
-                            <span></span>
-
-
-                            <div>
-
-                                <h4>
-                                    CSV Imported
-                                </h4>
-
-                                <p>
-                                    Today • 10:32 AM
-                                </p>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="timeline-item">
-
-
-                            <span></span>
-
-
-                            <div>
-
-                                <h4>
-                                    Recording Started
-                                </h4>
-
-                                <p>
-                                    Today • 10:40 AM
-                                </p>
-
-                            </div>
-
-
-                        </div>
-
-                        <div class="timeline-item">
-
-
-                            <span></span>
-
-
-                            <div>
-
-                                <h4>
-                                    Labels Updated
-                                </h4>
-
-                                <p>
-                                    Today • 10:55 AM
-                                </p>
-
-                            </div>
-
-
-                        </div>
                     </div>
                 </section>
 

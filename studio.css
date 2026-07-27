@@ -496,7 +496,7 @@ transform:translateX(22px);
     position:absolute;
 
     inset:0;
-
+    z-index: 8;
     width:100%;
     height:100%;
 
@@ -1015,17 +1015,15 @@ transform:rotate(30deg);
 }
 
 .brand img{
-    width:50px;
-    height:50px;
+    width:44px;
+    height:44px;
     object-fit:contain;
 }
 
 .brand-text h1{
     margin:0;
-    font-family:"Space Grotesk", sans-serif;
-    font-size:30px;
-    font-weight:700;
-    letter-spacing:-0.02em;
+    font-family:"Space Grotesk";
+    font-size:24px;
 }
 
 .brand-text p{
@@ -1036,7 +1034,7 @@ transform:rotate(30deg);
 }
 
 .blue{
-    color:#22D3EE;
+    color:#2EA8FF;;
 }
 .purple{
     color:#9B6DFF;

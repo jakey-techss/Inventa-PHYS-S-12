@@ -1,5 +1,16 @@
 let activeNode;
 let currentProjectID = new URLSearchParams(window.location.search).get("projectId");
+if(currentProjectID == null || currentProjectID == undefined){
+    window.location.assign("dashboard.html")
+}
+let project = JSON.parse(window.localStorage.getItem("projects"))
+project = JSON.parse(project.find((pro) => {
+    return JSON.parse(pro).id == currentProjectID
+}))
+
+document.getElementById("firstprojName").innerHTML = project.name.substring(0, Math.round(project.name.length / 6))
+document.getElementById("secondprojName").innerHTML = project.name.substring(Math.round(project.name.length / 6), project.name.length - Math.round(project.name.length / 4))
+document.getElementById("LastprojName").innerHTML = project.name.substring(project.name.length - Math.round(project.name.length / 4), project.name.length)
 class node {
     constructor(name, inputValues, outputValues, description, blockCategory) {
         this.name = name
@@ -8,8 +19,18 @@ class node {
         this.description = description
         this.blockCategory = blockCategory
     }
+
 }
-document.getElementById("data-workspace").addEventListener("click",()=>{
+class nodeGraphItem {
+    constructor(name, id, inputValues, outputValues, position) {
+        this.name = name
+        this.id = id
+        this.inputValues = inputValues
+        this.outputValues = outputValues
+        this.position = position
+    }
+}
+document.getElementById("data-workspace").addEventListener("click", () => {
     window.location.assign(`data.html?projectId=${encodeURIComponent(currentProjectID)}`);
 })
 const nodeLibrary = [
@@ -93,7 +114,7 @@ const nodeLibrary = [
     new node("Create Data Set",
         [
             { input: "Data", category: "data", acceptedTypes: ["Data"], description: "Data node for use and modification wih column labels" },
-            { input: "Column Names", category: "cateogry", acceptedTypes: ["Variable&lt;List&gt;"], description: "The list of column names in order of left to right of the original data file. The length of this list should be the same as the number of columns the original data set had minus the row ID column." },
+            { input: "Column Names", category: "category", acceptedTypes: ["Variable&lt;List&gt;"], description: "The list of column names in order of left to right of the original data file. The length of this list should be the same as the number of columns the original data set had minus the row ID column." },
         ],
         [
             { output: "Dataset", category: "data", outputType: ["Dataset&lt;Full&gt;"], description: "An actual data set with appropriate row ID's and column names" },
@@ -1124,7 +1145,7 @@ const nodeLibrary = [
     new node("Condition Builder",
         [
             { input: "Boolean", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&ltBoolean&lt;"], description: "The boolean that defines the condition. You would use the 'Control Variable' in the condition" },
-            { input: "Control Variable", category: "control", acceptedTypes: ["ControlVariable"], description: "The control variable of the condition block. This will be auto selected once all the nodes are correctly placed." },
+            { input: "Control Variable", category: "category", acceptedTypes: ["ControlVariable"], description: "The control variable of the condition block. This will be auto selected once all the nodes are correctly placed." },
 
         ],
         [
@@ -1193,7 +1214,26 @@ const nodeLibrary = [
         "Creates a delay for a group of nodes to happen",
         "bool"
     ),
+    new node("Break",
+        [
+            { input: "None", category: "any", acceptedTypes: [], description: "This block has no inputs" },
+
+        ],
+        [
+            {
+                output: "None", category: "any", outputType: [""], description: "This block has no outputs"
+            },
+
+        ],
+        "Stops a set of nodes from running. This can also stop the entire program.",
+        "bool"
+    ),
 ]
+const nodeGraph = {
+    nodes: [],
+    variables: [],
+    connections: []
+}
 let fail = false;
 document.addEventListener("DOMContentLoaded", () => {
     log("Connecting To Hub", "process");
@@ -1240,19 +1280,18 @@ function connectToHub() {
         log("Hub Connected", "success");
     };
     socket.onmessage = (message) => {
-    console.log(message.data)
-    if (message.data == "OLED Screen Detected") {
-        if (modules.indexOf("OLED") == -1) {
-            document.getElementById("OLEDModule").style.display = "block"
-            modules.push("OLED");
-        }
-    } else if (message.data == "OLED Screen Not Detected") {
-        if (modules.indexOf("OLED") != -1) {
-            document.getElementById("OLEDModule").style.display = "none"
-            modules.splice(modules.findIndex("OLED"), 1)
+        if (message.data == "OLED Screen Detected") {
+            if (modules.indexOf("OLED") == -1) {
+                document.getElementById("OLEDModule").style.display = "block"
+                modules.push("OLED");
+            }
+        } else if (message.data == "OLED Screen Not Detected") {
+            if (modules.indexOf("OLED") != -1) {
+                document.getElementById("OLEDModule").style.display = "none"
+                modules.splice(modules.findIndex("OLED"), 1)
+            }
         }
     }
-}
 
 }
 
@@ -1340,8 +1379,18 @@ function setupSidebarDrag() {
                     clone.style.zIndex = "20";
                     clone.style.left = `${x}px`;
                     clone.style.top = `${y}px`;
-
+                    let id = self.crypto.randomUUID()
+                    clone.id = id
                     makeCanvasBlockDraggable(clone, canvas);
+                    nodeGraph.nodes.push(
+                        new nodeGraphItem(
+                            block.children[1].innerHTML,
+                            id,
+                            [],
+                            [],
+                            [parseInt(clone.style.left), parseInt(clone.style.top)]
+                        )
+                    )
                 } else {
                     clone.remove();
                 }
@@ -1384,11 +1433,53 @@ function makeCanvasBlockDraggable(block, canvas) {
 
         block.style.top = newTop + "px";
         block.style.left = newLeft + "px";
+
+        let shiftedNodeIndex = nodeGraph.nodes.findIndex((node) => {
+            return node.id == block.id
+        })
+        let xChange = parseInt(block.style.left) - nodeGraph.nodes[shiftedNodeIndex].position[0]
+        let yChange = parseInt(block.style.top) - nodeGraph.nodes[shiftedNodeIndex].position[1]
+        
+        if (Math.abs(xChange) > 0 || Math.abs(yChange) > 0) {
+            nodeGraph.nodes[shiftedNodeIndex].position = [parseInt(block.style.left), parseInt(block.style.top)]
+            nodeGraph.connections.forEach((connectedNode) => {
+                if (connectedNode.toNode == block.id || connectedNode.fromNode == block.id) {
+                    document.querySelector('.connections').removeChild(document.getElementById(connectedNode.id))
+                    //toNode is e-node
+                    if (connectedNode.toNode == block.id) {
+
+                        createConnection(
+                            getSocketPosition(connectedNode.pos[0]),
+                            {
+                                x: getSocketPosition(connectedNode.pos[1]).x - xChange,
+                                y: getSocketPosition(connectedNode.pos[1]).y - yChange
+
+                            },
+                            connectedNode.id
+                        );
+                    }else if (connectedNode.fromNode == block.id) {
+
+                        createConnection(
+                            {
+                                x: getSocketPosition(connectedNode.pos[0]).x - xChange,
+                                y: getSocketPosition(connectedNode.pos[0]).y - yChange
+
+                            },
+                            getSocketPosition(connectedNode.pos[1]),
+                            connectedNode.id
+                        );
+                    }
+
+                }
+            })
+        }
+
     }
 
     function closeDragElement() {
         document.onmouseup = null;
-        document.onmousemove = null;
+        document.onmousemove = null;  
+        
     }
 }
 
@@ -1638,7 +1729,7 @@ document.getElementById("searchNodes").addEventListener("input", () => {
         }
     })
 })
-function createConnection(start, end) {
+function createConnection(start, end, id) {
 
 
     const svg = document.querySelector(".connections");
@@ -1661,9 +1752,10 @@ function createConnection(start, end) {
     const endX = end.x;
     const endY = end.y;
 
-
-
-    const curve = 120;
+    let curve = -120;
+    if (endX > startX) {
+        curve *= -1
+    }
 
 
 
@@ -1679,7 +1771,7 @@ function createConnection(start, end) {
 
 
     path.setAttribute("d", d);
-    console.log(startX)
+    path.id = id
 
     svg.appendChild(path);
 
@@ -1687,6 +1779,7 @@ function createConnection(start, end) {
 
 }
 function getSocketPosition(socket) {
+
 
     const rect = socket.getBoundingClientRect();
 
@@ -1716,6 +1809,7 @@ document.addEventListener("click", (e) => {
     const el = e.target;
 
 
+
     if (activeNode == null) {
 
         activeNode = el;
@@ -1726,19 +1820,82 @@ document.addEventListener("click", (e) => {
     }
 
     else {
+        if (e.target.parentNode.parentNode.classList[0] != activeNode.parentNode.parentNode.classList[0] && e.target.parentNode.parentNode.parentNode.parentNode.id != activeNode.parentNode.parentNode.parentNode.parentNode.id && !activeNode.classList.contains("any") && !e.target.classList.contains("any")) {
+            let acceptedInputTypes;
+            let acceptedOutTypes;
+            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-left") {
+                let nodeBook = nodeLibrary.find((node) => {
+                    return node.name == e.target.parentNode.parentNode.parentNode.parentNode.children[1].innerHTML
+                })
+                nodeBook = nodeBook.inputValues.find((input) => {
+                    return input.input == e.target.parentNode.children[1].innerHTML
+                })
+                acceptedInputTypes = nodeBook.acceptedTypes
 
-        createConnection(
-            getSocketPosition(activeNode),
-            getSocketPosition(el)
-        );
+                nodeBook = nodeLibrary.find((node) => {
+                    return node.name == activeNode.parentNode.parentNode.parentNode.parentNode.children[1].innerHTML
+                })
+                nodeBook = nodeBook.outputValues.find((output) => {
+                    return output.output == activeNode.parentNode.children[0].innerHTML
+                })
+
+                acceptedOutTypes = nodeBook.outputType
+            }
+            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-right") {
+                let nodeBook = nodeLibrary.find((node) => {
+                    return node.name == activeNode.parentNode.parentNode.parentNode.parentNode.children[1].innerHTML
+                })
+               
+                nodeBook = nodeBook.inputValues.find((input) => {
+                    return input.input == activeNode.parentNode.children[1].innerHTML
+                })
+                acceptedInputTypes = nodeBook.acceptedTypes
+
+                nodeBook = nodeLibrary.find((node) => {
+                    return node.name == e.target.parentNode.parentNode.parentNode.parentNode.children[1].innerHTML
+                })
+                nodeBook = nodeBook.outputValues.find((output) => {
+                    return output.output == e.target.parentNode.children[0].innerHTML
+                })
+                acceptedOutTypes = nodeBook.outputType
+            }
+
+            let acceptible = false;
+            acceptedOutTypes.forEach((item) => {
+                if (acceptedInputTypes.indexOf(item) != -1) {
+                    acceptible = true;
+                }
+                if (acceptedInputTypes.indexOf("<br>" + item) != -1) {
+                    acceptible = true;
+                }
+
+            })
+            if (acceptible) {
+                let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el])
+                nodeGraph.connections.push(connected)
+                createConnection(
+                    getSocketPosition(activeNode),
+                    getSocketPosition(el),
+                    connected.id
+                );
+            }
 
 
-        activeNode.style.boxShadow = "";
+            activeNode.style.boxShadow = "";
 
-        activeNode = null;
+            activeNode = null;
+        }
 
     }
 
 });
+class connection {
+    constructor(id, toNode, fromNode, pos) {
+        this.id = self.crypto.randomUUID()
+        this.toNode = toNode
+        this.fromNode = fromNode
+        this.pos = pos
+    }
+}
 
 

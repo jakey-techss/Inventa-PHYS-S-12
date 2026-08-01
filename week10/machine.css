@@ -806,7 +806,10 @@ p {
 /* =====================
  RESPONSIVE
 ===================== */
-
+a{
+    text-decoration: none;
+    color: inherit;
+}
 
 @media(max-width:800px){
 
@@ -834,6 +837,7 @@ nav {
     padding:40px 20px;
 
 }
+
 
 
 .hero-card h1 {

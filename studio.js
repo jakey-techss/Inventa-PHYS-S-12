@@ -1,12 +1,134 @@
 let activeNode;
 let currentProjectID = new URLSearchParams(window.location.search).get("projectId");
-if(currentProjectID == null || currentProjectID == undefined){
+if (currentProjectID == null || currentProjectID == undefined) {
     window.location.assign("dashboard.html")
 }
+const HUB_URL = "ws://inventa-hub.local/ws";
+let socket;
+let modules = [];
 let project = JSON.parse(window.localStorage.getItem("projects"))
 project = JSON.parse(project.find((pro) => {
     return JSON.parse(pro).id == currentProjectID
 }))
+let fail = false;
+document.addEventListener("DOMContentLoaded", () => {
+    setupSidebarDrag();
+    log("Connecting To Hub", "process");
+    connectToHub();
+    setInterval(() => {
+        if (fail) {
+            document.querySelector(".status-dot-hub").style.backgroundColor = "#FF4D4D";
+            document.getElementById("hubStatus").innerHTML = `Retrying Connection`;
+            log("Retrying Connection", "error");
+        }
+        connectToHub();
+    }, 15000)
+
+});
+let nodeGraph = {
+    nodes: [],
+    variables: [],
+    connections: [],
+    notes: [],
+}
+let nodeGraphToSave = {
+    nodes: [],
+    variables: [],
+    connections: [],
+    notes: [],
+}
+console.log(JSON.parse(project.nodeGraph))
+if (project.nodeGraph != null && project.nodeGraph != undefined) {
+    let canvas = document.getElementById("codingCanvas")
+    let nodeGraphStructure = JSON.parse(project.nodeGraph)
+    nodeGraphStructure.nodes.forEach((node) => {
+        node = JSON.parse(node)
+        nodeGraph.nodes.push(node)
+        let block
+        document.querySelectorAll(".sidebar-list .ai-model-sidebar-block").forEach((b) => {
+            if (b.children[1].innerHTML == node.name) {
+                block = b
+            }
+        })
+        const canvasRect = canvas.getBoundingClientRect();
+        const clone = block.cloneNode(true);
+        clone.classList.add("canvas-block");
+        clone.id = node.id
+        clone.style.position = "absolute";
+        clone.style.zIndex = "20";
+        const rect = block.getBoundingClientRect();
+        clone.style.width = rect.width + "px";
+        clone.style.left = (node.position[0]) + "px";
+        clone.style.top = (node.position[1]) + "px";
+
+
+        clone.style.pointerEvents = "auto";
+        clone.style.zIndex = "20";
+        let universalConnector = document.createElement("div")
+        universalConnector.classList.add('ai-mini-port-row')
+        universalConnector.innerHTML = `
+        <span class="ai-mini-port-dot any"></span>
+        <span class="ai-mini-port-label">Universal Connector</span>
+        `
+
+        if (clone.children[1].innerHTML != "Break") {
+            let endPort = document.createElement("div")
+            endPort.classList.add('ai-mini-port-row')
+            endPort.innerHTML = `
+        <span class="ai-mini-port-label">Next Node</span>
+        <span class="ai-mini-port-dot any"></span>
+        `
+            clone.children[0].lastElementChild.appendChild(endPort)
+        }
+
+
+        clone.children[0].children[0].appendChild(universalConnector)
+        canvas.appendChild(clone);
+        attachNodeContextMenu(clone)
+        makeCanvasBlockDraggable(clone, canvas);
+
+    })
+    nodeGraphStructure.connections.forEach((con) => {
+        con = JSON.parse(con)
+        nodeGraph.connections.push(con)
+        let startNode = document.getElementById(con.toNode)
+        let startSocket = startNode.querySelectorAll(".ai-mini-port-label")
+        let startPos;
+        let endPos;
+        let side;
+        startSocket.forEach((child) => {
+            if (child.innerHTML == con.toSocket) {
+                startPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                side = child.parentElement.parentElement.classList[0]
+                
+            }
+        })
+        if (side == "ai-model-sidebar-left") {
+            let toNode = document.getElementById(con.fromNode)
+            let toSocket = startNode.querySelectorAll(".ai-model-sidebar-right .ai-mini-port-label")
+            console.log(side)
+            toSocket.forEach((child) => {
+                console.log(child)
+                if (child.innerHTML == con.fromSocket) {
+                    endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                }
+            })
+        } else {
+             
+            let toNode = document.getElementById(con.fromNode)
+            let toSocket = startNode.querySelectorAll(".ai-model-sidebar-left .ai-mini-port-label")
+            console.log(toSocket)
+            toSocket.forEach((child) => {
+                 console.log(child)
+                if (child.innerHTML == con.fromSocket) {
+                    endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                }
+            })
+        }
+       
+        //createConnection(startPos, endPos, con.id)
+    })
+}
 
 document.getElementById("firstprojName").innerHTML = project.name.substring(0, Math.round(project.name.length / 6))
 document.getElementById("secondprojName").innerHTML = project.name.substring(Math.round(project.name.length / 6), project.name.length - Math.round(project.name.length / 4))
@@ -30,6 +152,17 @@ class nodeGraphItem {
         this.position = position
     }
 }
+class noteItem {
+    constructor(name, id, value, icon, classify, position) {
+        this.name = name
+        this.id = id
+        this.value = value
+        this.icon = icon
+        this.classify = classify
+        this.position = position
+    }
+}
+let noteIcons = ["🤖", "👻", "☠️", "🎃", "🧌", "🦐", "🐧", "🐢", "🎄", "🌚", "🌒", "🎮"];
 document.getElementById("data-workspace").addEventListener("click", () => {
     window.location.assign(`data.html?projectId=${encodeURIComponent(currentProjectID)}`);
 })
@@ -1229,25 +1362,53 @@ const nodeLibrary = [
         "bool"
     ),
 ]
-const nodeGraph = {
-    nodes: [],
-    variables: [],
-    connections: []
-}
-let fail = false;
-document.addEventListener("DOMContentLoaded", () => {
-    log("Connecting To Hub", "process");
-    connectToHub();
-    setInterval(() => {
-        if (fail) {
-            document.querySelector(".status-dot-hub").style.backgroundColor = "#FF4D4D";
-            document.getElementById("hubStatus").innerHTML = `Retrying Connection`;
-            log("Retrying Connection", "error");
+document.getElementById("newNote").addEventListener("click", () => {
+    document.getElementById("notePopup").style.display = "flex"
+})
+
+document.body.addEventListener("click", () => {
+
+    console.log(nodeGraph)
+    nodeGraph.nodes.forEach((node) => {
+        if (nodeGraphToSave.nodes.findIndex((n) => { return JSON.parse(n).id == node.id }) == -1) {
+            nodeGraphToSave.nodes.push(JSON.stringify(node))
+        } else if (nodeGraphToSave.nodes.findIndex((n) => { return JSON.parse(n).id == node.id }) != -1 &&
+            JSON.parse(nodeGraphToSave.nodes.find((n) => { return JSON.parse(n).id == node.id })).position[0] != node.position[0] || JSON.parse(nodeGraphToSave.nodes.find((n) => { return JSON.parse(n).id == node.id })).position[1] != node.position[1]) {
+            let index = nodeGraphToSave.nodes.findIndex((n) => { return JSON.parse(n).id == node.id })
+            nodeGraphToSave.nodes.splice(index, 1)
+            nodeGraphToSave.nodes.push(JSON.stringify(node))
         }
-        connectToHub();
-    }, 15000)
-    setupSidebarDrag();
-});
+    })
+    nodeGraph.variables.forEach((vars) => {
+        if (nodeGraphToSave.variables.findIndex((v) => { return JSON.parse(v).id == vars.id }) == -1) {
+            nodeGraphToSave.variables.push(JSON.stringify(vars))
+        }
+    })
+    nodeGraph.connections.forEach((con) => {
+        if (nodeGraphToSave.connections.findIndex((c) => { return JSON.parse(c).id == con.id }) == -1) {
+            nodeGraphToSave.connections.push(JSON.stringify(con))
+        }
+    })
+    nodeGraph.notes.forEach((not) => {
+        if (nodeGraphToSave.notes.findIndex((n) => { return JSON.parse(n).id == not.id }) == -1) {
+            nodeGraphToSave.notes.push(JSON.stringify(not))
+        }
+    })
+    console.log(nodeGraphToSave)
+
+    let projectToSave = project
+    projectToSave.nodeGraph = JSON.stringify(nodeGraphToSave)
+    projectToSave = JSON.stringify(projectToSave)
+    let allProjects = JSON.parse(window.localStorage.getItem("projects"))
+    let projectIndex = allProjects.findIndex((pro) => {
+        return JSON.parse(pro).id == currentProjectID
+    })
+    allProjects.splice(projectIndex, 1)
+    allProjects.push(projectToSave)
+    window.localStorage.setItem("projects", JSON.stringify(allProjects))
+
+})
+
 let initialScale = 1
 document.querySelectorAll('.sidebar-group-toggle').forEach(toggle => {
     const group = toggle.closest('.collapsible-group');
@@ -1258,9 +1419,7 @@ document.querySelectorAll('.sidebar-group-toggle').forEach(toggle => {
     });
 });
 
-const HUB_URL = "ws://inventa-hub.local/ws";
-let socket;
-let modules = [];
+
 
 function connectToHub() {
     socket = new WebSocket(HUB_URL);
@@ -1294,9 +1453,279 @@ function connectToHub() {
     }
 
 }
+document.getElementById("noteTitle").addEventListener("input", () => {
+    document.getElementById("titleLength").innerHTML = document.getElementById("noteTitle").value.length
+})
+document.getElementById("note-close-popup").addEventListener("click", () => {
+    document.getElementById("notePopup").style.display = "none"
+})
+document.getElementById("note-cancel-popup").addEventListener("click", () => {
+    document.getElementById("notePopup").style.display = "none"
+})
+document.getElementById("note-create-popup").addEventListener("click", () => {
+    let note = document.createElement('div')
+    let title;
+    note.classList.add("inventa-note-node")
+    if (document.getElementById("noteTitle").value.trim().length == 0) {
+        title = "New Note"
+    } else {
+        title = document.getElementById("noteTitle").value.trim()
+    }
+    let icon = noteIcons[Math.floor(Math.random() * noteIcons.length)]
+    note.innerHTML = ` 
+    <div class="note-node-header">
 
+                            <div class="note-node-icon">
+                                ${icon}
+                            </div>
+
+                            <div class="note-node-title">
+                                ${document.querySelector('.selected-category .category-text2 span').innerHTML}
+                            </div>
+
+                            <div class="note-node-actions">
+                                <button>
+                                    ${document.querySelector(".selected-category .category-icon").innerHTML}
+                                </button>
+                                <button>
+                                    &#8942;
+                                </button>
+                                
+                            </div>
+
+                        </div>
+
+
+                        <div class="note-node-content">
+
+                            <h3>
+                                ${title}
+                            </h3>
+
+                            <textarea class="note-editor" placeholder="Write your note..."></textarea>
+
+                        </div>
+
+
+                        <div class="note-node-footer">
+
+                            <span>
+                                NOTE
+                            </span>
+
+                        </div>`
+    const canvas = document.getElementById("codingCanvas");
+    let id = self.crypto.randomUUID()
+    note.id = id
+    canvas.appendChild(note)
+    note.style.left = "300px";
+    note.style.top = "300px";
+    nodeGraph.notes.push(
+        new noteItem(title, id, "", icon, document.querySelector('.selected-category .category-text2 span').innerHTML, [parseInt(note.style.left), parseInt(note.style.top)])
+    )
+    makeNoteDraggable(note, canvas);
+    document.getElementById("notePopup").style.display = "none"
+})
+function makeNoteDraggable(note, canvas) {
+
+    const header = note.querySelector(".note-node-header");
+
+    let dragging = false;
+    let shiftX = 0;
+    let shiftY = 0;
+
+
+    header.addEventListener("mousedown", (e) => {
+
+        dragging = true;
+
+
+        const rect = note.getBoundingClientRect();
+
+        shiftX = e.clientX - rect.left;
+        shiftY = e.clientY - rect.top;
+
+
+        note.style.zIndex = 1000;
+
+
+        function moveAt(pageX, pageY) {
+
+            const canvasRect = canvas.getBoundingClientRect();
+
+
+            note.style.left =
+                `${pageX - canvasRect.left - shiftX}px`;
+
+
+            note.style.top =
+                `${pageY - canvasRect.top - shiftY}px`;
+
+        }
+
+
+        function onMouseMove(ev) {
+
+            if (!dragging) return;
+
+            moveAt(ev.pageX, ev.pageY);
+
+        }
+
+
+        function onMouseUp() {
+
+            dragging = false;
+
+            document.removeEventListener(
+                "mousemove",
+                onMouseMove
+            );
+
+            document.removeEventListener(
+                "mouseup",
+                onMouseUp
+            );
+            let noteItemIndex = nodeGraph.notes.findIndex((n) => {
+                return n.id == note.id
+            })
+            nodeGraph.notes[noteItemIndex].position = [parseInt(note.style.left), parseInt(note.style.top)]
+        }
+
+
+        document.addEventListener(
+            "mousemove",
+            onMouseMove
+        );
+
+
+        document.addEventListener(
+            "mouseup",
+            onMouseUp
+        );
+
+    });
+
+}
+// Note Category Dropdown
+
+const categoryDropdown = document.querySelector(".note-category-dropdown");
+const categoryButton = document.querySelector(".category-select-button");
+const categoryOptions = document.querySelectorAll(".category-option");
+
+const selectedIcon = document.querySelector(
+    ".selected-category .category-icon"
+);
+
+const selectedName = document.querySelector(
+    ".selected-category .category-text2 span"
+);
+
+const selectedDescription = document.querySelector(
+    ".selected-category .category-text2 small"
+);
+
+
+let selectedNoteCategory = "hardware";
+
+
+// Open / Close dropdown
+
+categoryButton.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
+    categoryDropdown.classList.toggle("open");
+
+});
+
+
+// Select category
+
+categoryOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+
+        const icon = option.querySelector(".category-icon");
+
+        const name = option.querySelector("span").textContent;
+
+        const description = option.querySelector("small").textContent;
+
+
+        // Update selected display
+
+        selectedIcon.innerHTML = icon.innerHTML;
+
+        selectedName.textContent = name;
+
+        selectedDescription.textContent = description;
+
+
+
+        // Copy category class
+
+        selectedIcon.className =
+            "category-icon " +
+            [...icon.classList]
+                .filter(c => c !== "category-icon")
+                .join(" ");
+
+
+
+        // Save category
+
+        selectedNoteCategory = name.toLowerCase();
+
+
+
+        // Update active option
+
+        categoryOptions.forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+
+        option.classList.add("active");
+
+
+
+        // Close dropdown
+
+        categoryDropdown.classList.remove("open");
+
+
+        console.log(
+            "Selected category:",
+            selectedNoteCategory
+        );
+
+    });
+
+});
+
+
+// Close when clicking outside
+
+document.addEventListener("click", () => {
+
+    categoryDropdown.classList.remove("open");
+
+});
+
+
+// Prevent dropdown from closing when clicking inside
+
+categoryDropdown.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
+});
 function setupSidebarDrag() {
-    const sidebarBlocks = document.querySelectorAll(".ai-model-sidebar-block");
+    const sidebarBlocks = document.querySelectorAll(".sidebar-list .ai-model-sidebar-block");
     const canvas = document.getElementById("codingCanvas");
 
     sidebarBlocks.forEach(block => {
@@ -1434,14 +1863,16 @@ function makeCanvasBlockDraggable(block, canvas) {
         block.style.top = newTop + "px";
         block.style.left = newLeft + "px";
 
+
         let shiftedNodeIndex = nodeGraph.nodes.findIndex((node) => {
             return node.id == block.id
         })
         let xChange = parseInt(block.style.left) - nodeGraph.nodes[shiftedNodeIndex].position[0]
         let yChange = parseInt(block.style.top) - nodeGraph.nodes[shiftedNodeIndex].position[1]
-        
+
         if (Math.abs(xChange) > 0 || Math.abs(yChange) > 0) {
             nodeGraph.nodes[shiftedNodeIndex].position = [parseInt(block.style.left), parseInt(block.style.top)]
+            console.log(nodeGraph.nodes)
             nodeGraph.connections.forEach((connectedNode) => {
                 if (connectedNode.toNode == block.id || connectedNode.fromNode == block.id) {
                     document.querySelector('.connections').removeChild(document.getElementById(connectedNode.id))
@@ -1457,7 +1888,7 @@ function makeCanvasBlockDraggable(block, canvas) {
                             },
                             connectedNode.id
                         );
-                    }else if (connectedNode.fromNode == block.id) {
+                    } else if (connectedNode.fromNode == block.id) {
 
                         createConnection(
                             {
@@ -1474,12 +1905,13 @@ function makeCanvasBlockDraggable(block, canvas) {
             })
         }
 
+
     }
 
     function closeDragElement() {
         document.onmouseup = null;
-        document.onmousemove = null;  
-        
+        document.onmousemove = null;
+
     }
 }
 
@@ -1496,6 +1928,9 @@ function attachNodeContextMenu(node) {
 }
 document.getElementById("Clear").addEventListener("click", () => {
     document.querySelectorAll("#codingCanvas .canvas-block").forEach((el) => {
+        deleteNode(el)
+    })
+    document.querySelectorAll(".connection-line").forEach((el) => {
         deleteNode(el)
     })
 })
@@ -1619,9 +2054,18 @@ function copyNode(node) {
     const currentLeft = parseInt(node.style.left || 0, 10);
     const currentTop = parseInt(node.style.top || 0, 10);
 
-    clone.style.left = `${currentLeft + 28}px`;
-    clone.style.top = `${currentTop + 28}px`;
-
+    clone.style.left = `${currentLeft + 30}px`;
+    clone.style.top = `${currentTop + 30}px`;
+    clone.id = self.crypto.randomUUID()
+    nodeGraph.nodes.push(
+        new nodeGraphItem(
+            clone.children[1].innerHTML,
+            clone.id,
+            [],
+            [],
+            [parseInt(clone.style.left), parseInt(clone.style.top)]
+        )
+    )
     node.parentElement.appendChild(clone);
 
     attachNodeContextMenu(clone)
@@ -1632,6 +2076,19 @@ function copyNode(node) {
 }
 
 function deleteNode(node) {
+    let activeConnection;
+    let i = 0
+    for (i = 0; i < nodeGraph.connections.length; i++) {
+        con = nodeGraph.connections[i]
+        if (con.toNode == node.id || con.fromNode == node.id) {
+            document.querySelector('.connections').removeChild(document.getElementById(con.id))
+            nodeGraph.connections.splice(i, 1);
+            i--;
+        }
+    }
+    nodeGraph.nodes.splice(nodeGraph.nodes.findIndex((nodeItem) => {
+        return nodeItem.id == node.id
+    }), 1)
     node.remove();
 }
 
@@ -1823,6 +2280,7 @@ document.addEventListener("click", (e) => {
         if (e.target.parentNode.parentNode.classList[0] != activeNode.parentNode.parentNode.classList[0] && e.target.parentNode.parentNode.parentNode.parentNode.id != activeNode.parentNode.parentNode.parentNode.parentNode.id && !activeNode.classList.contains("any") && !e.target.classList.contains("any")) {
             let acceptedInputTypes;
             let acceptedOutTypes;
+
             if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-left") {
                 let nodeBook = nodeLibrary.find((node) => {
                     return node.name == e.target.parentNode.parentNode.parentNode.parentNode.children[1].innerHTML
@@ -1830,6 +2288,7 @@ document.addEventListener("click", (e) => {
                 nodeBook = nodeBook.inputValues.find((input) => {
                     return input.input == e.target.parentNode.children[1].innerHTML
                 })
+                fromSocket = nodeBook.input
                 acceptedInputTypes = nodeBook.acceptedTypes
 
                 nodeBook = nodeLibrary.find((node) => {
@@ -1838,17 +2297,18 @@ document.addEventListener("click", (e) => {
                 nodeBook = nodeBook.outputValues.find((output) => {
                     return output.output == activeNode.parentNode.children[0].innerHTML
                 })
-
+                toSocket = nodeBook.output
                 acceptedOutTypes = nodeBook.outputType
             }
             if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-right") {
                 let nodeBook = nodeLibrary.find((node) => {
                     return node.name == activeNode.parentNode.parentNode.parentNode.parentNode.children[1].innerHTML
                 })
-               
+
                 nodeBook = nodeBook.inputValues.find((input) => {
                     return input.input == activeNode.parentNode.children[1].innerHTML
                 })
+                fromSocket = nodeBook.input
                 acceptedInputTypes = nodeBook.acceptedTypes
 
                 nodeBook = nodeLibrary.find((node) => {
@@ -1857,6 +2317,7 @@ document.addEventListener("click", (e) => {
                 nodeBook = nodeBook.outputValues.find((output) => {
                     return output.output == e.target.parentNode.children[0].innerHTML
                 })
+                toSocket = nodeBook.output
                 acceptedOutTypes = nodeBook.outputType
             }
 
@@ -1871,7 +2332,7 @@ document.addEventListener("click", (e) => {
 
             })
             if (acceptible) {
-                let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el])
+                let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el], fromSocket, toSocket)
                 nodeGraph.connections.push(connected)
                 createConnection(
                     getSocketPosition(activeNode),
@@ -1884,17 +2345,43 @@ document.addEventListener("click", (e) => {
             activeNode.style.boxShadow = "";
 
             activeNode = null;
+        } else if (activeNode.classList.contains("any") && e.target.classList.contains("any") && e.target.parentNode.parentNode.classList[0] != activeNode.parentNode.parentNode.classList[0] && e.target.parentNode.parentNode.parentNode.parentNode.id != activeNode.parentNode.parentNode.parentNode.parentNode.id) {
+            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-left" && (activeNode.parentNode.children[0].innerHTML == "Next Node" && e.target.parentNode.children[1].innerHTML == "Universal Connector") || (activeNode.parentNode.children[0].innerHTML == "On Program Start" && e.target.parentNode.children[1].innerHTML == "Universal Connector") || (activeNode.parentNode.children[0].innerHTML == "On Data Loaded" && e.target.parentNode.children[1].innerHTML == "Universal Connector")) {
+                let fromSocket = e.target.parentNode.children[1].innerHTML;
+                let toSocket = activeNode.parentNode.children[0].innerHTML;
+                let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el], fromSocket, toSocket)
+                nodeGraph.connections.push(connected)
+                createConnection(
+                    getSocketPosition(activeNode),
+                    getSocketPosition(el),
+                    connected.id
+                );
+            }
+            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-right" && (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "Next Node") || (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "On Program Start") || (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "On Data Loaded")) {
+                let fromSocket = activeNode.parentNode.children[1].innerHTML;
+                let toSocket = e.target.parentNode.children[0].innerHTML;
+                let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el], fromSocket, toSocket)
+                nodeGraph.connections.push(connected)
+                createConnection(
+                    getSocketPosition(activeNode),
+                    getSocketPosition(el),
+                    connected.id
+                );
+            }
+
         }
 
     }
 
 });
 class connection {
-    constructor(id, toNode, fromNode, pos) {
+    constructor(id, toNode, fromNode, pos, fromSocket, toSocket) {
         this.id = self.crypto.randomUUID()
         this.toNode = toNode
         this.fromNode = fromNode
         this.pos = pos
+        this.fromSocket = fromSocket
+        this.toSocket = toSocket
     }
 }
 

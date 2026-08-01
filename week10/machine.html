@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxelForge Documentation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="machine.css">
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+    <div class="gradient gradient1"></div>
+    <div class="gradient gradient2"></div>
+
+    <nav>
+
+        <div class="logo">
+
+            <div class="logo-icon"></div>
+
+            <div>
+                <h2>VoxelForge</h2>
+                <span>Digital Fabrication Documentation</span>
+            </div>
+
+        </div>
+
+        <div class="links">
+
+            <a href="#overview">Overview</a>
+            <a href="#demo">Demo</a>
+            <a href="#team">Team</a>
+            <a href="#development">Development</a>
+            <a href="#challenges">Challenges</a>
+            <a href="#future">Future</a>
+
+        </div>
+
+    </nav>
+
+    <header>
+
+        <div class="hero-card">
+
+            <p class="tag">
+                HARVARD DIGITAL FABRICATION
+            </p>
+
+            <h1>
+                VoxelForge
+            </h1>
+
+            <h2>
+                Minecraft Structure Fabrication Robot
+            </h2>
+
+            <p>
+
+                A robotic fabrication system capable of transforming Minecraft
+                structures into real-world block creations using a custom web
+                application, ESP32 controllers, and a three-axis gantry.
+
+            </p>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3>4</h3>
+                <span>Team Members</span>
+            </div>
+
+            <div class="stat-card">
+                <h3>2</h3>
+                <span>ESP32 Boards</span>
+            </div>
+
+            <div class="stat-card">
+                <h3>3</h3>
+                <span>Motion Axes</span>
+            </div>
+
+            <div class="stat-card">
+                <h3>WebSockets</h3>
+                <span>Communication</span>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section id="overview" class="glass">
+
+            <div class="section-header">
+
+                <p>01</p>
+                <h2>Project Overview</h2>
+
+            </div>
+
+            <p>
+
+                VoxelForge is a robotic machine designed to recreate Minecraft
+                structures in the real world. Users construct a model inside
+                our custom-built web application before sending the design
+                wirelessly to the machine.
+
+            </p>
+
+            <p>
+
+                The web application was inspired by Minecraft itself and
+                features textured inventory icons, an immersive interface,
+                and a dynamic day-night cycle.
+
+            </p>
+
+            <p>
+
+                The printer uses an ESP32-based control system with a
+                three-axis gantry and a servo-powered claw to place blocks
+                according to the generated build instructions.
+
+            </p>
+
+        </section>
+
+        <section id="demo" class="glass">
+
+            <div class="section-header">
+
+                <p>02</p>
+                <h2>30 Second Demo</h2>
+
+            </div>
+
+            <div class="video-placeholder">
+
+                <h3>Demo Video</h3>
+
+                <p>
+
+                    Replace this container with your embedded YouTube video
+                    or MP4 recording.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <section id="team">
+
+            <div class="section-header">
+
+                <p>03</p>
+                <h2>Team Contributions</h2>
+
+            </div>
+
+            <div class="team-grid">
+
+                <div class="member glass">
+
+                    <h3>Joshua</h3>
+
+                    <ul>
+
+                        <li>Designed and built the machine frame</li>
+
+                        <li>Created the VoxelForge website</li>
+
+                        <li>Programmed both ESP32 controllers</li>
+
+                        <li>Implemented WebSocket communication</li>
+
+                        <li>Integrated hardware and software</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="member glass">
+
+                    <h3>Max</h3>
+
+                    <ul>
+
+                        <li>Designed electronics</li>
+
+                        <li>Motor drivers</li>
+
+                        <li>Power distribution</li>
+
+                        <li>Electrical troubleshooting</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="member glass">
+
+                    <h3>Ethan</h3>
+
+                    <ul>
+
+                        <li>Modeled the Z-axis</li>
+
+                        <li>Designed printable blocks</li>
+
+                        <li>CAD revisions</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="member glass">
+
+                    <h3>Thomas</h3>
+
+                    <ul>
+
+                        <li>Designed the claw in Fusion 360</li>
+
+                        <li>Mechanical improvements</li>
+
+                        <li>Assembly assistance</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="development" class="glass">
+
+            <div class="section-header">
+
+                <p>04</p>
+                <h2>Development Process</h2>
+
+            </div>
+
+            <div class="development-list">
+
+                <div class="step">
+
+                    <h3>Software Development</h3>
+
+                    <p>
+
+                        Developed the VoxelForge web application with a
+                        Minecraft-inspired interface, inventory system,
+                        textured blocks, and a dynamic day-night cycle.
+
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <h3>Machine Construction</h3>
+
+                    <p>
+
+                        Designed and assembled a laser-cut frame with a
+                        three-axis gantry and servo-operated claw.
+
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <h3>Electronics</h3>
+
+                    <p>
+
+                        Integrated stepper motors, drivers, power supplies,
+                        sensors, and an ESP32-based control system.
+
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <h3>Communication</h3>
+
+                    <p>
+
+                        When GPIO limitations became an issue, the architecture
+                        was redesigned around two ESP32 boards communicating
+                        through WebSockets.
+
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <h3>Testing & Debugging</h3>
+
+                    <p>
+
+                        Extensively tested motion, electronics,
+                        communication, and mechanical systems while solving
+                        hardware failures throughout development.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="glass">
+
+            <div class="section-header">
+
+                <p>05</p>
+                <h2>System Architecture</h2>
+
+            </div>
+
+            <div class="architecture">
+
+                <div class="box">
+                    Website
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="box">
+                    ESP32 Host
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="box">
+                    WebSocket
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="box">
+                    ESP32 Client
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="hardware-grid">
+
+                    <div>Stepper X</div>
+                    <div>Stepper Y</div>
+                    <div>Stepper Z</div>
+                    <div>Servo</div>
+                    <div>Limit Switches</div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="challenges">
+
+            <div class="section-header">
+
+                <p>06</p>
+                <h2>Challenges</h2>
+
+            </div>
+
+            <div class="challenge-grid">
+
+                <div class="glass challenge">
+                    <h3>Loose Wiring</h3>
+                    <p>Intermittent electrical connections repeatedly halted testing.</p>
+                </div>
+
+                <div class="glass challenge">
+                    <h3>Short Circuits</h3>
+                    <p>Several ESP32 boards were damaged during rapid prototyping.</p>
+                </div>
+
+                <div class="glass challenge">
+                    <h3>Power Supply</h3>
+                    <p>The Z-axis driver required more reliable power than our initial design provided.</p>
+                </div>
+
+                <div class="glass challenge">
+                    <h3>GPIO Limit</h3>
+                    <p>The original ESP32 ran out of available pins for additional hardware.</p>
+                </div>
+
+                <div class="glass challenge">
+                    <h3>Servo Current</h3>
+                    <p>The servo consumed enough current to destabilize the controller during testing.</p>
+                </div>
+
+                <div class="glass challenge">
+                    <h3>Motor Drivers</h3>
+                    <p>Multiple motor drivers overheated and failed during debugging.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="glass">
+
+            <div class="section-header">
+
+                <p>07</p>
+                <h2>Assignment Requirements</h2>
+
+            </div>
+
+            <div class="requirements">
+
+                <div>
+
+                    <h3>Motor Calibration</h3>
+
+                    <p>
+
+                        Limit switches were added to establish a repeatable
+                        home position, but full calibration was not completed
+                        before the project deadline due to hardware issues.
+
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <h3>Circle Precision</h3>
+
+                    <p>
+
+                        Because the machine was not fully operational,
+                        we were unable to complete the required circle
+                        drawing and percent error analysis.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="future" class="glass">
+
+            <div class="section-header">
+
+                <p>08</p>
+                <h2>Reflection & Future Work</h2>
+
+            </div>
+
+            <p>
+
+                VoxelForge was an ambitious project for a single week and
+                required software engineering, electronics, mechanical design,
+                and embedded systems development simultaneously.
+
+            </p>
+
+            <p>
+
+                Although the printer was not completed before the deadline,
+                our team established the complete software pipeline,
+                communication architecture, and mechanical platform.
+
+            </p>
+
+            <p>
+
+                I plan to continue developing VoxelForge as part of my final
+                project and prepare it for the Digital Fabrication Project Fair.
+                With additional time, the remaining work will focus on improving
+                electrical reliability, completing machine calibration,
+                and enabling fully autonomous Minecraft structure fabrication.
+
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

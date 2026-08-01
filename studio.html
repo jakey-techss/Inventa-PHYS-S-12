@@ -17,6 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 
 <body>
@@ -27,14 +28,15 @@
                 <a href="dashboard.html" class="brand">
                     <img src="/week1/asset/Logo.png" alt="Inventa Logo">
                     <div class="brand-text">
-                        <h1><span class="blue" id="firstprojName"></span><span id="secondprojName"></span><span class="purple" id="LastprojName"></span></h1>
-                         <p>Node CodeSpace</p>
+                        <h1><span class="blue" id="firstprojName"></span><span id="secondprojName"></span><span
+                                class="purple" id="LastprojName"></span></h1>
+                        <p>Node CodeSpace</p>
                     </div>
                 </a>
             </div>
 
             <div class="topbar-center">
-                <button class="toolbar-btn">New Note</button>
+                <button class="toolbar-btn" id="newNote">New Note</button>
                 <button class="toolbar-btn">Load</button>
                 <button class="toolbar-btn">Export</button>
             </div>
@@ -2359,7 +2361,7 @@
                             </div>
 
                         </div>
-                        
+
 
                     </div>
                     <div class="sidebar-group collapsible-group">
@@ -2825,7 +2827,7 @@
                                     </div>
                                 </div>
 
-                                <div class="ai-model-sidebar-title">Write To LED</div>
+                                <div class="ai-model-sidebar-title">Write To OLED</div>
                             </div>
 
                         </div>
@@ -2841,7 +2843,7 @@
                         <path id="connection"></path>
                     </svg>
                     <div class="sidebar-list ai-model-list">
-                        <div style="width: 150px;">
+                        <div style="width: 150px;" id="onProgramStart">
                             <div class="ai-model-sidebar-top">
                                 <div class="ai-model-sidebar-right">
                                     <div class="ai-mini-port-row ">
@@ -2854,7 +2856,7 @@
 
                     </div>
                     <div class="sidebar-list ai-model-list">
-                        <div style="width: 250px; margin-top: 20px;">
+                        <div style="width: 250px; margin-top: 20px;" id="onDataLoaded">
                             <div class="ai-model-sidebar-top">
                                 <div class="ai-model-sidebar-right">
                                     <div class="ai-mini-port-row ">
@@ -2866,6 +2868,7 @@
                         </div>
 
                     </div>
+
                 </div>
             </section>
 
@@ -3095,7 +3098,307 @@
         </div>
 
     </div>
+    <div class="popup-overlay" id="connectionPopup" style="display: none;">
+        <div class="connection-popup" style="display: none;">
 
+            <div class="popup-header">
+                <div class="popup-icon">
+                    !
+                </div>
+
+                <div class="popup-title">
+                    <h2>Connection Not Allowed</h2>
+                    <p>The selected ports cannot be connected.</p>
+                </div>
+
+                <button class="popup-close" onclick="closeConnectionPopup()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="popup-body">
+
+                <div class="connection-section">
+
+                    <h3>Source</h3>
+
+                    <div class="port-card source">
+
+                        <div class="port-node">
+                            <span class="node-name">Add Node</span>
+                        </div>
+
+                        <div class="port-info">
+                            Output
+                            <span class="type number">Number</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="connection-arrow">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </div>
+
+                <div class="connection-section">
+
+                    <h3>Destination</h3>
+
+                    <div class="port-card destination">
+
+                        <div class="port-node">
+                            <span class="node-name">Print Text</span>
+                        </div>
+
+                        <div class="port-info">
+                            Input
+                            <span class="type string">String</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="reason-box">
+
+                    <h3>Reason</h3>
+
+                    <p>
+                        A <b>Number</b> output cannot be connected to a
+                        <b>String</b> input.
+                    </p>
+
+                </div>
+
+                <div class="suggestion-box">
+
+                    <h3>Suggested Fixes</h3>
+
+                    <button class="suggestion">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        Insert Number → Text
+                    </button>
+
+                    <button class="suggestion">
+                        <i class="fa-solid fa-circle-nodes"></i>
+                        Choose another input
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="popup-footer">
+
+                <button class="cancel-btn" onclick="closeConnectionPopup()">
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="popup-overlay2" id="notePopup">
+
+        <div class="note-popup">
+
+            <div class="popup-header">
+
+                <div class="popup-icon">
+                    🗒️
+                </div>
+
+                <div class="popup-title">
+                    <h2>Create Note</h2>
+                    <p>Give your note a title to help organize your graph.</p>
+                </div>
+
+
+                <button class="popup-close" id="note-close-popup">
+                    ✕
+                </button>
+
+            </div>
+
+            <div class="popup-body">
+
+                <div class="input-group">
+
+                    <label>Title</label>
+
+                    <input type="text" id="noteTitle" maxlength="60" placeholder="Example: Movement Logic">
+
+                    <span class="character-count">
+                        <span id="titleLength">0</span>/60
+                    </span>
+
+                </div>
+                <div class="input-group">
+
+                    <label>
+                        Category
+                    </label>
+
+
+                    <div class="note-category-dropdown" style="margin-top: 6px;">
+
+
+                        <button class="category-select-button">
+
+                            <div class="selected-category">
+
+                                <div class="category-icon hardware">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+
+
+                                <div class="category-text2">
+
+                                    <span>
+                                        Hardware
+                                    </span>
+
+                                    <small>
+                                        Sensors, modules, electronics
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <i class="fa-solid fa-chevron-down"></i>
+
+
+                        </button>
+
+
+
+                        <div class="category-options">
+
+
+                            <div class="category-option">
+
+                                <div class="category-icon logic">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+
+                                <div>
+                                    <span>
+                                        Logic
+                                    </span>
+
+                                    <small>
+                                        Programming and workflows
+                                    </small>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="category-option active">
+
+                                <div class="category-icon hardware">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+
+                                <div>
+                                    <span>
+                                        Hardware
+                                    </span>
+
+                                    <small>
+                                        Sensors and modules
+                                    </small>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="category-option">
+
+                                <div class="category-icon ai">
+                                    <i class="fa-solid fa-brain"></i>
+                                </div>
+
+                                <div>
+                                    <span>
+                                        AI
+                                    </span>
+
+                                    <small>
+                                        Models and training
+                                    </small>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="category-option">
+
+                                <div class="category-icon testing">
+                                    <i class="fa-solid fa-flask"></i>
+                                </div>
+
+                                <div>
+                                    <span>
+                                        Testing
+                                    </span>
+
+                                    <small>
+                                        Experiments and results
+                                    </small>
+                                </div>
+
+                            </div>
+                            <div class="category-option">
+
+                                <div class="category-icon random">
+                                    <i class="fa-solid fa-shuffle"></i>
+                                </div>
+
+                                <div>
+                                    <span>
+                                        Random
+                                    </span>
+
+                                    <small>
+                                        Miscellaneous notes and ideas
+                                    </small>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="popup-footer">
+
+                <button class="secondary-button" id="note-cancel-popup">
+                    Cancel
+                </button>
+
+                <button class="primary-button" id="note-create-popup">
+                    Create Note
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
     <script src="studio.js"></script>
 </body>
 

@@ -37,7 +37,7 @@ let nodeGraphToSave = {
     connections: [],
     notes: [],
 }
-console.log(JSON.parse(project.nodeGraph))
+
 if (project.nodeGraph != null && project.nodeGraph != undefined) {
     let canvas = document.getElementById("codingCanvas")
     let nodeGraphStructure = JSON.parse(project.nodeGraph)
@@ -88,10 +88,11 @@ if (project.nodeGraph != null && project.nodeGraph != undefined) {
         makeCanvasBlockDraggable(clone, canvas);
 
     })
-    nodeGraphStructure.connections.forEach((con) => {
+    /*nodeGraphStructure.connections.forEach((con) => {
         con = JSON.parse(con)
         nodeGraph.connections.push(con)
         let startNode = document.getElementById(con.toNode)
+        let endNode = document.getElementById(con.fromNode)
         let startSocket = startNode.querySelectorAll(".ai-mini-port-label")
         let startPos;
         let endPos;
@@ -100,13 +101,13 @@ if (project.nodeGraph != null && project.nodeGraph != undefined) {
             if (child.innerHTML == con.toSocket) {
                 startPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
                 side = child.parentElement.parentElement.classList[0]
-                
+
             }
         })
+
         if (side == "ai-model-sidebar-left") {
             let toNode = document.getElementById(con.fromNode)
-            let toSocket = startNode.querySelectorAll(".ai-model-sidebar-right .ai-mini-port-label")
-            console.log(side)
+            let toSocket = endNode.querySelectorAll(".ai-model-sidebar-right .ai-mini-port-label")
             toSocket.forEach((child) => {
                 console.log(child)
                 if (child.innerHTML == con.fromSocket) {
@@ -114,20 +115,17 @@ if (project.nodeGraph != null && project.nodeGraph != undefined) {
                 }
             })
         } else {
-             
+
             let toNode = document.getElementById(con.fromNode)
-            let toSocket = startNode.querySelectorAll(".ai-model-sidebar-left .ai-mini-port-label")
-            console.log(toSocket)
+            let toSocket = endNode.querySelectorAll(".ai-model-sidebar-left .ai-mini-port-label")
             toSocket.forEach((child) => {
-                 console.log(child)
                 if (child.innerHTML == con.fromSocket) {
                     endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
                 }
             })
         }
-       
-        //createConnection(startPos, endPos, con.id)
-    })
+        createConnection(startPos, endPos, con.id)
+    })*/
 }
 
 document.getElementById("firstprojName").innerHTML = project.name.substring(0, Math.round(project.name.length / 6))

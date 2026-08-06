@@ -1,4 +1,5 @@
 let activeNode;
+let idList = []
 const parser = new DOMParser()
 const currentProjectID = new URLSearchParams(window.location.search).get("projectId");
 const serializer = new XMLSerializer();
@@ -9,15 +10,36 @@ const HUB_URL = "ws://inventa-hub.local/ws";
 let socket;
 let modules = [];
 let project = JSON.parse(window.localStorage.getItem("projects"))
+class variable{
+    constructor(id, value){
+        this.id = id
+        this.value = value
+        if(nodeGraph.variables.findIndex((vars)=>{return vars.id == id}) == -1){
+            nodeGraph.variables.push(this)
+        }else if(nodeGraph.variables.findIndex((vars)=>{return vars.id == id}) != -1 && nodeGraph.variables[nodeGraph.variables.findIndex((vars)=>{return vars.id == id})].value != value){
+            nodeGraph.variables.splice(nodeGraph.variables.findIndex((vars)=>{return vars.id == id}),1)
+            nodeGraph.variables.push(this)
+        }
+    }
+}
 project = JSON.parse(project.find((pro) => {
     return JSON.parse(pro).id == currentProjectID
 }))
+
+if (project.datasets != undefined) {
+    project.datasets.forEach((dataset) => {
+        let datasetOption = document.createElement('option');
+        datasetOption.innerHTML = JSON.parse(dataset).name
+        datasetOption.id = JSON.parse(dataset).id + "Dataset"
+        document.querySelector('#dataset').appendChild(datasetOption)
+    })
+}
 document.getElementById("export").addEventListener("click", () => {
     let projectToSave = JSON.parse(window.localStorage.getItem("projects"))
     projectToSave = projectToSave.find((pro) => {
         return JSON.parse(pro).id == currentProjectID
     })
-    console.log(projectToSave)
+
     const blob = new Blob(
         [projectToSave],
         {
@@ -39,53 +61,53 @@ document.getElementById("export").addEventListener("click", () => {
     link.click();
 })
 document.getElementById("loadFile").addEventListener("change", () => {
-        const file = document.getElementById("loadFile").files[0];
+    const file = document.getElementById("loadFile").files[0];
 
-        if (!file) return;
+    if (!file) return;
 
-        const reader = new FileReader();
+    const reader = new FileReader();
 
-        reader.onload = (event) => {
+    reader.onload = (event) => {
 
-            const Newproject = event.target.result;
+        const Newproject = event.target.result;
 
-            loadProject(Newproject);
-        };
-        reader.readAsText(file);
-    })
+        loadProject(Newproject);
+    };
+    reader.readAsText(file);
+})
 document.getElementById("load").addEventListener("click", () => {
     document.getElementById("loadFile").click()
-    
+
 })
 function loadProject(file) {
-                let project = JSON.parse(window.localStorage.getItem("projects"))
-                file = JSON.parse(file)
-                let isIdPresent = project.findIndex((pro) => {
-                    return JSON.parse(pro).id == file.id
-                })
-                if (isIdPresent == -1) {
-                    project.push(JSON.stringify(file))
-                    project = JSON.stringify(project)
-                    window.localStorage.setItem("projects", project)
+    let project = JSON.parse(window.localStorage.getItem("projects"))
+    file = JSON.parse(file)
+    let isIdPresent = project.findIndex((pro) => {
+        return JSON.parse(pro).id == file.id
+    })
+    if (isIdPresent == -1) {
+        project.push(JSON.stringify(file))
+        project = JSON.stringify(project)
+        window.localStorage.setItem("projects", project)
 
-                    let link = document.createElement("a")
-                    link.style.display = "none"
-                    link.target = "_blank"
-                    link.href = `studio.html?projectId=${encodeURIComponent(file.id)}`
-                    link.click()
-                } else {
-                    file.id = self.crypto.randomUUID()
-                    file.name = file.name + "Copy #{"+project.length+"} "
-                    project.push(JSON.stringify(file))
-                    project = JSON.stringify(project)
-                    window.localStorage.setItem("projects", project)
-                     let link = document.createElement("a")
-                    link.style.display = "none"
-                    link.target = "_blank"
-                    link.href = `studio.html?projectId=${encodeURIComponent(file.id)}`
-                    link.click()
-                }
-            }
+        let link = document.createElement("a")
+        link.style.display = "none"
+        link.target = "_blank"
+        link.href = `studio.html?projectId=${encodeURIComponent(file.id)}`
+        link.click()
+    } else {
+        file.id = self.crypto.randomUUID()
+        file.name = file.name + "Copy #{" + project.length + "} "
+        project.push(JSON.stringify(file))
+        project = JSON.stringify(project)
+        window.localStorage.setItem("projects", project)
+        let link = document.createElement("a")
+        link.style.display = "none"
+        link.target = "_blank"
+        link.href = `studio.html?projectId=${encodeURIComponent(file.id)}`
+        link.click()
+    }
+}
 let fail = false;
 document.addEventListener("DOMContentLoaded", () => {
     setupSidebarDrag();
@@ -232,6 +254,78 @@ if (project.nodeGraph != null && project.nodeGraph != undefined) {
         con.pos[0] = startSocket
         con.pos[1] = toSocket
         nodeGraph.connections.push(con)
+    })
+    nodeGraphStructure.notes.forEach((noteItem) => {
+
+        noteItem = JSON.parse(noteItem)
+        let note = document.createElement('div')
+        let title = noteItem.name
+        note.classList.add("inventa-note-node")
+        let icon = noteItem.icon
+        note.innerHTML = ` 
+    <div class="note-node-header">
+
+                            <div class="note-node-icon">
+                                ${icon}
+                            </div>
+
+                            <div class="note-node-title">
+                                ${noteItem.classify}
+                            </div>
+
+                            <div class="note-node-actions">
+                                <button>
+                                    ${document.querySelector(".category-option ." + noteItem.classify.toLowerCase().trim()).innerHTML}
+                                </button>
+                                <button>
+                                    &#8942;
+                                </button>
+                                
+                            </div>
+
+                        </div>
+
+
+                        <div class="note-node-content">
+
+                            <h3>
+                                ${title}
+                            </h3>
+
+                            <textarea class="note-editor" placeholder="Write your note...">${noteItem.value}</textarea>
+
+                        </div>
+
+
+                        <div class="note-node-footer">
+
+                            <span>
+                                NOTE
+                            </span>
+
+                        </div>`
+        const canvas = document.getElementById("codingCanvas");
+        let id = noteItem.id
+        note.id = id
+        canvas.appendChild(note)
+        note.style.left = noteItem.position[0] + "px";
+        note.style.top = noteItem.position[1] + "px";
+        nodeGraph.notes.push(noteItem)
+        makeNoteDraggable(note, canvas)
+        note.onchange = () => {
+            let currentNoteIndex = nodeGraph.notes.findIndex((not) => {
+                return not.id = note.id
+            })
+            nodeGraph.notes[currentNoteIndex].value = document.getElementById(note.id).querySelector(".note-editor").value
+
+        }
+    })
+     nodeGraphStructure.variables.forEach((vars) => {
+        vars = JSON.parse(vars)
+        if(document.getElementById(vars.id) != undefined){
+            document.getElementById(vars.id).querySelector("#valueSelect").value = vars.value
+            nodeGraph.variables.push(vars)
+        }
     })
 }
 
@@ -1535,9 +1629,18 @@ document.body.addEventListener("click", () => {
         }
     })
     nodeGraph.notes.forEach((not) => {
-        if (nodeGraphToSave.notes.findIndex((n) => { return JSON.parse(n).id == not.id }) == -1) {
+
+        if (nodeGraphToSave.notes.findIndex((n) => { return JSON.parse(n).id == notes.id }) == -1) {
+            nodeGraphToSave.notes.push(JSON.stringify(not))
+        } else if (nodeGraphToSave.notes.findIndex((n) => { return JSON.parse(n).id == not.id }) != -1 &&
+            JSON.parse(nodeGraphToSave.notes.find((n) => { return JSON.parse(n).id == not.id })).position[0] != not.position[0] || JSON.parse(nodeGraphToSave.notes.find((n) => { return JSON.parse(n).id == not.id })).position[1] != not.position[1]
+            || nodeGraphToSave.notes.findIndex((n) => { return JSON.parse(n).id == not.id }) != -1 &&
+            JSON.parse(nodeGraphToSave.notes.find((n) => { return JSON.parse(n).id == not.id })).value != not.value) {
+            let index = nodeGraphToSave.notes.findIndex((n) => { return JSON.parse(n).id == not.id })
+            nodeGraphToSave.notes.splice(index, 1)
             nodeGraphToSave.notes.push(JSON.stringify(not))
         }
+
     })
 
     let projectToSave = project
@@ -1563,8 +1666,6 @@ document.querySelectorAll('.sidebar-group-toggle').forEach(toggle => {
     });
 });
 
-
-
 function connectToHub() {
     socket = new WebSocket(HUB_URL);
 
@@ -1583,7 +1684,7 @@ function connectToHub() {
         log("Hub Connected", "success");
     };
     socket.onmessage = (message) => {
-        console.log(message)
+        console.log(message.data)
         if (message.data == "OLED Screen Detected") {
             if (modules.indexOf("OLED") == -1) {
                 document.getElementById("OLEDModule").style.display = "block"
@@ -1601,7 +1702,7 @@ function connectToHub() {
 
         if (message.data.indexOf("BMP180 Detected") != -1) {
             if (modules.indexOf("BMP180") == -1) {
-                document.getElementById("BMP180").style.display = "block"
+                document.getElementById("BMP180").style.display = "none"
                 modules.push("BMP180");
             }
 
@@ -1689,6 +1790,13 @@ document.getElementById("note-create-popup").addEventListener("click", () => {
     )
     makeNoteDraggable(note, canvas);
     document.getElementById("notePopup").style.display = "none"
+    note.onchange = () => {
+        let currentNoteIndex = nodeGraph.notes.findIndex((not) => {
+            return not.id = note.id
+        })
+        nodeGraph.notes[currentNoteIndex].value = document.getElementById(note.id).querySelector(".note-editor").value
+    }
+
 })
 function makeNoteDraggable(note, canvas) {
 
@@ -1990,6 +2098,12 @@ function setupSidebarDrag() {
 }
 
 function makeCanvasBlockDraggable(block, canvas) {
+    if(block.children[1].innerHTML == "Create String" || block.children[1].innerHTML == "Create Number" || block.children[1].innerHTML == "Create Boolean"){
+        new variable(block.id, block.querySelector("#valueSelect").value)
+        block.addEventListener("change",()=>{
+            new variable(block.id, block.querySelector("#valueSelect").value)
+        })
+    }
     let pos3 = 0, pos4 = 0, pos1 = 0, pos2 = 0;
 
     block.onmousedown = dragMouseDown;
@@ -2278,13 +2392,11 @@ document.getElementById("openSettings").addEventListener("click", () => {
     overlay.classList.add("show");
 });
 
-document
-    .getElementById("cancelSettings")
-    .addEventListener("click", () => {
+document.getElementById("cancelSettings").addEventListener("click", () => {
 
-        overlay.classList.remove("show");
+    overlay.classList.remove("show");
 
-    });
+});
 
 overlay.addEventListener("click", (e) => {
 
@@ -2483,10 +2595,6 @@ document.addEventListener("click", (e) => {
 
             let acceptible = false;
             acceptedOutTypes.forEach((item) => {
-                console.log(acceptedInputTypes)
-                console.log(item)
-                console.log(acceptedInputTypes.indexOf("<br>" + item))
-                console.log(item.slice(item.indexOf(">"), item.length))
                 if (acceptedInputTypes.indexOf(item) != -1) {
                     acceptible = true;
                 } else if (acceptedInputTypes.indexOf("<br>" + item) != -1) {
@@ -2495,10 +2603,29 @@ document.addEventListener("click", (e) => {
                     acceptible = true
                 }
             })
-
             if (acceptible) {
                 let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el], fromSocket, toSocket)
                 nodeGraph.connections.push(connected)
+                if(e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-left"){
+                    let activeNodeIndex = nodeGraph.nodes.findIndex((nod)=>{
+                        return nod.id == e.target.parentNode.parentNode.parentNode.parentNode.id
+                    })
+                    nodeGraph.nodes[activeNodeIndex].inputValues.push(connected.id)
+                    activeNodeIndex = nodeGraph.nodes.findIndex((nod)=>{
+                        return nod.id == activeNode.parentNode.parentNode.parentNode.parentNode.id
+                    })
+                    nodeGraph.nodes[activeNodeIndex].outputValues.push(connected.id)
+                }else{
+                    let activeNodeIndex = nodeGraph.nodes.findIndex((nod)=>{
+                        return nod.id == e.target.parentNode.parentNode.parentNode.parentNode.id
+                    })
+                    nodeGraph.nodes[activeNodeIndex].outputValues.push(connected.id)
+                    activeNodeIndex = nodeGraph.nodes.findIndex((nod)=>{
+                        return nod.id == activeNode.parentNode.parentNode.parentNode.parentNode.id
+                    })
+                    nodeGraph.nodes[activeNodeIndex].inputValues.push(connected.id)
+                }
+                console.log(nodeGraph)
                 createConnection(
                     getSocketPosition(activeNode),
                     getSocketPosition(el),
@@ -2567,4 +2694,230 @@ function throwConnectionError(port1, port2) {
     document.getElementById("outputNodeName").innerHTML = input.parentElement.parentElement.parentElement.children[1].innerHTML
     document.getElementById("inputNodeName").innerHTML = output.parentElement.parentElement.parentElement.children[1].innerHTML
 }
+console.log(nodeGraph.connections)
+const deployOverlay = document.getElementById("deployOverlay");
+
+document.getElementById("deployBttn").onclick = () => {
+    document.getElementById("projectName").innerHTML = project.name
+    if (document.getElementById("hubStatus").innerHTML == `Hub Ready`) {
+        deployOverlay.classList.remove("hidden");
+        deployOverlay.innerHTML = `<div class="deploy-modal">
+
+            <div class="deploy-top">
+                <div>
+                    <h2>Deploy to Hub</h2>
+                    <p>Compile and upload your Inventa project</p>
+                </div>
+
+                <button id="closeDeploy">✕</button>
+            </div>
+
+
+            <div class="hub-card">
+
+                <div class="hub-icon">
+                    ⚡
+                </div>
+
+                <div>
+                    <h3>Inventa Hub</h3>
+                    <span class="connected">
+                        ● Connected
+                    </span>
+                </div>
+
+                <div class="connection-type">
+                    Network
+                </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+                <div>
+                    <label>Project</label>
+                    <h3 id="projectName">Robot Project</h3>
+                </div>
+
+                <div>
+                    <label>Target</label>
+                    <h3>Inventa Hub</h3>
+                </div>
+
+            </div>
+
+
+            <div class="build-area">
+
+                <h3>Deployment Pipeline</h3>
+
+
+                <div class="step complete">
+                    <span>✓</span>
+                    Build
+                    <small>Ready</small>
+                </div>
+
+
+                <div class="step">
+                    <span>◌</span>
+                    Compile
+                    <small>Waiting</small>
+                </div>
+
+
+                <div class="step">
+                    <span>◌</span>
+                    Upload Firmware
+                    <small>Waiting</small>
+                </div>
+
+
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+
+
+                <p id="deployStatus">
+                    Waiting To Compile
+                </p>
+
+            </div>
+
+
+            <div class="deploy-footer">
+
+                <button class="secondary">
+                    Cancel
+                </button>
+
+                <button class="primary">
+                    🚀 Deploy
+                </button>
+            </div>
+
+        </div>`
+        document.getElementById("closeDeploy").onclick = () => {
+
+            deployOverlay.classList.add("hidden");
+
+        };
+
+        document.querySelector(".secondary").onclick = () => {
+
+            deployOverlay.classList.add("hidden");
+
+        };
+
+        document.querySelector("#deployOverlay .primary").onclick = () => {
+            deploy()
+        };
+
+    }
+
+};
+
+
+function deploy() {
+
+    if (nodeGraph.connections.length > 0) {
+        nodeGraph.connections.forEach((con) => {
+            if (con.fromNode == "onProgramStart" || con.toNode == "onProgramStart") {
+
+                if (con.fromNode == "onProgramStart") {
+                    readNode(document.getElementById(con.toNode).children[1].innerHTML, document.getElementById(con.toNode))
+                }
+
+            } else {
+                const bar = document.querySelector(".progress-bar");
+
+                const status = document.getElementById("deployStatus");
+
+                let progress = 0;
+
+                status.textContent = "Building...";
+
+                const timer = setInterval(() => {
+
+                    progress += 5;
+
+                    bar.style.width = progress + "%";
+
+                    if (progress >= 30) {
+                        status.textContent = "Compiling...";
+
+                    }
+
+                    if (progress >= 70) {
+                        document.querySelectorAll(".step")[1].children[0].innerHTML = "✓"
+                        document.querySelectorAll(".step")[1].classList.add("complete")
+                        status.textContent = "Uploading...";
+
+                    }
+
+                    if (progress >= 100) {
+                        document.querySelectorAll(".step")[1].children[0].innerHTML = "✓"
+                        document.querySelectorAll(".step")[1].classList.add("complete")
+                        clearInterval(timer);
+
+                        status.textContent = "Deployment Complete ✔";
+
+                    }
+
+                }, Math.random(300, 6000));
+
+            }
+        })
+    } else {
+        const bar = document.querySelector(".progress-bar");
+
+        const status = document.getElementById("deployStatus");
+
+        let progress = 0;
+
+        status.textContent = "Building...";
+
+        const timer = setInterval(() => {
+
+            progress += 1;
+
+            bar.style.width = progress + "%";
+
+            if (progress >= 30) {
+                status.textContent = "Compiling...";
+
+            }
+
+            if (progress >= 70) {
+                document.querySelectorAll(".step")[1].children[0].innerHTML = "✓"
+                document.querySelectorAll(".step")[1].children[1].innerHTML = "Compiled"
+                document.querySelectorAll(".step")[1].classList.add("complete")
+                status.textContent = "Uploading...";
+
+            }
+
+            if (progress >= 100) {
+                document.querySelectorAll(".step")[2].children[0].innerHTML = "✓"
+                document.querySelectorAll(".step")[2].children[1].innerHTML = "Uploaded"
+                document.querySelectorAll(".step")[2].classList.add("complete")
+                clearInterval(timer);
+
+                status.textContent = "Deployment Complete ✔";
+
+            }
+
+        }, Math.random(400, 6000));
+    }
+}
+function readNode(nodeName, nodeId) {
+    if (nodeName == "Turn On OLED") {
+        if (modules.indexOf("OLED") != -1) {
+            socket.send("Turn On OLED");
+        }
+    }
+
+}
+
+
 

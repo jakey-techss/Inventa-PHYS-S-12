@@ -46,7 +46,7 @@
                     <span class="status-dot-hub" id="hubStatusDot"></span>
                     <span id="hubStatus">Connecting To Hub</span>
                 </div>
-                <button class="run-btn">Deploy</button>
+                <button class="run-btn" id="deployBttn">Deploy</button>
                 <button class="icon-btn" id="openSettings">⚙</button>
             </div>
         </header>
@@ -270,9 +270,7 @@
                                     <div class="ai-model-sidebar-left">
                                         <div class="ai-mini-port-row ">
                                             <span class="ai-mini-port-label">Data: </span>
-                                            <select name="port" id="port" class="block-mini-input">
-                                                <option>Vision Dataset</option>
-                                                <option>Environment Data</option>
+                                            <select name="port" id="dataset" class="block-mini-input">
                                             </select>
                                         </div>
 
@@ -347,7 +345,8 @@
                             </div>
 
                         </div>
-                        <input type="file" accept="application/x-inventa, .inventa" style="display: none;" id="loadFile">
+                        <input type="file" accept="application/x-inventa, .inventa" style="display: none;"
+                            id="loadFile">
                         <div class="sidebar-list ai-model-list">
                             <div class="sidebar-list ai-model-list">
                                 <div class="ai-model-sidebar-block">
@@ -909,7 +908,7 @@
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
                                             <div class="ai-mini-port-row category-text">
-                                                <input class="block-mini-input" type="text" placeholder="String">
+                                                <input class="block-mini-input" type="text" id="valueSelect" placeholder="String">
 
                                             </div>
                                         </div>
@@ -934,7 +933,7 @@
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
                                             <div class="ai-mini-port-row category-text">
-                                                <input class="block-mini-input" type="number" placeholder="Number">
+                                                <input class="block-mini-input" type="number" id="valueSelect" placeholder="Number">
 
                                             </div>
                                         </div>
@@ -959,9 +958,9 @@
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
                                             <div class="ai-mini-port-row category-text">
-                                                <select name="bool" id="boolslect" class="block-mini-input">
-                                                    <option>True</option>
-                                                    <option>False</option>
+                                                <select name="bool" id="valueSelect" class="block-mini-input">
+                                                    <option value="true">True</option>
+                                                    <option value="false">False</option>
                                                 </select>
 
                                             </div>
@@ -2887,7 +2886,7 @@
                                     <div class="ai-model-sidebar-right"
                                         style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
                                         <div class="ai-mini-port-row ops-text">
-                                             <span class="ai-mini-port-label">Alt</span>
+                                            <span class="ai-mini-port-label">Alt</span>
                                             <span class="ai-mini-port-dot ops-bg"></span>
                                         </div>
                                     </div>
@@ -3154,116 +3153,117 @@
     </div>
     <div class="connection-overlay" id="connectionPopup" style="display: none;">
 
-    <div class="connection-dialog">
+        <div class="connection-dialog">
 
-        <div class="dialog-header">
+            <div class="dialog-header">
 
-            <div class="dialog-icon">
-                <i class="fa-solid fa-plug-circle-xmark"></i>
+                <div class="dialog-icon">
+                    <i class="fa-solid fa-plug-circle-xmark"></i>
+                </div>
+
+                <div class="dialog-title">
+                    <h2>Connection Rejected</h2>
+                    <p>These ports are not compatible.</p>
+                </div>
+
+                <button class="dialog-close" onclick="document.getElementById('connectionPopup').style.display='none'">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
             </div>
 
-            <div class="dialog-title">
-                <h2>Connection Rejected</h2>
-                <p>These ports are not compatible.</p>
-            </div>
 
-            <button class="dialog-close" onclick="document.getElementById('connectionPopup').style.display='none'">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div class="dialog-body">
 
-        </div>
+                <div class="connection-preview">
 
+                    <div class="preview-node">
 
-        <div class="dialog-body">
+                        <span class="node-title" id="outputNodeName">Add Node</span>
 
-            <div class="connection-preview">
+                        <div class="port-pill number">
+                            Output</span>
+                        </div>
 
-                <div class="preview-node">
+                    </div>
 
-                    <span class="node-title" id="outputNodeName">Add Node</span>
+                    <div class="preview-link">
 
-                    <div class="port-pill number">
-                        Output</span>
+                        <div class="link-line"></div>
+
+                        <div class="link-error">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="preview-node">
+
+                        <span class="node-title" id="inputNodeName">Print Text</span>
+
+                        <div class="port-pill string">
+                            Input</span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div class="preview-link">
 
-                    <div class="link-line"></div>
+                <div class="reason-card">
 
-                    <div class="link-error">
-                        <i class="fa-solid fa-xmark"></i>
+                    <div class="reason-icon">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>Type Mismatch</h3>
+
+                        <p>
+                            <span id="errorOutput">Number</span> outputs cannot connect directly to <span
+                                id="errorInput">String</span> inputs.
+                        </p>
+
                     </div>
 
                 </div>
 
-                <div class="preview-node">
 
-                    <span class="node-title" id="inputNodeName">Print Text</span>
+                <div class="suggestions">
 
-                    <div class="port-pill string">
-                        Input</span>
-                    </div>
+                    <button>
+
+                        <i class="fa-solid fa-circle-nodes"></i>
+
+                        <span>
+
+                            <strong>Choose another input</strong>
+
+                            <small>Find compatible ports. Read the Docs :)</small>
+
+                        </span>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
 
                 </div>
 
             </div>
 
 
-            <div class="reason-card">
+            <div class="dialog-footer">
 
-                <div class="reason-icon">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                </div>
-
-                <div>
-
-                    <h3>Type Mismatch</h3>
-
-                    <p>
-                        <span id="errorOutput">Number</span> outputs cannot connect directly to <span id="errorInput">String</span> inputs.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="suggestions">
-
-                <button>
-
-                    <i class="fa-solid fa-circle-nodes"></i>
-
-                    <span>
-
-                        <strong>Choose another input</strong>
-
-                        <small>Find compatible ports. Read the Docs :)</small>
-
-                    </span>
-
-                    <i class="fa-solid fa-chevron-right"></i>
-
+                <button class="secondary" onclick="document.getElementById('connectionPopup').style.display='none'">
+                    Back
                 </button>
 
             </div>
 
         </div>
 
-
-        <div class="dialog-footer">
-
-            <button class="secondary" onclick="document.getElementById('connectionPopup').style.display='none'">
-                Back
-            </button>
-
-        </div>
-
     </div>
-
-</div>
     <div class="popup-overlay2" id="notePopup">
 
         <div class="note-popup">
@@ -3456,6 +3456,108 @@
 
                 <button class="primary-button" id="note-create-popup">
                     Create Note
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="deployOverlay" class="deploy-overlay hidden">
+
+        <div class="deploy-modal">
+
+            <div class="deploy-top">
+                <div>
+                    <h2>Deploy to Hub</h2>
+                    <p>Compile and upload your Inventa project</p>
+                </div>
+
+                <button id="closeDeploy">✕</button>
+            </div>
+
+
+            <div class="hub-card">
+
+                <div class="hub-icon">
+                    ⚡
+                </div>
+
+                <div>
+                    <h3>Inventa Hub</h3>
+                    <span class="connected">
+                        ● Connected
+                    </span>
+                </div>
+
+                <div class="connection-type">
+                    Network
+                </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+                <div>
+                    <label>Project</label>
+                    <h3 id="projectName">Robot Project</h3>
+                </div>
+
+                <div>
+                    <label>Target</label>
+                    <h3>Inventa Hub</h3>
+                </div>
+
+            </div>
+
+
+            <div class="build-area">
+
+                <h3>Deployment Pipeline</h3>
+
+
+                <div class="step complete">
+                    <span>✓</span>
+                    Build
+                    <small>Ready</small>
+                </div>
+
+
+                <div class="step">
+                    <span>◌</span>
+                    Compile
+                    <small>Waiting</small>
+                </div>
+
+
+                <div class="step">
+                    <span>◌</span>
+                    Upload Firmware
+                    <small>Waiting</small>
+                </div>
+
+
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+
+
+                <p id="deployStatus">
+                    Waiting To Compile
+                </p>
+
+            </div>
+
+
+            <div class="deploy-footer">
+
+                <button class="secondary">
+                    Cancel
+                </button>
+
+                <button class="primary">
+                    🚀 Deploy
                 </button>
 
             </div>

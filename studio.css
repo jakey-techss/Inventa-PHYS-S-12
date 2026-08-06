@@ -3861,3 +3861,474 @@ input[type=number] {
     transform:translateY(-2px);
 
 }
+.deploy-overlay {
+
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+    rgba(0,0,0,.55);
+
+    backdrop-filter: blur(18px);
+
+    z-index: 9999;
+}
+
+
+.hidden {
+    display:none;
+}
+
+
+
+.deploy-modal {
+
+    width: 520px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(35,38,45,.95),
+        rgba(20,22,27,.95)
+    );
+
+    border:
+
+    1px solid rgba(255,255,255,.1);
+
+
+    border-radius:24px;
+
+
+    color:white;
+
+
+    box-shadow:
+
+    0 0 80px rgba(0,229,255,.12),
+    0 30px 80px rgba(0,0,0,.6);
+
+
+    overflow:hidden;
+
+    animation:
+    deployIn .25s ease;
+
+}
+
+
+@keyframes deployIn {
+
+    from {
+
+        opacity:0;
+        transform:scale(.92);
+
+    }
+
+    to {
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+
+.deploy-top {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    padding:24px;
+
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,.08);
+
+}
+
+
+.deploy-top h2 {
+
+    margin:0;
+
+    font-size:24px;
+
+}
+
+
+.deploy-top p {
+
+    margin:6px 0 0;
+
+    color:#8b93a3;
+
+}
+
+
+.deploy-top button {
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+.hub-card {
+
+    margin:22px;
+
+    padding:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.08);
+
+
+    border-radius:18px;
+
+}
+
+
+
+.hub-icon {
+
+    width:48px;
+
+    height:48px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    font-size:25px;
+
+
+    border-radius:14px;
+
+
+    background:
+
+    rgba(0,229,255,.15);
+
+
+    box-shadow:
+
+    0 0 25px rgba(0,229,255,.25);
+
+}
+
+
+
+.hub-card h3 {
+
+    margin:0 0 5px;
+
+}
+
+
+.connected {
+
+    color:#00ff9d;
+
+    font-size:14px;
+
+}
+
+
+.connection-type {
+
+    margin-left:auto;
+
+    color:#8b93a3;
+
+}
+
+
+
+
+
+.project-info {
+
+    display:flex;
+
+    gap:15px;
+
+    padding:0 22px;
+
+}
+
+
+
+.project-info > div {
+
+    flex:1;
+
+    padding:15px;
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+    border-radius:15px;
+
+}
+
+
+
+label {
+
+    color:#8991a2;
+
+    font-size:13px;
+
+}
+
+
+
+.project-info h3 {
+
+    margin:7px 0 0;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+.build-area {
+
+    padding:22px;
+
+}
+
+
+
+.build-area h3 {
+
+    margin-top:0;
+
+}
+
+
+
+.step {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+    padding:12px;
+
+
+    margin-bottom:8px;
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+    border-radius:12px;
+
+
+    color:#b8becb;
+
+}
+
+
+
+.step span {
+
+    font-size:18px;
+
+}
+
+
+
+.step small {
+
+    margin-left:auto;
+
+    color:#8b93a3;
+
+}
+
+
+
+.step.complete span {
+
+    color:#00ff9d;
+
+}
+
+
+
+.progress-container {
+
+    height:8px;
+
+    background:#111318;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-top:20px;
+
+}
+
+
+
+.progress-bar {
+
+    height:100%;
+
+    width:0%;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #00e5ff,
+        #4f9bff
+    );
+
+
+    box-shadow:
+
+    0 0 20px #00e5ff;
+
+}
+
+
+
+#deployStatus {
+
+    color:#8b93a3;
+
+}
+
+
+
+
+
+.deploy-footer {
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+
+    border-top:
+
+    1px solid rgba(255,255,255,.08);
+
+}
+
+
+
+.deploy-footer button {
+
+    padding:12px 22px;
+
+    border-radius:14px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+
+.secondary {
+
+    background:#30343d;
+
+    color:white;
+
+}
+
+
+
+.primary {
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #00e5ff,
+        #4f9bff
+    );
+
+
+    color:#001018;
+
+
+    box-shadow:
+
+    0 0 25px rgba(0,229,255,.35);
+
+}
+
+
+
+.primary:hover {
+
+    transform:translateY(-2px);
+
+}

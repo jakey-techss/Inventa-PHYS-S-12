@@ -37,8 +37,8 @@
 
             <div class="topbar-center">
                 <button class="toolbar-btn" id="newNote">New Note</button>
-                <button class="toolbar-btn">Load</button>
-                <button class="toolbar-btn">Export</button>
+                <button class="toolbar-btn" id="load">Load</button>
+                <button class="toolbar-btn" id="export">Export</button>
             </div>
 
             <div class="topbar-right">
@@ -154,8 +154,8 @@
 
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row -text ai-output-row">
-                                                <span class="ai-mini-port-label">Prediction</span>
-                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-label category-text">Prediction</span>
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -347,7 +347,7 @@
                             </div>
 
                         </div>
-
+                        <input type="file" accept="application/x-inventa, .inventa" style="display: none;" id="loadFile">
                         <div class="sidebar-list ai-model-list">
                             <div class="sidebar-list ai-model-list">
                                 <div class="ai-model-sidebar-block">
@@ -991,7 +991,7 @@
                                                 <span class="ai-mini-port-label">Name</span>
                                             </div>
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-dot all"></span>
                                                 <span class="ai-mini-port-label">Value</span>
                                             </div>
                                             <div class="ai-mini-port-row bool-text">
@@ -1134,7 +1134,7 @@
                                             </div>
 
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-dot all"></span>
                                                 <span class="ai-mini-port-label">Starting Items</span>
                                             </div>
                                         </div>
@@ -1164,7 +1164,7 @@
                                             </div>
 
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-dot all"></span>
                                                 <span class="ai-mini-port-label">Item</span>
                                             </div>
                                         </div>
@@ -1194,7 +1194,7 @@
                                             </div>
 
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-dot all"></span>
                                                 <span class="ai-mini-port-label">Items</span>
                                             </div>
                                         </div>
@@ -1291,7 +1291,7 @@
                                         <div class="ai-model-sidebar-right">
                                             <div class="ai-mini-port-row">
                                                 <span class="ai-mini-port-label">List Item</span>
-                                                <span class="ai-mini-port-dot any"></span>
+                                                <span class="ai-mini-port-dot all"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1311,8 +1311,8 @@
                                                 <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label category-text">Variable</span>
                                             </div>
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row">
+                                                <span class="ai-mini-port-dot all"></span>
                                                 <span class="ai-mini-port-label">List Item</span>
                                             </div>
                                         </div>
@@ -1341,8 +1341,8 @@
                                                 <span class="ai-mini-port-label category-text">Variable</span>
                                             </div>
                                             <div class="ai-mini-port-row">
-                                                <span class="ai-mini-port-dot any"></span>
-                                                <span class="ai-mini-port-label">Item</span>
+                                                <span class="ai-mini-port-dot all"></span>
+                                                <span class="ai-mini-port-label">List Item</span>
                                             </div>
                                         </div>
 
@@ -2377,12 +2377,12 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #1</span>
                                             </div>
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #2</span>
                                             </div>
                                         </div>
@@ -2406,12 +2406,12 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #1</span>
                                             </div>
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #2</span>
                                             </div>
                                         </div>
@@ -2435,12 +2435,12 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #1</span>
                                             </div>
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #2</span>
                                             </div>
                                         </div>
@@ -2464,12 +2464,12 @@
                                 <div class="ai-model-sidebar-block">
                                     <div class="ai-model-sidebar-top">
                                         <div class="ai-model-sidebar-left">
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #1</span>
                                             </div>
-                                            <div class="ai-mini-port-row any-text">
-                                                <span class="ai-mini-port-dot any-bg"></span>
+                                            <div class="ai-mini-port-row category-text">
+                                                <span class="ai-mini-port-dot category-bg"></span>
                                                 <span class="ai-mini-port-label">Value #2</span>
                                             </div>
                                         </div>
@@ -2789,7 +2789,7 @@
                             <span class="toggle-chevron">▾</span>
                         </button>
                     </div>
-                    <div class="sidebar-group collapsible-group specialNodes" id="OLEDModule">
+                    <div class="sidebar-group collapsible-group" id="OLEDModule">
                         <button class="sidebar-group-toggle" type="button">
                             <div class="sidebar-group-header">
                                 <span class="group-dot any-bg"></span>
@@ -2832,6 +2832,72 @@
 
                         </div>
                     </div>
+                    <div class="sidebar-group collapsible-group" id="BMP180">
+                        <button class="sidebar-group-toggle" type="button">
+                            <div class="sidebar-group-header">
+                                <span class="group-dot any-bg"></span>
+                                BMP180
+                            </div>
+                            <span class="toggle-chevron">▾</span>
+                        </button>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row ops-text">
+                                            <span class="ai-mini-port-label">Temp(&#176;C)</span>
+                                            <span class="ai-mini-port-dot ops-bg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Get Temperature</div>
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row ops-text">
+                                            <span class="ai-mini-port-label">Pressure</span>
+                                            <span class="ai-mini-port-dot ops-bg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Get Pressure</div>
+                            </div>
+
+                        </div>
+                        <div class="sidebar-list ai-model-list">
+                            <div class="ai-model-sidebar-block">
+                                <div class="ai-model-sidebar-top">
+                                    <div class="ai-model-sidebar-left">
+                                    </div>
+
+                                    <div class="ai-model-sidebar-right"
+                                        style="display: flex; flex-direction: column; align-items: end; gap: 8px;">
+                                        <div class="ai-mini-port-row ops-text">
+                                             <span class="ai-mini-port-label">Alt</span>
+                                            <span class="ai-mini-port-dot ops-bg"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ai-model-sidebar-title">Get Altitude</div>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </aside>
@@ -2855,19 +2921,7 @@
                         </div>
 
                     </div>
-                    <div class="sidebar-list ai-model-list">
-                        <div style="width: 250px; margin-top: 20px;" id="onDataLoaded">
-                            <div class="ai-model-sidebar-top">
-                                <div class="ai-model-sidebar-right">
-                                    <div class="ai-mini-port-row ">
-                                        <span class="ai-mini-port-label">On Data Loaded</span>
-                                        <span class="ai-mini-port-dot any" id="dataCollection"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
 
                 </div>
             </section>
@@ -3098,108 +3152,118 @@
         </div>
 
     </div>
-    <div class="popup-overlay" id="connectionPopup" style="display: none;">
-        <div class="connection-popup" style="display: none;">
+    <div class="connection-overlay" id="connectionPopup" style="display: none;">
 
-            <div class="popup-header">
-                <div class="popup-icon">
-                    !
-                </div>
+    <div class="connection-dialog">
 
-                <div class="popup-title">
-                    <h2>Connection Not Allowed</h2>
-                    <p>The selected ports cannot be connected.</p>
-                </div>
+        <div class="dialog-header">
 
-                <button class="popup-close" onclick="closeConnectionPopup()">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+            <div class="dialog-icon">
+                <i class="fa-solid fa-plug-circle-xmark"></i>
             </div>
 
-            <div class="popup-body">
+            <div class="dialog-title">
+                <h2>Connection Rejected</h2>
+                <p>These ports are not compatible.</p>
+            </div>
 
-                <div class="connection-section">
+            <button class="dialog-close" onclick="document.getElementById('connectionPopup').style.display='none'">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-                    <h3>Source</h3>
+        </div>
 
-                    <div class="port-card source">
 
-                        <div class="port-node">
-                            <span class="node-name">Add Node</span>
-                        </div>
+        <div class="dialog-body">
 
-                        <div class="port-info">
-                            Output
-                            <span class="type number">Number</span>
-                        </div>
+            <div class="connection-preview">
 
+                <div class="preview-node">
+
+                    <span class="node-title" id="outputNodeName">Add Node</span>
+
+                    <div class="port-pill number">
+                        Output</span>
                     </div>
 
                 </div>
 
-                <div class="connection-arrow">
-                    <i class="fa-solid fa-arrow-down"></i>
-                </div>
+                <div class="preview-link">
 
-                <div class="connection-section">
+                    <div class="link-line"></div>
 
-                    <h3>Destination</h3>
-
-                    <div class="port-card destination">
-
-                        <div class="port-node">
-                            <span class="node-name">Print Text</span>
-                        </div>
-
-                        <div class="port-info">
-                            Input
-                            <span class="type string">String</span>
-                        </div>
-
+                    <div class="link-error">
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
 
                 </div>
 
-                <div class="reason-box">
+                <div class="preview-node">
 
-                    <h3>Reason</h3>
+                    <span class="node-title" id="inputNodeName">Print Text</span>
+
+                    <div class="port-pill string">
+                        Input</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="reason-card">
+
+                <div class="reason-icon">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+
+                <div>
+
+                    <h3>Type Mismatch</h3>
 
                     <p>
-                        A <b>Number</b> output cannot be connected to a
-                        <b>String</b> input.
+                        <span id="errorOutput">Number</span> outputs cannot connect directly to <span id="errorInput">String</span> inputs.
                     </p>
 
                 </div>
 
-                <div class="suggestion-box">
-
-                    <h3>Suggested Fixes</h3>
-
-                    <button class="suggestion">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        Insert Number → Text
-                    </button>
-
-                    <button class="suggestion">
-                        <i class="fa-solid fa-circle-nodes"></i>
-                        Choose another input
-                    </button>
-
-                </div>
-
             </div>
 
-            <div class="popup-footer">
 
-                <button class="cancel-btn" onclick="closeConnectionPopup()">
-                    Close
+            <div class="suggestions">
+
+                <button>
+
+                    <i class="fa-solid fa-circle-nodes"></i>
+
+                    <span>
+
+                        <strong>Choose another input</strong>
+
+                        <small>Find compatible ports. Read the Docs :)</small>
+
+                    </span>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
                 </button>
 
             </div>
 
         </div>
 
+
+        <div class="dialog-footer">
+
+            <button class="secondary" onclick="document.getElementById('connectionPopup').style.display='none'">
+                Back
+            </button>
+
+        </div>
+
     </div>
+
+</div>
     <div class="popup-overlay2" id="notePopup">
 
         <div class="note-popup">

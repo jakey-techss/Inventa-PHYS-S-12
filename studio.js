@@ -1,5 +1,7 @@
 let activeNode;
-let currentProjectID = new URLSearchParams(window.location.search).get("projectId");
+const parser = new DOMParser()
+const currentProjectID = new URLSearchParams(window.location.search).get("projectId");
+const serializer = new XMLSerializer();
 if (currentProjectID == null || currentProjectID == undefined) {
     window.location.assign("dashboard.html")
 }
@@ -10,6 +12,80 @@ let project = JSON.parse(window.localStorage.getItem("projects"))
 project = JSON.parse(project.find((pro) => {
     return JSON.parse(pro).id == currentProjectID
 }))
+document.getElementById("export").addEventListener("click", () => {
+    let projectToSave = JSON.parse(window.localStorage.getItem("projects"))
+    projectToSave = projectToSave.find((pro) => {
+        return JSON.parse(pro).id == currentProjectID
+    })
+    console.log(projectToSave)
+    const blob = new Blob(
+        [projectToSave],
+        {
+            type: "application/x-inventa"
+        }
+    );
+
+
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+
+    let projectDetails = JSON.parse(window.localStorage.getItem("projects"))
+    projectDetails = JSON.parse(projectDetails.find((pro) => {
+        return JSON.parse(pro).id == currentProjectID
+    }))
+    link.download = `${project.name}.inventa`;
+
+    link.click();
+})
+document.getElementById("loadFile").addEventListener("change", () => {
+        const file = document.getElementById("loadFile").files[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+
+            const Newproject = event.target.result;
+
+            loadProject(Newproject);
+        };
+        reader.readAsText(file);
+    })
+document.getElementById("load").addEventListener("click", () => {
+    document.getElementById("loadFile").click()
+    
+})
+function loadProject(file) {
+                let project = JSON.parse(window.localStorage.getItem("projects"))
+                file = JSON.parse(file)
+                let isIdPresent = project.findIndex((pro) => {
+                    return JSON.parse(pro).id == file.id
+                })
+                if (isIdPresent == -1) {
+                    project.push(JSON.stringify(file))
+                    project = JSON.stringify(project)
+                    window.localStorage.setItem("projects", project)
+
+                    let link = document.createElement("a")
+                    link.style.display = "none"
+                    link.target = "_blank"
+                    link.href = `studio.html?projectId=${encodeURIComponent(file.id)}`
+                    link.click()
+                } else {
+                    file.id = self.crypto.randomUUID()
+                    file.name = file.name + "Copy #{"+project.length+"} "
+                    project.push(JSON.stringify(file))
+                    project = JSON.stringify(project)
+                    window.localStorage.setItem("projects", project)
+                     let link = document.createElement("a")
+                    link.style.display = "none"
+                    link.target = "_blank"
+                    link.href = `studio.html?projectId=${encodeURIComponent(file.id)}`
+                    link.click()
+                }
+            }
 let fail = false;
 document.addEventListener("DOMContentLoaded", () => {
     setupSidebarDrag();
@@ -31,14 +107,10 @@ let nodeGraph = {
     connections: [],
     notes: [],
 }
-let nodeGraphToSave = {
-    nodes: [],
-    variables: [],
-    connections: [],
-    notes: [],
-}
+
 
 if (project.nodeGraph != null && project.nodeGraph != undefined) {
+
     let canvas = document.getElementById("codingCanvas")
     let nodeGraphStructure = JSON.parse(project.nodeGraph)
     nodeGraphStructure.nodes.forEach((node) => {
@@ -88,44 +160,79 @@ if (project.nodeGraph != null && project.nodeGraph != undefined) {
         makeCanvasBlockDraggable(clone, canvas);
 
     })
-    /*nodeGraphStructure.connections.forEach((con) => {
+    nodeGraphStructure.connections.forEach((con) => {
         con = JSON.parse(con)
-        nodeGraph.connections.push(con)
         let startNode = document.getElementById(con.toNode)
         let endNode = document.getElementById(con.fromNode)
         let startSocket = startNode.querySelectorAll(".ai-mini-port-label")
         let startPos;
         let endPos;
+        let toSocket
         let side;
+
         startSocket.forEach((child) => {
             if (child.innerHTML == con.toSocket) {
+                startSocket = child.parentElement.querySelector(".ai-mini-port-dot")
                 startPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
                 side = child.parentElement.parentElement.classList[0]
 
             }
         })
+        if (startPos != null) {
+            if (side == "ai-model-sidebar-left") {
+                let toNode = document.getElementById(con.fromNode)
+                toSocket = endNode.querySelectorAll(".ai-model-sidebar-right .ai-mini-port-label")
+                toSocket.forEach((child) => {
+                    if (child.innerHTML == con.fromSocket) {
+                        toSocket = child.parentElement.querySelector(".ai-mini-port-dot")
+                        endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                    }
+                })
+            } else {
 
-        if (side == "ai-model-sidebar-left") {
-            let toNode = document.getElementById(con.fromNode)
-            let toSocket = endNode.querySelectorAll(".ai-model-sidebar-right .ai-mini-port-label")
-            toSocket.forEach((child) => {
-                console.log(child)
-                if (child.innerHTML == con.fromSocket) {
-                    endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
-                }
-            })
+                let toNode = document.getElementById(con.fromNode)
+                toSocket = endNode.querySelectorAll(".ai-model-sidebar-left .ai-mini-port-label")
+                toSocket.forEach((child) => {
+                    if (child.innerHTML == con.fromSocket) {
+                        toSocket = child.parentElement.querySelector(".ai-mini-port-dot")
+                        endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                    }
+                })
+            }
         } else {
-
-            let toNode = document.getElementById(con.fromNode)
-            let toSocket = endNode.querySelectorAll(".ai-model-sidebar-left .ai-mini-port-label")
-            toSocket.forEach((child) => {
+            startSocket.forEach((child) => {
                 if (child.innerHTML == con.fromSocket) {
-                    endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                    startSocket = child.parentElement.querySelector(".ai-mini-port-dot")
+                    startPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                    side = child.parentElement.parentElement.classList[0]
                 }
             })
+            if (side == "ai-model-sidebar-left") {
+                let toNode = document.getElementById(con.toNode)
+                toSocket = endNode.querySelectorAll(".ai-model-sidebar-right .ai-mini-port-label")
+                toSocket.forEach((child) => {
+                    if (child.innerHTML == con.toSocket) {
+                        toSocket = child.parentElement.querySelector(".ai-mini-port-dot")
+                        endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                    }
+                })
+            } else {
+
+                let toNode = document.getElementById(con.toNode)
+                toSocket = endNode.querySelectorAll(".ai-model-sidebar-left .ai-mini-port-label")
+                toSocket.forEach((child) => {
+                    if (child.innerHTML == con.toSocket) {
+                        toSocket = child.parentElement.querySelector(".ai-mini-port-dot")
+                        endPos = getSocketPosition(child.parentElement.querySelector(".ai-mini-port-dot"))
+                    }
+                })
+            }
         }
         createConnection(startPos, endPos, con.id)
-    })*/
+        con.pos[0] = startSocket
+        con.pos[1] = toSocket
+        nodeGraph.connections.push(con)
+    })
 }
 
 document.getElementById("firstprojName").innerHTML = project.name.substring(0, Math.round(project.name.length / 6))
@@ -206,7 +313,11 @@ const nodeLibrary = [
             { input: "Data Input", category: "category", acceptedTypes: ["<br>Variable&lt;List&gt;", "<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;", "<br>DataColumn"], description: "The data that should be used for prediction" },
         ],
         [
-            { output: "Prediction", category: "any", outputType: ["<br>Variable&lt;List&gt;", "<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;", "<br>DataColumn"], description: "A prediction made by an AI Model" },
+            {
+                output: "Prediction", category: "all", outputType: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "A prediction made by an AI Model"
+            },
         ],
         "Use the AI models to make predictions on new data or existing data",
         "ai"
@@ -503,9 +614,9 @@ const nodeLibrary = [
         [
             { input: "Name", category: "string", acceptedTypes: ["<br>String", "<br>Variable&lt;String&gt;"], description: "The name of the variable to be created" },
             {
-                input: "Value", category: "any", acceptedTypes: [["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                input: "Value", category: "all", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
                     "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
-                    "<br>DataColumn", "AI Model"]],
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"],
                 description: "The value of the variable. Leave blank for default null value. Also keep in mind <strong>The variable will only store data types it was first initialized with</strong>. This means that if you create a variable and the first value you assign to it is a string it an only store strings."
             },
             { input: "isMutable?", category: "bool", acceptedTypes: ["<br>Boolean", "<br>Variable&lt;Boolean&gt;"], description: "Is the variable too be changed leter on. If the value is not meant set this to false otherwise if you plan to change the value of this variahle set it to true" },
@@ -514,7 +625,7 @@ const nodeLibrary = [
         [
             {
                 output: "Variable", category: "category", outputType: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
-                    "<br>Variable&lt;Boolean&gt;", "<br>Others..."], description: "Create an accessible method of storage for any values that need to change or need to be repeatedly accessed. This acts as a layer on top of the traditional primitive creates and allows you to store anything"
+                    "<br>Variable&lt;Boolean&gt;", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;Ai Model&gt;"], description: "Create an accessible method of storage for any values that need to change or need to be repeatedly accessed. This acts as a layer on top of the traditional primitive creates and allows you to store anything"
             },
         ],
         "Creates a storage bucket for values used within the node editor for storing a multitude of data types.",
@@ -587,9 +698,9 @@ const nodeLibrary = [
         [
             { input: "Name", category: "string", acceptedTypes: ["<br>String", "<br>Variable&lt;String&gt;"], description: "The name of the list variable to be created. This is necessary for access in the 'Get Variables' node" },
             {
-                input: "Starting Items", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
-                    "<br>Variable&lt;Boolean&gt;", "<br>Variable&lt;List&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
-                    "<br>DataColumn", "<br>AI Model", "<br>Others..."], description: "Starting items to be stored in the list. Unlike variables lists can store different data types"
+                input: "Starting Items", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;", "<br>Boolean",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "Starting items to be stored in the list. Unlike variables lists can store different data types"
             },
 
         ],
@@ -606,8 +717,8 @@ const nodeLibrary = [
             { input: "Variable", category: "category", acceptedTypes: ["Variable&lt;List&gt;"], description: "The list to add to" },
             {
                 input: "Items", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
-                    "<br>Variable&lt;Boolean&gt;", "<br>Variable&lt;List&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
-                    "<br>DataColumn", "<br>AI Model", "<br>Others..."], description: "The item or items to be added to the list"
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The item or items to be added to the list"
             },
 
         ],
@@ -624,8 +735,8 @@ const nodeLibrary = [
             { input: "Variable", category: "category", acceptedTypes: ["Variable&lt;List&gt;"], description: "The list to remove from" },
             {
                 input: "Items", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
-                    "<br>Variable&lt;Boolean&gt;", "<br>Variable&lt;List&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
-                    "<br>DataColumn", ",<br>AI Model", "<br>Others..."], description: "The items to remove from the list"
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The items to remove from the list"
             },
 
         ],
@@ -671,8 +782,8 @@ const nodeLibrary = [
         [
             {
                 output: "List Item", category: "any", outputType: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
-                    "<br>Variable&lt;Boolean&gt;", "<br>Variable&lt;List&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
-                    "<br>DataColumn", "<br>AI Model", "<br>Others..."], description: "The list items that match the specified indexes"
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The list items that match the specified indexes"
             }
         ],
         "Get items from a list using their index. You may use a single number, a variable of type number, or a list",
@@ -683,8 +794,8 @@ const nodeLibrary = [
             { input: "Variable", category: "category", acceptedTypes: ["Variable&lt;List&gt;"], description: "The list to search through" },
             {
                 input: "List Item", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
-                    "<br>Variable&lt;Boolean&gt;", "<br>Variable&lt;List&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
-                    "<br>DataColumn", "<br>AI Model", "<br>Others..."], description: "The list item to search for. Keep in mind that if the list item is not found it will return an index of -1"
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The list item to search for. Keep in mind that if the list item is not found it will return an index of -1"
             },
         ],
         [
@@ -699,9 +810,9 @@ const nodeLibrary = [
         [
             { input: "Variable", category: "category", acceptedTypes: ["Variable&lt;List&gt;"], description: "The list to search through" },
             {
-                input: "Item", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
-                    "<br>Variable&lt;Boolean&gt;", "<br>Variable&lt;List&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
-                    "<br>DataColumn", "<br>AI Model", "<br>Others..."], description: "The list item to search for. This node will return true if the items is found"
+                input: "List Item", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The list item to search for. This node will return true if the items is found"
             },
         ],
         [
@@ -1173,8 +1284,16 @@ const nodeLibrary = [
     ),
     new node("Equals",
         [
-            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The first value for comparison" },
-            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The second value for comparison" },
+            {
+                input: "Value #1", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The first value for comparison"
+            },
+            {
+                input: "Value #2", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The second value for comparison"
+            },
         ],
         [
             {
@@ -1186,8 +1305,16 @@ const nodeLibrary = [
     ),
     new node("Not Equals",
         [
-            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The first value for comparison" },
-            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison"], description: "The second value for comparison" },
+            {
+                input: "Value #1", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The first value for comparison"
+            },
+            {
+                input: "Value #2", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The second value for comparison"
+            },
         ],
         [
             {
@@ -1199,8 +1326,16 @@ const nodeLibrary = [
     ),
     new node("Greater Than",
         [
-            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The first value for comparison" },
-            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The second value for comparison" },
+            {
+                input: "Value #1", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The first value for comparison"
+            },
+            {
+                input: "Value #2", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The second value for comparison"
+            },
         ],
         [
             {
@@ -1212,8 +1347,16 @@ const nodeLibrary = [
     ),
     new node("Less Than",
         [
-            { input: "Value #1", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The first value for comparison" },
-            { input: "Value #2", category: "any", acceptedTypes: ["Any values can be passed into the node for comparison. But this node is recommended to be used with String and Number related data types. For any other data type it would be recommended to write a custom compare function."], description: "The second value for comparison" },
+            {
+                input: "Value #1", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The first value for comparison"
+            },
+            {
+                input: "Value #2", category: "any", acceptedTypes: ["<br>Variable&lt;String&gt;", "<br>Variable&lt;Number&gt;",
+                    "<br>Variable&lt;Boolean&gt;", "<br>Dataset", "<br>Dataset&lt;Row&gt;", "<br>Boolean",
+                    "<br>DataColumn", "<br>AI Model", "<br>Others...", "<br>Number", "<br>Radian", "<br>Variable&lt;List&gt;", "<br>Variable&lt;Dataset&gt;", "<br>Variable&lt;Dataset&lt;Row&gt;&gt;", "<br>Variable&lt;DataColumn&gt;", "<br>Variable&lt;Radian&gt;", "<br>Variable&lt;AI Model&gt;"], description: "The second value for comparison"
+            },
         ],
         [
             {
@@ -1365,8 +1508,12 @@ document.getElementById("newNote").addEventListener("click", () => {
 })
 
 document.body.addEventListener("click", () => {
-
-    console.log(nodeGraph)
+    let nodeGraphToSave = {
+        nodes: [],
+        variables: [],
+        connections: [],
+        notes: [],
+    }
     nodeGraph.nodes.forEach((node) => {
         if (nodeGraphToSave.nodes.findIndex((n) => { return JSON.parse(n).id == node.id }) == -1) {
             nodeGraphToSave.nodes.push(JSON.stringify(node))
@@ -1392,7 +1539,6 @@ document.body.addEventListener("click", () => {
             nodeGraphToSave.notes.push(JSON.stringify(not))
         }
     })
-    console.log(nodeGraphToSave)
 
     let projectToSave = project
     projectToSave.nodeGraph = JSON.stringify(nodeGraphToSave)
@@ -1437,17 +1583,37 @@ function connectToHub() {
         log("Hub Connected", "success");
     };
     socket.onmessage = (message) => {
+        console.log(message)
         if (message.data == "OLED Screen Detected") {
             if (modules.indexOf("OLED") == -1) {
                 document.getElementById("OLEDModule").style.display = "block"
                 modules.push("OLED");
             }
+
         } else if (message.data == "OLED Screen Not Detected") {
             if (modules.indexOf("OLED") != -1) {
                 document.getElementById("OLEDModule").style.display = "none"
-                modules.splice(modules.findIndex("OLED"), 1)
+                modules.splice(modules.findIndex((mod) => {
+                    return mod == "OLEDModule"
+                }), 1)
             }
         }
+
+        if (message.data.indexOf("BMP180 Detected") != -1) {
+            if (modules.indexOf("BMP180") == -1) {
+                document.getElementById("BMP180").style.display = "block"
+                modules.push("BMP180");
+            }
+
+        } else if (message.data == "BMP180 Not Found") {
+            if (modules.indexOf("BMP180") != -1) {
+                document.getElementById("BMP180").style.display = "none"
+                modules.splice(modules.findIndex((mod) => {
+                    return mod == "BMP180"
+                }), 1)
+            }
+        }
+
     }
 
 }
@@ -1696,10 +1862,7 @@ categoryOptions.forEach(option => {
         categoryDropdown.classList.remove("open");
 
 
-        console.log(
-            "Selected category:",
-            selectedNoteCategory
-        );
+
 
     });
 
@@ -1870,7 +2033,6 @@ function makeCanvasBlockDraggable(block, canvas) {
 
         if (Math.abs(xChange) > 0 || Math.abs(yChange) > 0) {
             nodeGraph.nodes[shiftedNodeIndex].position = [parseInt(block.style.left), parseInt(block.style.top)]
-            console.log(nodeGraph.nodes)
             nodeGraph.connections.forEach((connectedNode) => {
                 if (connectedNode.toNode == block.id || connectedNode.fromNode == block.id) {
                     document.querySelector('.connections').removeChild(document.getElementById(connectedNode.id))
@@ -2253,10 +2415,10 @@ function getSocketPosition(socket) {
 
 }
 document.addEventListener("click", (e) => {
-
     if (!e.target.classList.contains("ai-mini-port-dot")) {
         if (activeNode != null) {
             activeNode.style.boxShadow = "";
+            activeNode.style.borderRadius = "100px"
             activeNode = null;
         }
         return;
@@ -2268,9 +2430,9 @@ document.addEventListener("click", (e) => {
     if (activeNode == null) {
 
         activeNode = el;
-
+        el.style.borderRadius = "4px"
         el.style.boxShadow =
-            "0 0 15px #5fa8ff";
+            "0px 0px 10px #38BDF8";
 
     }
 
@@ -2321,14 +2483,19 @@ document.addEventListener("click", (e) => {
 
             let acceptible = false;
             acceptedOutTypes.forEach((item) => {
+                console.log(acceptedInputTypes)
+                console.log(item)
+                console.log(acceptedInputTypes.indexOf("<br>" + item))
+                console.log(item.slice(item.indexOf(">"), item.length))
                 if (acceptedInputTypes.indexOf(item) != -1) {
                     acceptible = true;
-                }
-                if (acceptedInputTypes.indexOf("<br>" + item) != -1) {
+                } else if (acceptedInputTypes.indexOf("<br>" + item) != -1) {
                     acceptible = true;
+                } else if (acceptedInputTypes.indexOf(item.slice(item.indexOf(">") + 1, item.length)) != -1) {
+                    acceptible = true
                 }
-
             })
+
             if (acceptible) {
                 let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el], fromSocket, toSocket)
                 nodeGraph.connections.push(connected)
@@ -2337,14 +2504,16 @@ document.addEventListener("click", (e) => {
                     getSocketPosition(el),
                     connected.id
                 );
+            } else {
+                throwConnectionError(e.target, activeNode)
             }
 
 
             activeNode.style.boxShadow = "";
-
+            activeNode.style.borderRadius = "100px"
             activeNode = null;
         } else if (activeNode.classList.contains("any") && e.target.classList.contains("any") && e.target.parentNode.parentNode.classList[0] != activeNode.parentNode.parentNode.classList[0] && e.target.parentNode.parentNode.parentNode.parentNode.id != activeNode.parentNode.parentNode.parentNode.parentNode.id) {
-            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-left" && (activeNode.parentNode.children[0].innerHTML == "Next Node" && e.target.parentNode.children[1].innerHTML == "Universal Connector") || (activeNode.parentNode.children[0].innerHTML == "On Program Start" && e.target.parentNode.children[1].innerHTML == "Universal Connector") || (activeNode.parentNode.children[0].innerHTML == "On Data Loaded" && e.target.parentNode.children[1].innerHTML == "Universal Connector")) {
+            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-left" && (activeNode.parentNode.children[0].innerHTML == "Next Node" && e.target.parentNode.children[1].innerHTML == "Universal Connector") || (activeNode.parentNode.children[0].innerHTML == "On Program Start" && e.target.parentNode.children[1].innerHTML == "Universal Connector") || (activeNode.parentNode.children[0].innerHTML == "Do" && e.target.parentNode.children[1].innerHTML == "Universal Connector")) {
                 let fromSocket = e.target.parentNode.children[1].innerHTML;
                 let toSocket = activeNode.parentNode.children[0].innerHTML;
                 let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el], fromSocket, toSocket)
@@ -2355,7 +2524,7 @@ document.addEventListener("click", (e) => {
                     connected.id
                 );
             }
-            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-right" && (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "Next Node") || (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "On Program Start") || (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "On Data Loaded")) {
+            if (e.target.parentNode.parentNode.classList[0] == "ai-model-sidebar-right" && (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "Next Node") || (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "On Program Start") || (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "On Data Loaded") || (activeNode.parentNode.children[1].innerHTML == "Universal Connector" && e.target.parentNode.children[0].innerHTML == "Do")) {
                 let fromSocket = activeNode.parentNode.children[1].innerHTML;
                 let toSocket = e.target.parentNode.children[0].innerHTML;
                 let connected = new connection(self.crypto.randomUUID(), e.target.parentNode.parentNode.parentNode.parentNode.id, activeNode.parentNode.parentNode.parentNode.parentNode.id, [activeNode, el], fromSocket, toSocket)
@@ -2368,7 +2537,6 @@ document.addEventListener("click", (e) => {
             }
 
         }
-
     }
 
 });
@@ -2382,5 +2550,21 @@ class connection {
         this.toSocket = toSocket
     }
 }
-
+function throwConnectionError(port1, port2) {
+    activeNode.style.borderRadius = "100px"
+    let output
+    let input
+    document.getElementById("connectionPopup").style.display = "flex"
+    if (port2.parentElement.parentElement.classList.contains("ai-model-sidebar-right")) {
+        input = port2.parentElement
+        output = port1.parentElement
+    } else {
+        input = port1.parentElement
+        output = port2.parentElement
+    }
+    document.getElementById("errorInput").innerHTML = output.children[1].innerText
+    document.getElementById("errorOutput").innerHTML = input.children[0].innerText
+    document.getElementById("outputNodeName").innerHTML = input.parentElement.parentElement.parentElement.children[1].innerHTML
+    document.getElementById("inputNodeName").innerHTML = output.parentElement.parentElement.parentElement.children[1].innerHTML
+}
 

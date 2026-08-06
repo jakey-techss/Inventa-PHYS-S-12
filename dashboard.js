@@ -96,7 +96,7 @@ document.getElementById("create-btn").addEventListener("click", () => {
         let username = document.getElementById("projectName").value
         if (username.trim().length == 0) {
             if (projects == null) {
-                username = "Inventa Project #1"
+                username = "Inventa Project #0"
             } else {
                 username = "Inventa Project #" + JSON.parse(projects).length
             }
